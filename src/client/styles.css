@@ -1,0 +1,22 @@
+.jumbotron h2 { background-color: transparent; }
+
+.content { padding: 0 2em; }
+
+.tab-content {
+    margin: 0.5em 0;
+}
+
+pre {
+    background-color: #e3e5e7;
+    padding: 0.5em;
+}
+
+audio { 
+    display: block;
+    margin: 1em 0;
+}
+
+.alert, #enrollment, #authentication {
+    display: none;
+}
+

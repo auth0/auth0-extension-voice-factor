@@ -1,0 +1,8 @@
+{
+    "Auth0Domain": "[account].auth0.com",
+    "Auth0ClientId": "[identifier of a CC grant enabled client with permissions to manage rules]",
+    "Auth0ClientSecret": "[client secret associated with the previously specified identifier]",
+    "ExtensionSecret": "[secret used to validate calls to extension installation hooks]",
+    "VoiceItDeveloperId": "[VoiceIt developer identifier]",
+    "EncryptionKey": "[base64 encoded encryption key (AES 128)]"
+}

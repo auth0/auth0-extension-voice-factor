@@ -1,0 +1,30 @@
+{
+  "title": "Multi-factor Authentication with VoiceIt",
+  "name": "auth0-extension-voice-factor",
+  "version": "1.0.0",
+  "author": "João Angelo",
+  "description": "Provides multi-factor authentication with VoiceIt.",
+  "type": "application",
+  "keywords": [
+    "biometrics",
+    "extension"
+  ],
+  "auth0": {
+    "createClient": true,
+    "scopes": "create:rules update:rules read:rules delete:rules",
+    "onInstallPath": "/.extensions/on-install",
+    "onUninstallPath": "/.extensions/on-uninstall"
+  },
+  "secrets": {
+    "VIT_DEVELOPER_ID": {
+      "description": "Your VoiceIt Developer ID",
+      "required": true,
+      "type": "password"
+    },
+    "ENCRYPTION_KEY": {
+      "description": "Base64 encoded encryption key (AES 128) used for encryption of VoiceIt user secrets.",
+      "required": true,
+      "type": "password"
+    }
+  }
+}
