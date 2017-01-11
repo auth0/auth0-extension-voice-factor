@@ -16,7 +16,4 @@ audio {
     margin: 1em 0;
 }
 
-.alert, #enrollment, #authentication {
-    display: none;
-}
 

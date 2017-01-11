@@ -3,7 +3,7 @@
 const url = require("url");
 const crypto = require("crypto");
 
-const ejs = require("ejs");
+const Handlebars = require("handlebars");
 const request = require("request");
 const base64url = require("base64-url");
 const Express = require("express");
@@ -17,6 +17,14 @@ const mocks = require("./vit-api-mocks.js");
 const elemental = require("./elemental-db.js");
 const hooks = require("./installation-hooks.js");
 const metadata = require("./../../webtask.json");
+
+Handlebars.registerHelper("template-start", function (id) {
+    return new Handlebars.SafeString(`<script type="text/x-template" id="${id}">`);
+});
+
+Handlebars.registerHelper("template-end", function () {
+    return new Handlebars.SafeString('</script>');
+});
 
 module.exports = function (files) {
   function decrypt(data, key) {
@@ -184,7 +192,7 @@ module.exports = function (files) {
       return;
     }
 
-    res.send(ejs.render(files["index.html"], req.session));
+    res.send(Handlebars.compile(files["index.html"])(req.session));
   });
 
   // Process requests to application resources

@@ -3,174 +3,219 @@
         SUCCESS: "SUC"
     };
 
-    var recordings = [];
+    function record(callback) {
+        var constraints = { audio: true };
 
-    function record(trigger, cb) {
-        var mediaConstraints = {
-            audio: true
-        };
-
-        navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+        navigator.getUserMedia(constraints, onMediaSuccess, onMediaError);
 
         function onMediaSuccess(stream) {
             var mediaRecorder = new MediaStreamRecorder(stream);
 
-            mediaRecorder.mimeType = 'audio/wav';
-
+            mediaRecorder.mimeType = "audio/wav";
             mediaRecorder.start(4000);
-
-            var remaining = 3;
-            trigger.text("RECORDING (4s)");
-            var id = window.setInterval(function () {
-                trigger.text("RECORDING (" + remaining-- + "s)");
-            }, 1000);
-
             mediaRecorder.ondataavailable = function (blob) {
-                window.clearInterval(id);
-                trigger.text("START RECORDING");
-
                 mediaRecorder.stop();
 
-                cb(blob);
+                callback(null, blob);
             };
         }
 
-        function onMediaError(e) {
-            console.error('media error', e);
+        function onMediaError(error) {
+            callback(error);
         }
     }
 
-    function route() {
-        $("div.content").hide();
-
-        switch (window.location.hash) {
-            case "#/enrollment":
-                $("#enrollment").show();
-                break;
-
-            default:
-                $("#authentication").show();
-                break;
-        }
-    }
-
-    route();
-
-    $("#enroll-start").click(function () {
-        $("#enroll-alert-msg").parent().hide();
-        
-        record($(this), function (blob) {
-            recordings.push(blob);
-
-            var blobURL = URL.createObjectURL(blob);
-            $("audio").attr("src", blobURL);
-
-            $("#enroll-submit").attr("disabled", false);
-        });
-    });
-
-    $("#enroll-submit").click(function () {
-        var fileType = 'audio';
-
-        var formData = new FormData();
-        formData.append(fileType + '-blob', recordings[recordings.length - 1]);
-
-        $.ajax({
-            url: './api/enroll',
-            headers: {
-                "X-CSRF-Token": $("#csrf_token").val()
-            },
-            data: formData,
-            processData: false,
-            contentType: false,
-            type: 'POST',
-            success: function (result) {
-                $("#enroll-submit").attr("disabled", true);
-
-                switch (result.ResponseCode) {
-                    case ResponseCode.SUCCESS:
-                        $("audio").attr("src", "");
-
-                        var count = recordings.length;
-
-                        if (count < 4) {
-                            $("#card-" + count + " i").attr("class", "card-docs-icon icon-budicon-470 green");
-                        } else {
-                            $("#enroll-start").attr("disabled", true);
-
-                            window.location.hash = "#/authentication";
-
-                            route();
-                        }
-                        break;
-
-                    default:
-                        recordings.pop();
-                        $("#enroll-alert-msg").text(result.Result);
-                        $("#enroll-alert-msg").parent().show();
-                        break;
-                }
-
-            },
-            error: function (error) {
-                console.log(error);
-                button.attr("disabled", false);
-                $("#enroll-alert-msg").text("An unknown error occurred.");
-                $("#enroll-alert-msg").parent().show();
+    Vue.component('animated-recording-button', {
+        template: '<div class="btn btn-primary" v-on:click="start">{{label}}</div>',
+        data: function () {
+            return {
+                label: "START RECORDING"
             }
-        });
-    });
+        },
+        methods: {
+            start: function () {
+                var vm = this;
 
-    $("#authenticate-start").click(function () {
-        var button = $(this);
-
-        $("#authenticate-alert-msg").parent().hide();
-
-        record(button, function (blob) {
-            button.attr("disabled", true);
-
-            var fileType = 'audio';
-
-            var formData = new FormData();
-            formData.append(fileType + '-blob', blob);
-
-            $.ajax({
-                url: './api/authenticate',
-                headers: {
-                    "X-CSRF-Token": $("#csrf_token").val()
-                },
-                data: formData,
-                processData: false,
-                contentType: false,
-                type: 'POST',
-                success: function (result) {
-                    switch (result.ResponseCode) {
-                        case ResponseCode.SUCCESS:
-                            $("#continue").submit();
-                            break;
-
-                        default:
-                            button.attr("disabled", false);
-                            $("#authenticate-alert-msg").text(result.Result);
-                            $("#authenticate-alert-msg").parent().show();
-                            break;
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
-                    button.attr("disabled", false);
-                    $("#authenticate-alert-msg").text("An unknown error occurred.");
-                    $("#authenticate-alert-msg").parent().show();
+                function animate(time) {
+                    requestAnimationFrame(animate);
+                    TWEEN.update(time);
                 }
-            });
-        });
+
+                this.$emit('start');
+
+                new TWEEN.Tween({ counter: 4 })
+                    .to({ counter: 0 }, 4000)
+                    .onUpdate(function () {
+                        if (this.counter > 0) {
+                            vm.label = "RECORDING (" + this.counter.toFixed(0) + "s)";
+                        } else {
+                            vm.label = "START RECORDING";
+                        }
+                    })
+                    .start();
+
+                animate()
+            }
+        }
     });
 
-    $("#authenticate-cancel").click(function () {
-        $("#continue").submit();
-    });
+    var EnrollmentViewModel = {
+        template: "#tpl-enrollment",
+        data: function () {
+            return {
+                alert: null,
+                recording: false,
+                recordings: [],
+                enrollments: 0,
+                previewRecordingUrl: null
+            };
+        },
+        watch: {
+            previewRecordingUrl: function () {
+                this.$refs.player.load();
+            }
+        },
+        methods: {
+            start: function (event) {
+                var vm = this;
 
-    $("#enroll-cancel").click(function () {
-        $("#continue").submit();
+                vm.alert = null;
+                vm.recording = true;
+
+                record(function (error, blob) {
+                    vm.recording = false;
+
+                    if (error) {
+                        console.log(error);
+                        vm.alert = "An unknown error occurred.";
+
+                        return;
+                    }
+
+                    vm.recordings.push(blob);
+                    vm.previewRecordingUrl = URL.createObjectURL(blob);
+                });
+            },
+            submit: function (event) {
+                var vm = this;
+
+                var formData = new FormData();
+                formData.append('audio-blob', vm.recordings[vm.recordings.length - 1]);
+
+                $.ajax({
+                    url: './api/enroll',
+                    headers: {
+                        "X-CSRF-Token": $("#csrf_token").val()
+                    },
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function (result) {
+                        vm.previewRecordingUrl = null;
+
+                        switch (result.ResponseCode) {
+                            case ResponseCode.SUCCESS:
+                                vm.enrollments += 1;
+
+                                if (vm.enrollments >= 4) {
+                                    vm.$root.$data.route = window.location.hash = "#/authentication";
+                                }
+                                break;
+
+                            default:
+                                vm.recordings.pop();
+                                vm.alert = result.Result;
+                                break;
+                        }
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        vm.alert = "An unknown error occurred.";
+                    }
+                });
+            },
+            cancel: function (event) {
+                $("#continue").submit();
+            }
+        }
+    };
+
+    var WebAuthenticationViewModel = {
+        template: "#tpl-web-authentication",
+        data: function () {
+            return {
+                alert: null,
+                recording: false
+            };
+        },
+        methods: {
+            start: function (event) {
+                var vm = this;
+
+                vm.alert = null;
+                vm.recording = true;
+
+                record(function (error, blob) {
+                    if (error) {
+                        console.log(error);
+                        vm.alert = "An unknown error occurred.";
+
+                        return;
+                    }
+
+                    var formData = new FormData();
+                    formData.append('audio-blob', blob);
+
+                    $.ajax({
+                        url: './api/authenticate',
+                        headers: {
+                            "X-CSRF-Token": $("#csrf_token").val()
+                        },
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: 'POST',
+                        success: function (result) {
+                            switch (result.ResponseCode) {
+                                case ResponseCode.SUCCESS:
+                                    $("#continue").submit();
+                                    break;
+
+                                default:
+                                    vm.recording = false;
+                                    vm.alert = result.Result;
+                                    break;
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            vm.recording = false;
+                            vm.alert = "An unknown error occurred.";
+                        }
+                    });
+                });
+            },
+            cancel: function (event) {
+                $("#continue").submit();
+            }
+        }
+    };
+
+    var routes = {
+        "#/enrollment": EnrollmentViewModel,
+        "#/web/authentication": WebAuthenticationViewModel,
+    };
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            route: window.location.hash
+        },
+        computed: {
+            getView: function () { return routes[this.route] || WebAuthenticationViewModel; }
+        },
+        render: function (createElement) { return createElement(this.getView); }
     });
 })();

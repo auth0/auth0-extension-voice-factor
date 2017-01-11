@@ -11,22 +11,21 @@
 
 <body>
     <section class="jumbotron">
-        <h2><img src="./logo.svg"/></h2>
+        <h2><img src="./logo.svg" /></h2>
         <h1>voice-factor</h1>
         <p>Multi-factor Authentication with VoiceIt.</p>
-
     </section>
 
     <form action="./continue" method="post" name="continue" id="continue">
-        <input type="hidden" id="csrf_token" name="csrf_token" value="<%- csrf %>" />
+        <input type="hidden" id="csrf_token" name="csrf_token" value="{{{ csrf }}}" />
     </form>
 
-    <div class="content" id="enrollment">
+    {{{ template-start "tpl-enrollment" }}}
+    <div class="content">
         <h2>Enrollment</h2>
-        <div class="alert alert-global alert-warning"><strong>Something bad just happened!</strong> <span id="enroll-alert-msg"></span></div>
-        <p>Hi
-            <%= userId %>, it was detected that you don't' have an active voice authentication enrollment. You'll need to enroll for voice
-                authentication before continuing.</p>
+        <div class="alert alert-global alert-warning" v-if="alert"><strong>Something bad just happened!</strong> \{{ alert }}</div>
+        <p>Hi {{ userId }}, it was detected that you don't' have an active voice authentication enrollment. You'll need to enroll
+            for voice authentication before continuing.</p>
         <p>The enrollment process requires you to repeat an authentication phrase four times.</p>
 
         <h3>Authentication Phrase</h3>
@@ -34,58 +33,66 @@
             <pre>Remember to wash your hands before eating</pre>
         </div>
 
-        <div class="btn btn-success" id="enroll-start">START RECORDING</div>
-        <div class="btn btn-default" id="enroll-cancel">CANCEL</div>
+        <animated-recording-button v-bind:disabled="recording" v-on:start="start"></animated-recording-button>
+        <div class="btn btn-default" v-on:click="cancel">CANCEL</div>
         <p>After pressing the start recording button and authorizing the browser to use your microphone (if applicable), you'll
             have four seconds to reproduce the phrase.</p>
 
-        <audio controls="controls">
-            <source src=""></source>
+        <audio ref="player" controls="controls">
+            <source v-bind:src="previewRecordingUrl"></source>
         </audio>
 
         <p>Once the four seconds elapse you can review the recording before submitting.</p>
-        <div class="btn btn-primary" id="enroll-submit" disabled>SUBMIT</div>
+        <div class="btn btn-primary" v-bind:disabled="!previewRecordingUrl" v-on:click="submit">SUBMIT</div>
 
         <h3>Progress</h3>
         <div id="recordings" class="row">
             <div class="col-xs-6 col-md-3">
-                <article class="card-docs" id="card-1"><i class="card-docs-icon icon-budicon-471 orange"></i>
+                <article class="card-docs" id="card-1">
+                    <i class="card-docs-icon" v-bind:class="{ 'icon-budicon-471 orange': enrollments < 1, 'icon-budicon-470 green': enrollments >= 1 }"></i>
                     <h2 class="card-docs-title">Recording #1</h2>
                 </article>
             </div>
             <div class="col-xs-6 col-md-3">
-                <article class="card-docs" id="card-2"><i class="card-docs-icon icon-budicon-471 orange"></i>
+                <article class="card-docs" id="card-2">
+                    <i class="card-docs-icon" v-bind:class="{ 'icon-budicon-471 orange': enrollments < 2, 'icon-budicon-470 green': enrollments >= 2 }"></i>
                     <h2 class="card-docs-title">Recording #2</h2>
                 </article>
             </div>
             <div class="col-xs-6 col-md-3">
-                <article class="card-docs" id="card-3"><i class="card-docs-icon icon-budicon-471 orange"></i>
+                <article class="card-docs" id="card-3">
+                    <i class="card-docs-icon" v-bind:class="{ 'icon-budicon-471 orange': enrollments < 3, 'icon-budicon-470 green': enrollments >= 3 }"></i>
                     <h2 class="card-docs-title">Recording #3</h2>
                 </article>
             </div>
             <div class="col-xs-6 col-md-3">
-                <article class="card-docs" id="card-4"><i class="card-docs-icon icon-budicon-471 orange"></i>
+                <article class="card-docs" id="card-4">
+                    <i class="card-docs-icon" v-bind:class="{ 'icon-budicon-471 orange': enrollments < 4, 'icon-budicon-470 green': enrollments >= 4 }"></i>
                     <h2 class="card-docs-title">Recording #4</h2>
                 </article>
             </div>
         </div>
     </div>
-
-    <div class="content" id="authentication">
+    {{{ template-end }}}
+    <!-- -->
+    {{{ template-start "tpl-web-authentication" }}}
+    <div class="content">
         <h2>Authentication</h2>
-        <div class="alert alert-global alert-warning"><strong>Something bad just happened!</strong> <span id="authenticate-alert-msg"></span></div>
+        <div class="alert alert-global alert-warning" v-if="alert"><strong>Something bad just happened!</strong> \{{ alert }}</div>
         <pre>Remember to wash your hands before eating</pre>
-        <div class="btn btn-primary" id="authenticate-start">START RECORDING</div>
-        <div class="btn btn-default" id="authenticate-cancel">CANCEL</div>
+        <animated-recording-button v-bind:disabled="recording" v-on:start="start"></animated-recording-button>
+        <div class="btn btn-default" v-on:click="cancel">CANCEL</div>
     </div>
+    {{{ template-end }}}
 
+    <div id="app"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"></script>
-    <script type="applications/javascript">
-!function a(b,c,d){function e(g,h){if(!c[g]){if(!b[g]){var i="function"==typeof require&&require;if(!h&&i)return i(g,!0);if(f)return f(g,!0);var j=new Error("Cannot find module '"+g+"'");throw j.code="MODULE_NOT_FOUND",j}var k=c[g]={exports:{}};b[g][0].call(k.exports,function(a){var c=b[g][1][a];return e(c?c:a)},k,k.exports,a,b,c,d)}return c[g].exports}for(var f="function"==typeof require&&require,g=0;g<d.length;g++)e(d[g]);return e}({1:[function(a,b,c){function d(a){this.message=a}function e(a){var b=String(a).replace(/=+$/,"");if(b.length%4==1)throw new d("'atob' failed: The string to be decoded is not correctly encoded.");for(var c,e,g=0,h=0,i="";e=b.charAt(h++);~e&&(c=g%4?64*c+e:e,g++%4)?i+=String.fromCharCode(255&c>>(-2*g&6)):0)e=f.indexOf(e);return i}var f="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";d.prototype=new Error,d.prototype.name="InvalidCharacterError",b.exports="undefined"!=typeof window&&window.atob&&window.atob.bind(window)||e},{}],2:[function(a,b,c){function d(a){return decodeURIComponent(e(a).replace(/(.)/g,function(a,b){var c=b.charCodeAt(0).toString(16).toUpperCase();return c.length<2&&(c="0"+c),"%"+c}))}var e=a("./atob");b.exports=function(a){var b=a.replace(/-/g,"+").replace(/_/g,"/");switch(b.length%4){case 0:break;case 2:b+="==";break;case 3:b+="=";break;default:throw"Illegal base64url string!"}try{return d(b)}catch(c){return e(b)}}},{"./atob":1}],3:[function(a,b,c){"use strict";var d=a("./base64_url_decode");b.exports=function(a,b){if("string"!=typeof a)throw new Error("Invalid token specified");b=b||{};var c=b.header===!0?0:1;return JSON.parse(d(a.split(".")[c]))}},{"./base64_url_decode":2}],4:[function(a,b,c){(function(b){var c=a("./lib/index");"function"==typeof b.window.define&&b.window.define.amd?b.window.define("jwt_decode",function(){return c}):b.window&&(b.window.jwt_decode=c)}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./lib/index":3}]},{},[4]);
-    </script>
+
     <script src="./scripts.js"></script>
 </body>
 

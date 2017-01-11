@@ -59,6 +59,8 @@ function voicefactor(user, context, callback) {
                 return callback(null, user, context);
             }
         } catch (error) {
+            console.log(error);
+
             return callback(new UnauthorizedError("Unexpected failure."));
         }
     } else {
@@ -96,7 +98,7 @@ function voicefactor(user, context, callback) {
             var redirectUrl = config.extensionUrl;
 
             redirectUrl += "?token=" + token;
-            redirectUrl += user.app_metadata.vit_enrollment.completed ? "#/authentication" : "#/enrollment";
+            redirectUrl += user.app_metadata.vit_enrollment.completed ? "#/web/authentication" : "#/enrollment";
 
             context.redirect = { url: redirectUrl };
 
