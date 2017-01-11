@@ -110,7 +110,7 @@ module.exports =
 	var mocks = __webpack_require__(22);
 	var elemental = __webpack_require__(23);
 	var hooks = __webpack_require__(25);
-	var metadata = __webpack_require__(30);
+	var metadata = __webpack_require__(29);
 
 	module.exports = function (files) {
 	  function decrypt(data, key) {
@@ -1587,11 +1587,11 @@ module.exports =
 	"use strict";
 
 	var _ = __webpack_require__(26);
-	var request = __webpack_require__(27);
+	var request = __webpack_require__(8);
 	var Express = __webpack_require__(10);
 
 	var jwt = __webpack_require__(21);
-	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(28) : __webpack_require__(29);
+	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(27) : __webpack_require__(28);
 
 	module.exports = function (files) {
 	    var hooks = Express.Router();
@@ -1735,16 +1735,20 @@ module.exports =
 	    var clientId = req.webtaskContext.data.AUTH0_CLIENT_ID;
 	    var clientSecret = req.webtaskContext.data.AUTH0_CLIENT_SECRET;
 
-	    request.post(tokenEndpointUrl).send({
-	        audience: audience,
-	        grant_type: 'client_credentials',
-	        client_id: clientId,
-	        client_secret: clientSecret
-	    }).type('application/json').end(function (err, res) {
-	        if (err || !res.ok) {
-	            cb(null, err);
+	    request({
+	        uri: tokenEndpointUrl,
+	        json: {
+	            audience: audience,
+	            grant_type: 'client_credentials',
+	            client_id: clientId,
+	            client_secret: clientSecret
+	        },
+	        method: 'POST'
+	    }, function (error, response, body) {
+	        if (!error && response.statusCode == 200) {
+	            cb(body.access_token);
 	        } else {
-	            cb(res.body.access_token);
+	            cb(null, error);
 	        }
 	    });
 	}
@@ -1759,22 +1763,16 @@ module.exports =
 /* 27 */
 /***/ function(module, exports) {
 
-	module.exports = require("superagent");
+	module.exports = require("auth0");
 
 /***/ },
 /* 28 */
 /***/ function(module, exports) {
 
-	module.exports = require("auth0");
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
 	module.exports = require("auth0@2.1.0");
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1784,7 +1782,6 @@ module.exports =
 		"author": "João Angelo",
 		"description": "Provides multi-factor authentication with VoiceIt.",
 		"type": "application",
-		"codeUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/bundle.js",
 		"logoUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/logo.svg",
 		"keywords": [
 			"biometrics",

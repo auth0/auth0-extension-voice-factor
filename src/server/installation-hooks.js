@@ -1,7 +1,7 @@
 "use strict";
 
 const _ = require("lodash");
-const request = require("superagent");
+const request = require("request");
 const Express = require("express");
 
 const jwt = require("jsonwebtoken");
@@ -155,19 +155,20 @@ function getToken(req, cb) {
     var clientId = req.webtaskContext.data.AUTH0_CLIENT_ID;
     var clientSecret = req.webtaskContext.data.AUTH0_CLIENT_SECRET;
 
-    request.post(tokenEndpointUrl)
-        .send({
+    request({
+        uri: tokenEndpointUrl,
+        json: {
             audience: audience,
             grant_type: 'client_credentials',
             client_id: clientId,
             client_secret: clientSecret
-        })
-        .type('application/json')
-        .end(function (err, res) {
-            if (err || !res.ok) {
-                cb(null, err);
-            } else {
-                cb(res.body.access_token);
-            }
-        });
+        },
+        method: 'POST'
+    }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            cb(body.access_token);
+        } else {
+            cb(null, error);
+        }
+    });
 }
