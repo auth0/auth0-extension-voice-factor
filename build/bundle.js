@@ -279,6 +279,8 @@ module.exports =
 	  app.get("/", function (req, res) {
 	    if (!req.originalUrl.endsWith("/")) {
 	      res.redirect(req.originalUrl + "/");
+
+	      return;
 	    }
 
 	    res.send(ejs.render(files["index.html"], req.session));

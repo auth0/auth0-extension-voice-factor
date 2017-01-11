@@ -28,7 +28,7 @@ app.use('/', (req, res, next) => {
     next();
 })
 
-app.use('/', builder({
+app.use('/vf/', builder({
     "index.html": fs.readFileSync('./src/client/index.html', 'utf-8'),
     "scripts.js": fs.readFileSync('./src/client/scripts.js', 'utf-8'),
     "styles.css": fs.readFileSync('./src/client/styles.css', 'utf-8'),
@@ -44,5 +44,5 @@ var options = {
 const port = 7100;
 
 var server = https.createServer(options, app).listen(port, function () {
-    console.log(`Server started at: https://voicefactor.localtest.me:${port}/`);
+    console.log(`Server started at: https://voicefactor.localtest.me:${port}/vf/`);
 });
