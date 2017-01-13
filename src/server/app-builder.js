@@ -19,110 +19,30 @@ const hooks = require("./installation-hooks.js");
 const metadata = require("./../../webtask.json");
 
 Handlebars.registerHelper("template-start", function (id) {
-    return new Handlebars.SafeString(`<script type="text/x-template" id="${id}">`);
+  return new Handlebars.SafeString(`<script type="text/x-template" id="${id}">`);
 });
 
 Handlebars.registerHelper("template-end", function () {
-    return new Handlebars.SafeString('</script>');
+  return new Handlebars.SafeString('</script>');
 });
 
-module.exports = function (files) {
-  function decrypt(data, key) {
-    if (!data || data.indexOf(":") === -1) {
-      return "";
-    }
-
-    var parts = data.split(":");
-
-    var key = new Buffer(key, "base64");
-    var iv = new Buffer(parts[0], "base64");
-
-    var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
-
-    return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+function decrypt(data, key) {
+  if (!data || data.indexOf(":") === -1) {
+    return "";
   }
 
-  var config = {};
-  config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+  var parts = data.split(":");
 
-  let app = new Express();
+  var key = new Buffer(key, "base64");
+  var iv = new Buffer(parts[0], "base64");
 
-  app.use(cookieParser());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
 
-  app.get("/debug", (req, res) => res.json({}));
+  return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+}
 
-  app.post("/decrypt", (req, res) => {
-    var plaintext, ciphertext, key;
-
-    key = req.body.key;
-    ciphertext = req.body.ciphertext;
-    plaintext = decrypt(ciphertext, key);
-
-    res.json({ plaintext });
-  });
-
-  app.get("/ping", (req, res) => res.send("PONG"));
-
-  app.get("/meta", (req, res) => {
-    res.status(200).send(metadata);
-  });
-
-  app.use("/", (req, res, next) => {
-    // Ensure that database is available at the request level
-    var schema = {
-      config: { type: "singleton" },
-      tokens: { type: "array" },
-      sessions: { type: "map" },
-    };
-
-    var seed = { config: config, tokens: [], sessions: {} };
-
-    if (req.webtaskContext.storage) {
-      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
-    } else {
-      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
-    }
-
-    // Provide absolute URL and absolute base URL
-    var xfproto = req.get('x-forwarded-proto');
-    var xfport = req.get('x-forwarded-port');
-
-    req.absoluteUrl = [
-      xfproto ? xfproto.split(',')[0].trim() : 'https',
-      '://',
-      req.get('Host'),
-      //xfport ? ':' + xfport.split(',')[0].trim() : '',
-      url.parse(req.originalUrl).pathname
-    ].join('');
-
-    req.absoluteBaseUrl = [
-      xfproto ? xfproto.split(',')[0].trim() : 'https',
-      '://',
-      req.get('Host'),
-      //xfport ? ':' + xfport.split(',')[0].trim() : '',
-      url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")
-    ].join('');
-
-    // Make the global configuration available at the request level
-    req.db.get(function (error, data) {
-      if (error) { return next(error); }
-
-      req.config = data.config;
-
-      next();
-    });
-  });
-
-  // Make the extension installation hooks available without session requirements
-  app.use("/.extensions", hooks(files));
-
-  // Make the mocks available without session requirements
-  app.use("/vitmocks", mocks);
-
-  // Ensure that the current request is either starting a session
-  // or that the request is associated with a valid session
-  app.use("/", (req, res, next) => {
+const checks = {
+  session: function (req, res, next) {
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
@@ -168,24 +88,112 @@ module.exports = function (files) {
 
           res.redirect(url.parse(req.originalUrl).pathname);
         });
-
-        return;
-      }
-
-      var sid = req.cookies.vf_sid;
-
-      req.session = sid ? data.sessions[sid] : null;
-
-      if (!req.session) {
-        res.sendStatus(403);
       } else {
-        next();
+        var sid = req.cookies.vf_sid;
+
+        req.session = sid ? data.sessions[sid] : null;
+
+        if (!req.session) {
+          res.sendStatus(403);
+        } else {
+          next();
+        }
       }
+    });
+  },
+  csrf: (req, res, next) => {
+    var csrf = req.get("X-CSRF-Token") || req.body.csrf_token;
+
+    if (csrf !== req.session.csrf) {
+      res.sendStatus(403);
+    } else {
+      next();
+    }
+  }
+};
+
+module.exports = function (files) {
+  let app = new Express();
+
+  app.use(cookieParser());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.get("/debug", (req, res) => res.json({}));
+
+  app.get("/ping", (req, res) => res.send("PONG"));
+
+  app.post("/decrypt", (req, res) => {
+    var plaintext, ciphertext, key;
+
+    key = req.body.key;
+    ciphertext = req.body.ciphertext;
+    plaintext = decrypt(ciphertext, key);
+
+    res.json({ plaintext });
+  });
+
+  app.get("/meta", (req, res) => {
+    res.status(200).send(metadata);
+  });
+
+  app.use("/", (req, res, next) => {
+    // Ensure that database is available at the request level
+    var schema = {
+      config: { type: "singleton" },
+      tokens: { type: "array" },
+      sessions: { type: "map" },
+    };
+
+    var config = {};
+    config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+
+    var seed = { config: config, tokens: [], sessions: {} };
+
+    if (req.webtaskContext.storage) {
+      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
+    } else {
+      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
+    }
+
+    // Provide absolute URL and absolute base URL
+    var xfproto = req.get('x-forwarded-proto');
+    var xfport = req.get('x-forwarded-port');
+
+    req.absoluteUrl = [
+      xfproto ? xfproto.split(',')[0].trim() : 'https',
+      '://',
+      req.get('Host'),
+      //xfport ? ':' + xfport.split(',')[0].trim() : '',
+      url.parse(req.originalUrl).pathname
+    ].join('');
+
+    req.absoluteBaseUrl = [
+      xfproto ? xfproto.split(',')[0].trim() : 'https',
+      '://',
+      req.get('Host'),
+      //xfport ? ':' + xfport.split(',')[0].trim() : '',
+      url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")
+    ].join('');
+
+    // Make the global configuration available at the request level
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      req.config = data.config;
+
+      next();
     });
   });
 
+  // Make the extension installation hooks available without
+  // security checks as they do their own authentication
+  app.use("/.extensions", hooks(files));
+
+  // Make the mocks available publicly
+  app.use("/vitmocks", mocks);
+
   // Process the application root
-  app.get("/", (req, res) => {
+  app.get("/", checks.session, (req, res) => {
     if (!req.originalUrl.endsWith("/")) {
       res.redirect(req.originalUrl + "/");
 
@@ -210,59 +218,42 @@ module.exports = function (files) {
   });
 
   // Process the request to continue the transaction at Auth0
-  app.post("/continue", (req, res, next) => {
-    var csrf = req.body.csrf_token;
+  app.post("/continue", checks.session, checks.csrf, (req, res, next) => {
+    var domain = req.webtaskContext.data.AUTH0_DOMAIN;
 
-    if (csrf !== req.session.csrf) {
-      res.sendStatus(403);
-    } else {
-      var domain = req.webtaskContext.data.AUTH0_DOMAIN;
+    // Get the session identifier and state from the cookies
+    var sid = req.cookies.vf_sid;
+    var state = req.cookies.vf_state;
 
-      // Get the session identifier and state from the cookies
-      var sid = req.cookies.vf_sid;
-      var state = req.cookies.vf_state;
+    // Create a token based on current session state
+    var claims = {
+      sub: req.session.userId,
+      nonce: state,
+      vit_authenticated: req.session.vit.authenticated
+    };
 
-      // Create a token based on current session state
-      var claims = {
-        sub: req.session.userId,
-        nonce: state,
-        vit_authenticated: req.session.vit.authenticated
-      };
+    var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
 
-      var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
+    // Clear cookies
+    var now = new Date();
 
-      // Clear cookies
-      var now = new Date();
+    res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
+    res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
 
-      res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
-      res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
+    // Remove session and redirect
+    req.db.remove({ sessions: [{ id: sid }] }, (error) => {
+      if (error) { return next(error); }
 
-      // Remove session and redirect
-      req.db.remove({ sessions: [{ id: sid }] }, (error) => {
-        if (error) { return next(error); }
-
-        // Redirect to Auth0 with JWT and state
-        res.redirect(`https://${domain}/continue?state=${state}&token=${token}`);
-      });
-    }
-  });
-
-  // Require a CSRF token for all internal API requests
-  app.use("/api/*", (req, res, next) => {
-    var csrf = req.get("X-CSRF-Token");
-
-    if (csrf !== req.session.csrf) {
-      res.sendStatus(403);
-    } else {
-      next();
-    }
+      // Redirect to Auth0 with JWT and state
+      res.redirect(`https://${domain}/continue?state=${state}&token=${token}`);
+    });
   });
 
   // Create an helper regular expression to process multipart requests
   const RE_BOUNDARY = /^multipart\/.+?(?:; boundary=(?:(?:"(.+)")|(?:([^\s]+))))$/i;
 
   // Process an enrollment request
-  app.post("/api/enroll", (req, res, next) => {
+  app.post("/api/enroll", checks.session, checks.csrf, (req, res, next) => {
     function enroll(buffer) {
       request({
         headers: {
@@ -342,7 +333,7 @@ module.exports = function (files) {
   });
 
   // Process an authentication request
-  app.post("/api/authenticate", (req, res, next) => {
+  app.post("/api/authenticate", checks.session, checks.csrf, (req, res, next) => {
     var parts = RE_BOUNDARY.exec(req.get("Content-Type"));
 
     var dicer = new Dicer({ boundary: parts[1] || parts[2] });
