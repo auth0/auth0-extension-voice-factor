@@ -103,7 +103,7 @@
                 formData.append('audio-blob', vm.recordings[vm.recordings.length - 1]);
 
                 $.ajax({
-                    url: './api/enroll',
+                    url: './api/web/enroll',
                     headers: {
                         "X-CSRF-Token": $("#csrf_token").val()
                     },
@@ -169,7 +169,7 @@
                     formData.append('audio-blob', blob);
 
                     $.ajax({
-                        url: './api/authenticate',
+                        url: './api/web/authenticate',
                         headers: {
                             "X-CSRF-Token": $("#csrf_token").val()
                         },

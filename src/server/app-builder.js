@@ -253,7 +253,7 @@ module.exports = function (files) {
   const RE_BOUNDARY = /^multipart\/.+?(?:; boundary=(?:(?:"(.+)")|(?:([^\s]+))))$/i;
 
   // Process an enrollment request
-  app.post("/api/enroll", checks.session, checks.csrf, (req, res, next) => {
+  app.post("/api/web/enroll", checks.session, checks.csrf, (req, res, next) => {
     function enroll(buffer) {
       request({
         headers: {
@@ -333,7 +333,7 @@ module.exports = function (files) {
   });
 
   // Process an authentication request
-  app.post("/api/authenticate", checks.session, checks.csrf, (req, res, next) => {
+  app.post("/api/web/authenticate", checks.session, checks.csrf, (req, res, next) => {
     var parts = RE_BOUNDARY.exec(req.get("Content-Type"));
 
     var dicer = new Dicer({ boundary: parts[1] || parts[2] });
