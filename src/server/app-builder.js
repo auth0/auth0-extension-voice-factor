@@ -10,6 +10,7 @@ const Express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Dicer = require("dicer");
+const twilio = require("twilio");
 
 const jwt = require("jsonwebtoken");
 
@@ -142,6 +143,7 @@ module.exports = function (files) {
       config: { type: "singleton" },
       tokens: { type: "array" },
       sessions: { type: "map" },
+      calls: { type: "map" },
     };
 
     var config = {};
@@ -389,10 +391,149 @@ module.exports = function (files) {
     req.pipe(dicer);
   });
 
+  app.post("/api/phone/start-call", checks.session, checks.csrf, (req, res, next) => {
+    const accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+    const authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+
+    var client = twilio(accountSid, authToken);
+
+    var token = base64url.escape(crypto.randomBytes(32).toString("base64"));
+
+    req.db.add({ calls: { id: token, value: req.session.id } }, (error) => {
+      if (error) { return next(error); }
+
+      client.calls.create({
+        url: `${req.absoluteBaseUrl}/api/phone/receive-call/${token}`,
+        to: req.session.phone,
+        from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
+      }, function (error, call) {
+        if (error) { return next(error); }
+
+        res.sendStatus(200);
+      });
+    });
+  });
+
+  app.post("/api/phone/receive-call/:token", (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      if (!data.calls[req.params.token]) {
+        // If the token does not match an expected call fail the request
+        res.sendStatus(403);
+
+        return;
+      }
+
+      var twiml = new twilio.TwimlResponse();
+
+      twiml.say("You have called Voice Authentication. Your phone number has been recognized.");
+      twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+
+      // Set Twilio session cookie
+      res.cookie("tw_sid", req.params.token, { httpOnly: true, secure: true });
+
+    });
+  });
+
+  app.post("/api/phone/authentication/record", (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      var cid = req.cookies.tw_sid;
+
+      if (!data.calls[cid]) {
+        // If the session call identifier does not match an expected call fail the request
+        res.sendStatus(403);
+
+        return;
+      }
+
+      var sid = data.calls[cid];
+
+      req.session = data.sessions[sid];
+
+      var twiml = new twilio.TwimlResponse();
+
+      twiml.say("Please say the following phrase to authenticate.");
+      twiml.pause(1);
+      twiml.say("Remember to wash your hands before eating.");
+
+      twiml.record({
+        action: `${req.absoluteBaseUrl}/api/phone/authentication/verify`,
+        maxLength: "5",
+        trim: "do-not-trim",
+      });
+
+      res.send(twiml.toString());
+    });
+  });
+
+  app.post("/api/phone/authentication/verify", (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      var cid = req.cookies.tw_sid;
+
+      if (!data.calls[cid]) {
+        // If the session call identifier does not match an expected call fail the request
+        res.sendStatus(403);
+
+        return;
+      }
+
+      var sid = data.calls[cid];
+
+      req.session = data.sessions[sid];
+
+      var recordingURL = req.body.RecordingUrl + ".wav";
+
+      var options = {
+        headers: {
+          "VsitEmail": req.session.vit.id,
+          "VsitPassword": crypto.createHash("sha256").update(req.session.vit.secret).digest("hex"),
+          "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
+          "VsitConfidence": "85",
+          "VsitwavURL": recordingURL,
+          "ContentLanguage": req.session.vit.lang
+        },
+        // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
+        uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
+        method: "POST"
+      };
+
+      request.post(options, function (error, response, body) {
+        var twiml = new twilio.TwimlResponse();
+
+        if (!error && response.statusCode == 200) {
+          var authenticationResponse = JSON.parse(body);
+
+          console.log(authenticationResponse);
+
+          switch (authenticationResponse.Result) {
+            case "Authentication failed.":
+              twiml.say("Your authentication did not pass. Please try again.");
+              twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+              break;
+            default:
+              twiml.say(authenticationResponse.Result);
+          }
+        } else {
+          twiml.say("API Error. Your authentication did not pass. Please try again.");
+          twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+
+          console.log(new Error(response.statusCode, body));
+        }
+
+        res.send(twiml.toString());
+      });
+    });
+  });
+
   app.use(function (error, req, res, next) {
     console.log(error);
     res.sendStatus(500);
   })
 
   return app;
-}
+};

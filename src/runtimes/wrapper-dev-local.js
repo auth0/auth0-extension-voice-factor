@@ -24,6 +24,9 @@ app.use('/', (req, res, next) => {
 
     req.webtaskContext.data.VIT_DEVELOPER_ID = config.VoiceItDeveloperId;
     req.webtaskContext.data.ENCRYPTION_KEY = config.EncryptionKey;
+    req.webtaskContext.data.TWILIO_ACCOUNT_SID = config.TwilioAccountSid;
+    req.webtaskContext.data.TWILIO_AUTH_TOKEN = config.TwilioAuthToken;
+    req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER = config.TwilioOutgoingPhoneNumber;
 
     next();
 })

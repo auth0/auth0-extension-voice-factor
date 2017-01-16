@@ -84,6 +84,16 @@
         <div class="btn btn-default" v-on:click="cancel">CANCEL</div>
     </div>
     {{{ template-end }}}
+    <!-- -->
+    {{{ template-start "tpl-phone-authentication" }}}
+    <div class="content">
+        <h2>Authentication</h2>
+        <div class="alert alert-global alert-warning" v-if="alert"><strong>Something bad just happened!</strong> \{{ alert }}</div>
+
+        <div class="btn btn-primary" v-on:click="start">START CALL</div>
+        <div class="btn btn-default" v-on:click="cancel">CANCEL</div>
+    </div>
+    {{{ template-end }}}
 
     <div id="app"></div>
 

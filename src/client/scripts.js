@@ -203,9 +203,25 @@
         }
     };
 
+    var PhoneAuthenticationViewModel = {
+        template: "#tpl-phone-authentication",
+        data: function () {
+            return {
+                alert: null
+            };
+        },
+        methods: {
+            start: function (event) {
+            },
+            cancel: function (event) {
+            }
+        }
+    };
+
     var routes = {
         "#/enrollment": EnrollmentViewModel,
         "#/web/authentication": WebAuthenticationViewModel,
+        "#/phone/authentication": PhoneAuthenticationViewModel
     };
 
     var app = new Vue({

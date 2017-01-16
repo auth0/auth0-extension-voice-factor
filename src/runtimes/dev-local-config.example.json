@@ -4,5 +4,8 @@
     "Auth0ClientSecret": "[client secret associated with the previously specified identifier]",
     "ExtensionSecret": "[secret used to validate calls to extension installation hooks]",
     "VoiceItDeveloperId": "[VoiceIt developer identifier]",
-    "EncryptionKey": "[base64 encoded encryption key (AES 128)]"
+    "EncryptionKey": "[base64 encoded encryption key (AES 128)]",
+    "TwilioAccountSid": "",
+    "TwilioAuthToken": "",
+    "TwilioOutgoingPhoneNumber": ""
 }
