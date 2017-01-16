@@ -10,6 +10,8 @@ function JsonFileElementalDB(filePath, schema, seed) {
 
     try {
         db = JSON.parse(fs.readFileSync(filePath));
+
+        Object.keys(seed).forEach(() => db[key] = db[key] || seed[key]);
     } catch (error) {
         // Ignore if there isn't any previously available data
     }
@@ -104,6 +106,8 @@ function WebtaskStorageElementalDB(storage, schema, seed) {
                         fulfill();
                     });
                 });
+            } else {
+                Object.keys(seed).forEach(() => db[key] = db[key] || seed[key]);
             }
 
             promise.then(() => {

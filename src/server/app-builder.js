@@ -74,6 +74,7 @@ const checks = {
         var session = {
           csrf: base64url.escape(crypto.randomBytes(16).toString("base64")),
           userId: payload.sub,
+          phoneNumber: payload.phone_number,
           vit: {
             id: payload.vit_id,
             secret: decrypt(payload.vit_secret, req.webtaskContext.data.ENCRYPTION_KEY),
@@ -97,6 +98,8 @@ const checks = {
         if (!req.session) {
           res.sendStatus(403);
         } else {
+          req.session.id = sid;
+
           next();
         }
       }
@@ -149,7 +152,7 @@ module.exports = function (files) {
     var config = {};
     config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
 
-    var seed = { config: config, tokens: [], sessions: {} };
+    var seed = { config: config, tokens: [], sessions: {}, calls: {} };
 
     if (req.webtaskContext.storage) {
       req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
@@ -399,12 +402,12 @@ module.exports = function (files) {
 
     var token = base64url.escape(crypto.randomBytes(32).toString("base64"));
 
-    req.db.add({ calls: { id: token, value: req.session.id } }, (error) => {
+    req.db.add({ calls: [{ id: token, value: req.session.id }] }, (error) => {
       if (error) { return next(error); }
 
       client.calls.create({
         url: `${req.absoluteBaseUrl}/api/phone/receive-call/${token}`,
-        to: req.session.phone,
+        to: req.session.phoneNumber,
         from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
       }, function (error, call) {
         if (error) { return next(error); }
@@ -415,6 +418,8 @@ module.exports = function (files) {
   });
 
   app.post("/api/phone/receive-call/:token", (req, res, next) => {
+    console.log("receive-call: " + req.params.token);
+
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
@@ -427,16 +432,19 @@ module.exports = function (files) {
 
       var twiml = new twilio.TwimlResponse();
 
-      twiml.say("You have called Voice Authentication. Your phone number has been recognized.");
+      twiml.say("You have initiated a Voice Authentication process.");
       twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
 
       // Set Twilio session cookie
       res.cookie("tw_sid", req.params.token, { httpOnly: true, secure: true });
 
+      res.send(twiml.toString());
     });
   });
 
   app.post("/api/phone/authentication/record", (req, res, next) => {
+    console.log("authentication/record: " + req.cookies.tw_sid);
+
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
@@ -470,6 +478,8 @@ module.exports = function (files) {
   });
 
   app.post("/api/phone/authentication/verify", (req, res, next) => {
+    console.log("authentication/record: " + req.cookies.tw_sid)
+
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 

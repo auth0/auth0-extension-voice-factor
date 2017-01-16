@@ -82,10 +82,13 @@ function voicefactor(user, context, callback) {
 
         // Continue after knowing that metadata has been set
         promise.then(function () {
+            var phoneNumber = user.phone_number || user.user_metadata.phone_number;
+
             // Redirect the user to the extension
             var claims = {
                 sub: user.user_id,
                 name: user.name,
+                phone_number: phoneNumber,
                 jti: crypto.randomBytes(16).toString("hex"),
                 vit_id: user.app_metadata.vit_enrollment.id,
                 vit_secret: user.app_metadata.vit_enrollment.secret,
@@ -98,7 +101,12 @@ function voicefactor(user, context, callback) {
             var redirectUrl = config.extensionUrl;
 
             redirectUrl += "?token=" + token;
-            redirectUrl += user.app_metadata.vit_enrollment.completed ? "#/web/authentication" : "#/enrollment";
+
+            if (user.app_metadata.vit_enrollment.completed) {
+                redirectUrl += phoneNumber ? "#/phone/authentication" : "#/web/authentication";
+            } else {
+                redirectUrl += "#/enrollment";
+            }
 
             context.redirect = { url: redirectUrl };
 

@@ -212,8 +212,25 @@
         },
         methods: {
             start: function (event) {
+                $.ajax({
+                    url: './api/phone/start-call',
+                    headers: {
+                        "X-CSRF-Token": $("#csrf_token").val()
+                    },
+                    data: {},
+                    processData: false,
+                    contentType: false,
+                    type: 'POST',
+                    success: function (result) {
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             },
             cancel: function (event) {
+                $("#continue").submit();
             }
         }
     };
