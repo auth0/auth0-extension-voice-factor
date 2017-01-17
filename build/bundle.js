@@ -1408,7 +1408,7 @@ module.exports =
 	    try {
 	        db = JSON.parse(fs.readFileSync(filePath));
 
-	        Object.keys(seed).forEach(function () {
+	        Object.keys(seed).forEach(function (key) {
 	            return db[key] = db[key] || seed[key];
 	        });
 	    } catch (error) {
@@ -1487,6 +1487,8 @@ module.exports =
 	    schema = schema || {};
 	    seed = seed || {};
 
+	    var upgraded = false;
+
 	    this.get = function (collection, callback) {
 	        storage.get(function (error, db) {
 	            if (error) {
@@ -1507,10 +1509,12 @@ module.exports =
 	                        fulfill();
 	                    });
 	                });
-	            } else {
-	                Object.keys(seed).forEach(function () {
+	            } else if (!upgraded) {
+	                Object.keys(seed).forEach(function (key) {
 	                    return db[key] = db[key] || seed[key];
 	                });
+
+	                upgraded = true;
 	            }
 
 	            promise.then(function () {
@@ -1980,6 +1984,21 @@ module.exports =
 				"description": "Base64 encoded encryption key (AES 128) used for encryption of VoiceIt user secrets.",
 				"required": true,
 				"type": "password"
+			},
+			"TWILIO_ACCOUNT_SID": {
+				"description": "The Twilio account identifier.",
+				"required": true,
+				"type": "password"
+			},
+			"TWILIO_AUTH_TOKEN": {
+				"description": "The Twilio authentication token.",
+				"required": true,
+				"type": "password"
+			},
+			"TWILIO_OUTGOING_PHONE_NUMBER": {
+				"description": "The Twilio number to user for making outgoing calls.",
+				"required": true,
+				"type": "text"
 			}
 		}
 	};

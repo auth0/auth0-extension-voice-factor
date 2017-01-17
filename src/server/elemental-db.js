@@ -11,7 +11,7 @@ function JsonFileElementalDB(filePath, schema, seed) {
     try {
         db = JSON.parse(fs.readFileSync(filePath));
 
-        Object.keys(seed).forEach(() => db[key] = db[key] || seed[key]);
+        Object.keys(seed).forEach((key) => db[key] = db[key] || seed[key]);
     } catch (error) {
         // Ignore if there isn't any previously available data
     }
@@ -88,6 +88,8 @@ function WebtaskStorageElementalDB(storage, schema, seed) {
     schema = schema || {};
     seed = seed || {};
 
+    var upgraded = false;
+
     this.get = function (collection, callback) {
         storage.get(function (error, db) {
             if (error) { return callback(error); }
@@ -106,8 +108,10 @@ function WebtaskStorageElementalDB(storage, schema, seed) {
                         fulfill();
                     });
                 });
-            } else {
-                Object.keys(seed).forEach(() => db[key] = db[key] || seed[key]);
+            } else if (!upgraded) {
+                Object.keys(seed).forEach((key) => db[key] = db[key] || seed[key]);
+
+                upgraded = true;
             }
 
             promise.then(() => {
