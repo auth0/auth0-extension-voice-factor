@@ -27,6 +27,21 @@
       "description": "Base64 encoded encryption key (AES 128) used for encryption of VoiceIt user secrets.",
       "required": true,
       "type": "password"
+    },
+    "TWILIO_ACCOUNT_SID": {
+      "description": "The Twilio account identifier.",
+      "required": true,
+      "type": "password"
+    },
+    "TWILIO_AUTH_TOKEN": {
+      "description": "The Twilio authentication token.",
+      "required": true,
+      "type": "password"
+    },
+    "TWILIO_OUTGOING_PHONE_NUMBER": {
+      "description": "The Twilio number to user for making outgoing calls.",
+      "required": true,
+      "type": "text"
     }
   }
 }
