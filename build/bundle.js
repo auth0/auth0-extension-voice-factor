@@ -81,11 +81,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"index.html": "H4sIAAAAAAAAC9VY32/bNhB+H7D/gdEesgGV1NjZFgy2gCwNugBLEyTZgD4NlHi26FKkSlL+sSD/+46UnEiy3KVYh6B+sCny+N3xu4/U0ZODN1dnd++vz0luC5F8+82k+XUtoAxbBD+TAiwlWU61ATsNKjsLTwISb0cttwKSpeIZhDOaWaUncd3XGAguPxANYhoYuxFgcgAbkFzDbBrk1pbmlzjOmIxoZfPXUaaK2NvNK84gPo5OotGPMZcM1lHBZZQZUztvo9dgUT3R1DY7Hu2mhGlgYW3jR5BJ3CwUm6lim23MBjLLlSSZoMZMg0VVpMpqJYPGwBvlo2TCizkxOnPOhZqryCznDhlxRx3Tox5D2NEaLpPLSljejJJTZAKk5Rn1Qay4zcmfbvqFjSZxuQ0ybqJ8ImOmdEGo73QRZQpBZAUBwRTmik2DUhlkQtICmXga5az11I6Ly7KyDXE5ZwxkY2z07C+rPrjnBqzVs6Siwq77+3viusnDw0NLL7EL8ilkxpcekpZl27WbbKEoBbUQGku1JYEtRQhSKyEKZCdwuK1YHVCTLrcWb+GAWzNa+NsEnj+O9lLWx6QCMAb/Hc6FSqloHlZUSy7nQTIxTiHz5FY5trGLpJSRRWUsyXF1IIEdYM5qI5RYSWUrwLBGK4xDit0g/qD/fkhl8htHdkhlQF8w5OAV4ZasqCEMLOoBGLE5tWSjKsKUPLSH6H0JBJ05YWDLC5HQrsaeWIrIe1UdCkEkAOs6dx+rGluCeRzGSgGHgDSKQiJaom2t4y6HlltSapWBMbhvP1Zcg/ErQG8aSsD1uPi7bspcUwMYRqWJ5QXu+9pNP8njpLefrv1EzPd4IN/J7pInpYbkBgooUtAuJGQ7d+FppFYys10whomLxSA09IGbTO6XV2qRNytDU2WOhbZ0a/kHye3d6c0duTk/u7p5c/Hu7aA6BhAZzCgeLh3EjMoMRJCcnb47O/99j85OZxaXi4sxxokZKST1RtSQKc28wCtrkVAkwSdHaf731jTVamVqulCqNVsFz7QqcyWBfM9nBDeFwJykAn54tcv6plahF6/PMZ52yrFda0IrVqH0nKtaCMPZpxXjyksRF94cDa7VPwu8sUE3iOnPc78L/fNOLj3mrqsyuZJNRJ14QdCyZoAg7xj7ksPKm7WIrBVkqrTg1u7ZMgPJLTUvqN505eJBAsK4cdyy5PaPXy8v7vZoEDfBtVZzl+U9O8JjP4aK0mxiwAQPstg5iEW4NuFPxDUKFo6HJtR50rg9BTxOpJqFTGXNRvCPR5gSvmMQcmSZuK8wxby43+Ofj4jSVM7BJZHvcVmvfrQL6IuXADf8NjnfHQ28G1pyqEMfomJgY/2vFI1ejKLR10LR+MUoGn8tFB2/GEXHX5Cifl//uVNhgmS9cvIgDEkYPqMi7VYlz61Ke7MGKtNe0RJ2ir4XK1ZbccOzS9b/XD7925uvE9UXLJc6uJ8ump4vr+6LeGIyzUtbFx2t6/ACr7FCVWwmqAZ/K6YLuo4FT028rCAeRUfRiWv5W/HC+BR4qORTwIpBtPhYgd54zLoZjqJRdPxZQAVduzt7qpRFkdDSPTjAx454jJiv44V56vq8SBFwBam2WQjrEjDb7m7iXFwC4/TWaqBFfXSA7qMO4EbNqOnbTuLm4u//DXB/gPwDJ8FFPxgRAAA=",
-		"scripts.js": "H4sIAAAAAAAAC61XbW/bNhD+XqD/gVACWEItJcUCDHC2D4GTDgW2ZbCTbkAQDLRE22xk0iCpuMPq/74j9WKJoiw52H1IQvHeeXfPxV9mLFaUM+QH6N/37xDQKxZoRuSWM0mmPCHo5/JG0/xxOr2bzyfIg7+8/Pv++v27g6wgMRcJZSsJkk/P1V1lKmfwlaCrFRFjFC+CugWtY0MSiqfggRKYMiWbPmjCWUL5BCmRkcPFwRFNDL/SFVZcRCuiHiURv2mtvq17jDgzN/Msjok8nO+E4CJoqKxiaIr4oIvgTWA7WYUyMyETAXEwskO5rJEpb0oVDXOaGvLRhm7Iwz9b/Sgjk4KLHX4d9QhJhYXyry4vL9vq8xfbQCbgxUDrD9fN++KVIkW+Kd+b3U3vZ7eff/8F+Vcy8ILrtjKagJYdZQnfRZKoz0wR8YpT31Fpg+x46MPBwTCEk+ewvB+jj874mpngLMEK41dMU7xIdRYPbi1SvnC6VgQTpwSLKhya2C60o5g/3MweUBWL1/bO9VZ867sZ40Xuox167bw/Vqymnn3SijGGXuApiYi5Hxl/kDmMxogETfUNK/q9/ySLOyZ4mm4IU18oVDf0KlJks02xIjAnztQ2DUnF4lUOF9I3mVrDdxpj7WynBtxg8+yhwzNFrDExujhYHU3ajo7rrE31OXvbM3ve6Wb+khG/ZpWk2mO83Xo1/brqJnbejc+TsrxSnpuJ1liuaymvaYn5ZgsiSUsTzDft3QQ1mgzaRmWCFbl5UmsqI/P3M/r+3R3fdfnEtmlBGFRn3UAM40qRu5TodNasNb77xmjhXlBp3x8K/Nz3zvJnCs2Y8gJoNBq/dM2LGj9OiVDhRq5AZouFNhdEa5oQq38KvDk3zgTjvpY/4Fe0zeS66rn2qNM3j7NfoergZ5QHfr/4SmIFZ2evgvdmaoPHWCnhe1LE3rhU1LZSz0622FBVCSZU6gmWgPQSp7LZpuWhI8+lpqOJ1gEuadpEmybSGBYuNrdQ3QWyfSqOft2fkieCroA68iu1H9Ao1LHDnDlk/an2AClhK7VGIfr43EzOeYS/4m++9XSZgOYbRRd4S4veH42bHGuCoY5lq4M0eX+F0/nsU/jAXwjzJiZlsRTLv5X5EER67gc27jTPeaOXAVuXW8H1tnCb8+hXsxhgEisoY50bN4MyN6M/7ucPdmQyX0XqLSqIzFLlxLRBhaWXKzcUyR1V8bq0ENXXRac5ExyWpLFYRuUu6eYv3HT1i9cBpSXpwox5xhRUZauajkrSJUw2I/kTuuoMpZ7FGIsk1EtKLgbrCaKVu3GKpdQOG66ExzKk8MhI/wgXEJn+ffXjJVoJokvMsVKUtAdkgQQO8Mgapyc8a51csATp9M4sqPR6NRnM8Y/G1n21gKn60mkiIUsMBXikgurTvNisulg7oMXscodC1x11upIKn+Sa7456UQZsf9/bObBHj9nY6u1vPjhruNz4Ur4quBwGF5lS8O79cDMkf94NQxl7YXzHckcRj+NMCJJEzqp/Uxrru0sHBNZqlwxbOAzQm1RA9Rc7RBOKbLUn7iW58t61pOs53N08AL0rtgEIrmkIirt3JTdYa6oDdj2HNrhpOgbdmt4C35rsPtJ0FMY19UK5pl4413QE0jWdButG4g3YbLx9Az5rMnmGSCnLCGQ5XyeOjjhNx+e6pv7ZbvScOqVs1ztb97S536tuOALU0+O6c6Clq4ZPwANNgzDBuPaWjPdn+lSE6NXan3Arkfsh/0M1zMWYxSQd8i9rd4O4/0f73zTvA3P+D+FZNwrpFQAA",
-		"styles.css": "H4sIAAAAAAAAC2WO0Q6CMAxF30n4hyY+syCGmMDXdFuDk60lYzwY4787JaDGvjU9veeq6xK0pCgMlwbuoNGMQ5SFbWXES+wgReR5wkiceniURVkoI5zymvEJrXU8dFBDQ2G7J9TVzpQF5AkYB8eZUy0FqPuyeKNTpI34Nx/oRC2d+/X+Ub0itgBcrJNcZGWsmyePtw60FzP2v+rjt1ihp7i32/9YmDbkCf5A1/4bAQAA",
+		"index.html": "H4sIAAAAAAAAC91YW2/bNhR+H7D/wGgP2YBKqi/tikAWkGUFGqBdiyYdUGDAQInHFl2KVEnKjhfkv++Qkh1JdoF5TYtufoh5OTyX7/tIM0xOfn19cf3+zXNS2FKk33+XtN+uBZRhi+AnKcFSkhdUG7CzoLbz8FlA4u2s5VZAulI8h3BOc6t0EjdjrYHg8gPRIGaBsRsBpgCwASk0zGdBYW1lzuI4ZzKitS0eR7kqY2+3qDmDeBo9i8ZPYi4Z3EQll1FuTBO8671xFjULTWOzF9FuKpgFFm5svHOSxG2h2MwU22xzNpBbriTJBTVmFizrMlNWKxm0Bt6oGKcJLxfE6NwFF2qhIrNaOM/od9wzHQ0QwoHOdJW+qoXl7Sw5RyRAWp5Tn8Sa24L87pZf2iiJq22ScZvlPRhzpUtC/aDLKFfoRNYQEKSwUGwWVMogEpKWiMT9LGedXjcvLqvatsAVnDGQrbHR8z+t+uD6rbPOyIqKGodub2+JGyZ3d3cdvcQuyV3KzshCWQlqITSWaksCW4kQpFZClIhC4Na3axlfbSlx+brZASHPd+uGFHTWUgEYx/8NF0JlVLSdNdWSS2RwFfJ5axekiXHUL9Ir5WDEeZJRRpa1saSgVQUS2AmS0RiRP7CiJsDdXRJj1D7RLzjWTGoD+pKhxSPCLVlTQxhYZBMYsQW1ZKNqwpQ8tacYYgWESk8rtryMCO0r5B6tiLxX9akQRILzpdqp+xTcBxk47CcDnALSagEr7citzf+6gE44UmmVgzG42z7WXIPxmWNYDRVgHS7vfoiq0NQAplBrYnmJu7UJ0aVxkg52wBu/CBmdDBhN+4UllYb0LZRQZqBdGohs4VLSCKNkZlsgpobFYWANXYctW50RKnmJymShhlxphovCrLYWU1qFGR5KZ4wbmgnAPbGzcOpR8syL2Z1A1Gso/qSrT4g0s8iHlSGDOcXDofWaC55/QPVTmYMI0ovz3y6evzwgs/O5RQSwPmOcYBFN0uyuXXTSFoK4eI6U5n9tTTOt1qZBEJXaAFjyXKuqUBLIj3xOUPiYiqv9p0fO4HQoMq9bTzMeU8qB38hCK1aj8lyYRgv7AqA1484WtyAeDBvQgZckiq7d+K4VDLk3GAsdt8T4QxnrX3FYv93W/E4LR0Vj2WPeh+xnUaWvZZtorwwQtGpAIUgDaUJ4sw62jc5MnZXc2gMb6QDRlUaB6E2wL62TQ3X09NAECtKrd7+8urw+IGTcOW+0Wjg9HNhG/lDfZY+/jW1qKIM9mHtnsAhvTPiUuEbJwsnQuGFT4z4WsFtENQuZyk37U+K6o0ML/WK+tyzkSMMOpHb2lpy6YdxRzH9Pfx4RpalcwOlZ57gyJCGjR3u2jwkCA3Jgms7IiNw5vfBPZVeM99Pzd58g3XFFfhgNfoo6qmugGUIcHzjZvgTs468I+/gI2McPAvv4W4X94MIvBPvkCNgnDwL75FuFffoVYZ8eAfv0QWCffibs3X633bugg2Sd2/hJGJIwPGTXucivIQv7V8DjLvT9m+C3ean/rEvnf++K+ZDy8BfK/6lA/vF1r3OPa6i8uj5/e00uzl/uX+2/Bn0d7N3pidU6dXWLSkyueWWbp4/OI87SRLlQNZsLqsG/5dAlvYkFz0xs13j8RUsTj55Gk+hJfO377k1nafyt3LtM/32AVQ3xOBpFz1zrOMeKQbT8WIPeeJ9NMxxH42h6lKOS3rinrEwpi8qgles4h7uBeII+H8eIwm7oWAgiPFK1zUO4qQA15P7pdyFeAeP0ymqgZfOzAHro9YDfqJ01Q9skbt/D/COZexf8G6E5YK0vFAAA",
+		"scripts.js": "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",
+		"styles.css": "H4sIAAAAAAAAC2WOywqDMBBF94H8w0DXirVIwXzN5IFNNZkwxoWU/nvTin3Q2V3u4Z6pr0vQlJkiXFq4gUYzDkxLtJWhibiHzBjnhOxiVnCXQoraUMwlFjyhtT4OPTTQurD3GXX1ZqSAcgF58LFwdecCNEqKF5rY7cS/+eBOrnNntfUf1XNiH8DFeiqPbIz1c5pw7UFPZEb1qz5+i6V4AP0KNyj6AAAA",
 		"logo.svg": "H4sIAAAAAAAAC31U246bMBB9br8CsS+tZIyxudjkstpuW7VSVupT1LcoS0hASyECNpeu+u89NiQbtlGDFI5mPHPOXMz49vCrsHZp3eRVObE9ymzrdjpudhsrX03s2fKY1gvPtpr2WKQTOy2Xj0XqPC6Tp01dPZeruEz3FsPjiYgK/CsqRvZlQgTv8nT/qTpM7DcHbQvkcbNdJki9rdMmrXepMZbNxM7adhu77n6/p3tBq3rjcsaYC2n9kfhQ5OXTtYOeUso1Xhu1aOlWe9yCpE0PrZs0jT19/442LXtZ50UR3/B7eXd3N/pjjN5LBUV5e4wZ9dQoKfKts122WfxcFx9ufj7Mvn9eRGrxcdTFsohJJvtY3if8an69UZxYeMTlFxjHrtE0HSd5nUBbUiwbFAw9tpWgTaGkHOgIpGhom0l0vNxnC9uq4QhxxJ2ONxfOIFig3FW6bl4zd9n869mCcJjM7WNR8Q8UfHES9SL1c5OeFqHChNdFtY93eZNjJTBz0+84q9P1xL55JdB5Txmn421VHDdV+VqydykIWwFF2yovWzgjRiURjAbYlpB6RHpUAgoaEk8EwFJSRbRBWQF8xGOBhSBOFJbLsgz1Bpy6ljMhOgu+h5CRwKc849jQOZYxShhhDqO+oyh3PEaFBo1GEelNBsz6yN+DuUhmKr1KFQgakADLdH9G5AoqGOE+DbUOoovwhP4LwaqRZSUGM2Nyzk6D5jq+C+yezBFDw473BkdzeihaB4YGJU4Iu66R01DXqZzAEDoeugCr45s32P4h+qblD1sRRf9phaI+CULdd079HQoQ53oxMwdyDEg0UlClDc7Jo8FcR78h9A1hnSbtgDBL803W4hvk0WAQEOKiWPt81WYTW9AIq2tuCe4GLomMustwXX+/ZpmQGKdUev9YQCJOpCIn51BdfweG6USXLgoxgiCiMsN05hHvB6QIsjsQhLexER+D5rp12E85O4e9YRLdbcMXcvoXoy5XZ9gFAAA=",
-		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/4arlg4w6SlNsWefBaNPUaINmaRAvA4phcGn5ZDORSY2knHip//uO1Lstxy6qD4Is3/vz3PEUpSI0XApYSB5ixEIjlZ9qVF0IpTD4YOiBxfGYhXcdePzxB6BrwRSEapkYCX1Q+G/KFfpe9sbr/F4J3d6busStluIex0beoXjza3Ac/Oaka0aliPiUVHJH9tJ8KriYfsRlD7yDx+H5+8vzy/ejj4PPo6uL07PBh08X7wbXK69bqaBwsVBahdbg8uz689Wf558un1Z8MCg06d2o2OmdXl2Nbq4vmgqZ/KqMPCpqmPv1J8ywTj0Hm9sdLikxgffwNo0iVH6WbNAItgvemGk8+bksY6HOF6SdlThQTEzk/O3SoPaPT6oSlmXkyQxVJR8qZAbP3Fu+8D2G+vD45avDcBx6XRtYl8xvmskjw4m15JSDNKHc0CVIoaYmeuW1h1zpPi+VIy5Y7NelK3mFJlUCvhw88kVg5NAowrySXfUOHkuTqy+5o1Vh4egIhoYpA+MlhDMM70gZeAT3CEwhzKhesX3FyM+EqBiaktSZAZL1c74HiZJGhjKGfr8PXqFwWCh4DWSt4jPbL8EcDbN1CRbcjFAoGcdzFKYhncd6jSHyRRZQYRYiqeinNQVmxgzdEFQaI0z4BIQ0ro1QmyoFLYF6QypsOshLWRj2RRrHXWj0dB2p1Trsrj0t5Hk9cr8B3dUycP+ucVMbIsVWDfdvA2yjlutVsWYStowls2yjuREsiKvR0nf+uvlkCKph0F23YC8WT6XiZjbXPfjb+zB8+cuJ909TbNXkXYFh7jvQ6RieEe4OUnsb8ckGhK1Vpsa+ESw1M4rgP5wMlKJJ6t1YPOdcz5kJZ4HXqVd+o/oloYpoLJWsSeIRD6mK3x9KQaZQzpMYCbWaeRpB+0ZYBCikCNEVzKH8PeENUdvJC9SrOQW/uWxP9WFQZNxew/1UiZpGpbjBIHvZhF44yuh8TJ4myR+5Rb/Op27TWyewCPjlKeK3BmivfVu6rFInCG0Ba7ZRqd3mrVCruXUUAGONe2G+O+BVbSSBC9tFKzfj3ZfvAh8SmpMEW8R4nCpcI1LucTMLN4yUJP7ZqXaVPdFU0zJeoH/cnCA0zwdCk/Vsds+Yhr/sLnVuJ3VsmxYKpCslRwCWJKPiL+i3vPv6FR5XDWcVzeuCu46cXQrNhav0Nek1xiA8B+8NKQZcLFjMJ/XFqbg00q5heuUm1LKwnHRq5/sMHwiTFkMxE9OUTZG2MBSHN8M2Z2Vb9ghggnCNTxtdWkH6zb1aL97Ww5OYcEbc5iKlsRoZIsOdkPf2mHcHegmrpcgYacBpNJV2Ht3OYeD2h3wDsDtCtjFI91zur5uHaxgzPtftSNOh14S6pdiCzTEXso8tEreG97ZsqOuIt2hbRpaMe4KrQWt0Vqbg3k4LmeAWK5Z4e9go+LnFSiaJ++RTsngXfeu7mV2Q7C7kZ7C270dEh4R4os9FD05etG0+1mSxTtInT7bCuY+S2ofQhlZdg7Z777WLqu/RgFjfDlvE9y8IvAbvp6PmguJBz76sxL2N8KotNO8S4jyk9oOuHslmffdemPc7VbedpuUpSrNj9T/GRAPIfw8AAA=="
+		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVXzQUYdpSnWrPNgtGlmtEbTNIiXAcUwuLR8spnQpEZSTrzU/31H6t2SYwfVh8CR7o7P3T13ehQlIjRMCrKULISIhkYqP9GguiSUwsC9wR+U8wkNbzvk4eefCF5LqkioVrGRpE8U/JswBb6X3vE6v5dGN3emanGjpbiDiZG3IN79GhwHvznrSlApIjZDl+wge2k2E0zMPsGqR7yDh9Hww8Xw4sP40+Dr+PL89Gzw8cv5H4OrtdctXUA4LJhW7jW4OLv6evnn8MvF4473BoRGv2vFnd/p5eX4+uq87pDarwvkUV7D7Fx/Sg3tVHOwud3CChMTcEfeJ1EEyk+TDWpgu8SbUA0nvxRlzN3ZEr3TEgeKiqlcvF8Z0P7xSVnCoowsnoMq7UMF1MCZu8uWvkdBHx6/enMYTkKva4F1MXwzTIYMpjaScw6SGHMDlyBCTUz0xmuHXPq+KJwjJij3q9alvQKTKEG+HTywZWDkyCjseWm77h08FCHX37KD1nmEoyMyMlQZMlmRcA7hLToTFpE7IFQBmWO9uL1F8ZwpUjE0BanTAGjrZ3wPYiWNDCUn/X6feLnDYe7g1TprHZ/ZeQkWYKitS7BkZgxCSc4XIEzNOsN6BSGwZQooD0siqfBfG4qYOTX4B4hKOJApmxIhjRsj0KZMQUuCsyEV1A/ISpkH9kXCeZfUZrraqfVm29142pZn9cjODfCvWgXu6QY3tUFSbPVwT2vNNmq1WRUbJqYrLqllG+6NYIlcjVa+O6+bbYagXAbdzQj2onwmFTPzhe6Rv72Po1evT7x/6mbrOu/yHmZnBzqZkGfYd9dS+2fMpo0WtlYZB/ta0MTMEcF/MB0ohZvUu7b9XDC9oCacB16nWvlG9QtC5WgslWxI5BELsYo/DiUnUygXMQfsWiU8rqB9EeYAhRQhuIK5Lv8IvBFou3kJzmpGwSeX7bE5DPKM22u4nytS06gEGgyyl03opaOMztbkaRx/ziL6VT5166d1AtsBv3iL+K0A7bXvSBdV6gShLWAlNii1O7w1ag232QUCXMNePd8NeF1ZScTBdmhlEy8G0JJDwOUss2g0ZN+REHAf4yrFzkaU8UTBBtcyUM1E3b5SEilqF99l+gsXHwJbgn9cR4QrfyA0Rk/X+5xq8peVW0O7zLmda5KToXRyHKFxPM4fkX7Lve/fycO6dlg5CVXDXW+lXQ51TVacNe3VNiV5Qbx36BgwsaScTavaKr80oBwxvUIstWiak05FAszhHnvSEohTMUvoDFCogTi8HrUdVkxuDxuMLdygXIM3ZUufPM7V4m19vyITzpD+TCS4eSODZLgV8s4qAffOL9pqKTIB3IEaTOmdodu5Lxw551LARbKYOCHoELpbY5HeQ+KUSRRNr5o0iuOUS6Y9rDpJtYp0vwvl3EQScsoWup1A+LqtM6ilh4IuIDOyP1ssqqh71cxbbG8M623R0Zuka/G2Q1GQ/pFxCVozsTY5/XdGSA23RLHc3yNGPiJboqSWsE8+xSDtmqCqgrQyzio2P6VAu4pD6sTIKT0UPXLysk2f2ZC56MUPs1Rouk+nyudayyug9MBvEO+tQ9X3cEflGrYpIfavwxapUzuzOoNviff8yN04qksuj/TsI/wu3nzwhLdtPdXnRyXiRpTNtEvRno02DipJ7PdvNWyz0Xt/X+wnQraJj0J0IPD1/6frkDeuEAAA"
 	};
 
 /***/ },
@@ -104,13 +104,14 @@ module.exports =
 	var bodyParser = __webpack_require__(11);
 	var cookieParser = __webpack_require__(12);
 	var Dicer = __webpack_require__(13);
+	var twilio = __webpack_require__(21);
 
-	var jwt = __webpack_require__(21);
+	var jwt = __webpack_require__(22);
 
-	var mocks = __webpack_require__(22);
-	var elemental = __webpack_require__(23);
-	var hooks = __webpack_require__(25);
-	var metadata = __webpack_require__(29);
+	var mocks = __webpack_require__(23);
+	var elemental = __webpack_require__(24);
+	var hooks = __webpack_require__(26);
+	var metadata = __webpack_require__(30);
 
 	Handlebars.registerHelper("template-start", function (id) {
 	  return new Handlebars.SafeString("<script type=\"text/x-template\" id=\"" + id + "\">");
@@ -120,101 +121,23 @@ module.exports =
 	  return new Handlebars.SafeString('</script>');
 	});
 
-	module.exports = function (files) {
-	  function decrypt(data, key) {
-	    if (!data || data.indexOf(":") === -1) {
-	      return "";
-	    }
-
-	    var parts = data.split(":");
-
-	    var key = new Buffer(key, "base64");
-	    var iv = new Buffer(parts[0], "base64");
-
-	    var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
-
-	    return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+	function decrypt(data, key) {
+	  if (!data || data.indexOf(":") === -1) {
+	    return "";
 	  }
 
-	  var config = {};
-	  config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+	  var parts = data.split(":");
 
-	  var app = new Express();
+	  var key = new Buffer(key, "base64");
+	  var iv = new Buffer(parts[0], "base64");
 
-	  app.use(cookieParser());
-	  app.use(bodyParser.urlencoded({ extended: true }));
+	  var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
 
-	  app.get("/debug", function (req, res) {
-	    return res.json({});
-	  });
+	  return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+	}
 
-	  app.post("/decrypt", function (req, res) {
-	    var plaintext, ciphertext, key;
-
-	    key = req.body.key;
-	    ciphertext = req.body.ciphertext;
-	    plaintext = decrypt(ciphertext, key);
-
-	    res.json({ plaintext: plaintext });
-	  });
-
-	  app.get("/ping", function (req, res) {
-	    return res.send("PONG");
-	  });
-
-	  app.get("/meta", function (req, res) {
-	    res.status(200).send(metadata);
-	  });
-
-	  app.use("/", function (req, res, next) {
-	    // Ensure that database is available at the request level
-	    var schema = {
-	      config: { type: "singleton" },
-	      tokens: { type: "array" },
-	      sessions: { type: "map" }
-	    };
-
-	    var seed = { config: config, tokens: [], sessions: {} };
-
-	    if (req.webtaskContext.storage) {
-	      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
-	    } else {
-	      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
-	    }
-
-	    // Provide absolute URL and absolute base URL
-	    var xfproto = req.get('x-forwarded-proto');
-	    var xfport = req.get('x-forwarded-port');
-
-	    req.absoluteUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
-	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
-	    url.parse(req.originalUrl).pathname].join('');
-
-	    req.absoluteBaseUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
-	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
-	    url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")].join('');
-
-	    // Make the global configuration available at the request level
-	    req.db.get(function (error, data) {
-	      if (error) {
-	        return next(error);
-	      }
-
-	      req.config = data.config;
-
-	      next();
-	    });
-	  });
-
-	  // Make the extension installation hooks available without session requirements
-	  app.use("/.extensions", hooks(files));
-
-	  // Make the mocks available without session requirements
-	  app.use("/vitmocks", mocks);
-
-	  // Ensure that the current request is either starting a session
-	  // or that the request is associated with a valid session
-	  app.use("/", function (req, res, next) {
+	var checks = {
+	  session: function session(req, res, next) {
 	    req.db.get(function (error, data) {
 	      if (error) {
 	        return next(error);
@@ -250,6 +173,7 @@ module.exports =
 	        var session = {
 	          csrf: base64url.escape(crypto.randomBytes(16).toString("base64")),
 	          userId: payload.sub,
+	          phoneNumber: payload.phone_number,
 	          vit: {
 	            id: payload.vit_id,
 	            secret: decrypt(payload.vit_secret, req.webtaskContext.data.ENCRYPTION_KEY),
@@ -267,24 +191,113 @@ module.exports =
 
 	          res.redirect(url.parse(req.originalUrl).pathname);
 	        });
-
-	        return;
-	      }
-
-	      var sid = req.cookies.vf_sid;
-
-	      req.session = sid ? data.sessions[sid] : null;
-
-	      if (!req.session) {
-	        res.sendStatus(403);
 	      } else {
-	        next();
+	        var sid = req.cookies.vf_sid;
+
+	        req.session = sid ? data.sessions[sid] : null;
+
+	        if (!req.session) {
+	          res.sendStatus(403);
+	        } else {
+	          req.session.id = sid;
+
+	          next();
+	        }
 	      }
+	    });
+	  },
+	  csrf: function csrf(req, res, next) {
+	    var csrf = req.get("X-CSRF-Token") || req.body.csrf_token;
+
+	    if (csrf !== req.session.csrf) {
+	      res.sendStatus(403);
+	    } else {
+	      next();
+	    }
+	  }
+	};
+
+	module.exports = function (files) {
+	  var app = new Express();
+
+	  app.use(cookieParser());
+	  app.use(bodyParser.urlencoded({ extended: true }));
+
+	  app.get("/debug", function (req, res) {
+	    return res.json({});
+	  });
+
+	  app.get("/ping", function (req, res) {
+	    return res.send("PONG");
+	  });
+
+	  app.post("/decrypt", function (req, res) {
+	    var plaintext, ciphertext, key;
+
+	    key = req.body.key;
+	    ciphertext = req.body.ciphertext;
+	    plaintext = decrypt(ciphertext, key);
+
+	    res.json({ plaintext: plaintext });
+	  });
+
+	  app.get("/meta", function (req, res) {
+	    res.status(200).send(metadata);
+	  });
+
+	  app.use("/", function (req, res, next) {
+	    // Ensure that database is available at the request level
+	    var schema = {
+	      config: { type: "singleton" },
+	      tokens: { type: "array" },
+	      sessions: { type: "map" },
+	      calls: { type: "map" }
+	    };
+
+	    var config = {};
+	    config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+
+	    var seed = { config: config, tokens: [], sessions: {}, calls: {} };
+
+	    if (req.webtaskContext.storage) {
+	      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
+	    } else {
+	      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
+	    }
+
+	    // Provide absolute URL and absolute base URL
+	    var xfproto = req.get('x-forwarded-proto');
+	    var xfport = req.get('x-forwarded-port');
+
+	    req.absoluteUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
+	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
+	    url.parse(req.originalUrl).pathname].join('');
+
+	    req.absoluteBaseUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
+	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
+	    url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")].join('');
+
+	    // Make the global configuration available at the request level
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      req.config = data.config;
+
+	      next();
 	    });
 	  });
 
+	  // Make the extension installation hooks available without
+	  // security checks as they do their own authentication
+	  app.use("/.extensions", hooks(files));
+
+	  // Make the mocks available publicly
+	  app.use("/vitmocks", mocks);
+
 	  // Process the application root
-	  app.get("/", function (req, res) {
+	  app.get("/", checks.session, function (req, res) {
 	    if (!req.originalUrl.endsWith("/")) {
 	      res.redirect(req.originalUrl + "/");
 
@@ -309,61 +322,44 @@ module.exports =
 	  });
 
 	  // Process the request to continue the transaction at Auth0
-	  app.post("/continue", function (req, res, next) {
-	    var csrf = req.body.csrf_token;
+	  app.post("/continue", checks.session, checks.csrf, function (req, res, next) {
+	    var domain = req.webtaskContext.data.AUTH0_DOMAIN;
 
-	    if (csrf !== req.session.csrf) {
-	      res.sendStatus(403);
-	    } else {
-	      var domain = req.webtaskContext.data.AUTH0_DOMAIN;
+	    // Get the session identifier and state from the cookies
+	    var sid = req.cookies.vf_sid;
+	    var state = req.cookies.vf_state;
 
-	      // Get the session identifier and state from the cookies
-	      var sid = req.cookies.vf_sid;
-	      var state = req.cookies.vf_state;
+	    // Create a token based on current session state
+	    var claims = {
+	      sub: req.session.userId,
+	      nonce: state,
+	      vit_authenticated: req.session.vit.authenticated
+	    };
 
-	      // Create a token based on current session state
-	      var claims = {
-	        sub: req.session.userId,
-	        nonce: state,
-	        vit_authenticated: req.session.vit.authenticated
-	      };
+	    var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
 
-	      var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
+	    // Clear cookies
+	    var now = new Date();
 
-	      // Clear cookies
-	      var now = new Date();
+	    res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
+	    res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
 
-	      res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
-	      res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
+	    // Remove session and redirect
+	    req.db.remove({ sessions: [{ id: sid }] }, function (error) {
+	      if (error) {
+	        return next(error);
+	      }
 
-	      // Remove session and redirect
-	      req.db.remove({ sessions: [{ id: sid }] }, function (error) {
-	        if (error) {
-	          return next(error);
-	        }
-
-	        // Redirect to Auth0 with JWT and state
-	        res.redirect("https://" + domain + "/continue?state=" + state + "&token=" + token);
-	      });
-	    }
-	  });
-
-	  // Require a CSRF token for all internal API requests
-	  app.use("/api/*", function (req, res, next) {
-	    var csrf = req.get("X-CSRF-Token");
-
-	    if (csrf !== req.session.csrf) {
-	      res.sendStatus(403);
-	    } else {
-	      next();
-	    }
+	      // Redirect to Auth0 with JWT and state
+	      res.redirect("https://" + domain + "/continue?state=" + state + "&token=" + token);
+	    });
 	  });
 
 	  // Create an helper regular expression to process multipart requests
 	  var RE_BOUNDARY = /^multipart\/.+?(?:; boundary=(?:(?:"(.+)")|(?:([^\s]+))))$/i;
 
 	  // Process an enrollment request
-	  app.post("/api/enroll", function (req, res, next) {
+	  app.post("/api/web/enroll", checks.session, checks.csrf, function (req, res, next) {
 	    function enroll(buffer) {
 	      request({
 	        headers: {
@@ -373,8 +369,8 @@ module.exports =
 	          "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
 	          "ContentLanguage": req.session.vit.lang
 	        },
-	        uri: 'https://siv.voiceprintportal.com/sivservice/api/enrollments',
-	        // uri: `${req.absoluteBaseUrl}/vitmocks/enroll`,
+	        // uri: 'https://siv.voiceprintportal.com/sivservice/api/enrollments',
+	        uri: req.absoluteBaseUrl + "/vitmocks/enroll",
 	        body: buffer,
 	        method: 'POST'
 	      }, function (error, response, body) {
@@ -412,8 +408,8 @@ module.exports =
 	              "VsitFirstName": "User",
 	              "VsitLastName": req.session.userId
 	            },
-	            uri: 'https://siv.voiceprintportal.com/sivservice/api/users',
-	            // uri: `${req.absoluteBaseUrl}/vitmocks/createuser`,
+	            // uri: 'https://siv.voiceprintportal.com/sivservice/api/users',
+	            uri: req.absoluteBaseUrl + "/vitmocks/createuser",
 	            body: '',
 	            method: 'POST'
 	          }, function (error, response, body) {
@@ -445,7 +441,7 @@ module.exports =
 	  });
 
 	  // Process an authentication request
-	  app.post("/api/authenticate", function (req, res, next) {
+	  app.post("/api/web/authenticate", checks.session, checks.csrf, function (req, res, next) {
 	    var parts = RE_BOUNDARY.exec(req.get("Content-Type"));
 
 	    var dicer = new Dicer({ boundary: parts[1] || parts[2] });
@@ -468,8 +464,8 @@ module.exports =
 	            "VsitConfidence": "85",
 	            "ContentLanguage": req.session.vit.lang
 	          },
-	          uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications',
-	          // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
+	          // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications',
+	          uri: req.absoluteBaseUrl + "/vitmocks/authenticate",
 	          body: buffer,
 	          method: 'POST'
 	        }, function (error, response, body) {
@@ -501,6 +497,162 @@ module.exports =
 	    });
 
 	    req.pipe(dicer);
+	  });
+
+	  app.post("/api/phone/start-call", checks.session, checks.csrf, function (req, res, next) {
+	    var accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+	    var authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+
+	    var client = twilio(accountSid, authToken);
+
+	    var token = base64url.escape(crypto.randomBytes(32).toString("base64"));
+
+	    req.db.add({ calls: [{ id: token, value: req.session.id }] }, function (error) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      client.calls.create({
+	        url: req.absoluteBaseUrl + "/api/phone/receive-call/" + token,
+	        to: req.session.phoneNumber,
+	        from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
+	      }, function (error, call) {
+	        if (error) {
+	          return next(error);
+	        }
+
+	        res.sendStatus(200);
+	      });
+	    });
+	  });
+
+	  app.post("/api/phone/receive-call/:token", function (req, res, next) {
+	    console.log("receive-call: " + req.params.token);
+
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      if (!data.calls[req.params.token]) {
+	        // If the token does not match an expected call fail the request
+	        res.sendStatus(403);
+
+	        return;
+	      }
+
+	      var twiml = new twilio.TwimlResponse();
+
+	      twiml.say("You have initiated a Voice Authentication process.");
+	      twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
+
+	      // Set Twilio session cookie
+	      res.cookie("tw_sid", req.params.token, { httpOnly: true, secure: true });
+
+	      res.send(twiml.toString());
+	    });
+	  });
+
+	  app.post("/api/phone/authentication/record", function (req, res, next) {
+	    console.log("authentication/record: " + req.cookies.tw_sid);
+
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var cid = req.cookies.tw_sid;
+
+	      if (!data.calls[cid]) {
+	        // If the session call identifier does not match an expected call fail the request
+	        res.sendStatus(403);
+
+	        return;
+	      }
+
+	      var sid = data.calls[cid];
+
+	      req.session = data.sessions[sid];
+
+	      var twiml = new twilio.TwimlResponse();
+
+	      twiml.say("Please say the following phrase to authenticate.");
+	      twiml.pause(1);
+	      twiml.say("Remember to wash your hands before eating.");
+
+	      twiml.record({
+	        action: req.absoluteBaseUrl + "/api/phone/authentication/verify",
+	        maxLength: "5",
+	        trim: "do-not-trim"
+	      });
+
+	      res.send(twiml.toString());
+	    });
+	  });
+
+	  app.post("/api/phone/authentication/verify", function (req, res, next) {
+	    console.log("authentication/record: " + req.cookies.tw_sid);
+
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var cid = req.cookies.tw_sid;
+
+	      if (!data.calls[cid]) {
+	        // If the session call identifier does not match an expected call fail the request
+	        res.sendStatus(403);
+
+	        return;
+	      }
+
+	      var sid = data.calls[cid];
+
+	      req.session = data.sessions[sid];
+
+	      var recordingURL = req.body.RecordingUrl + ".wav";
+
+	      var options = {
+	        headers: {
+	          "VsitEmail": req.session.vit.id,
+	          "VsitPassword": crypto.createHash("sha256").update(req.session.vit.secret).digest("hex"),
+	          "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
+	          "VsitConfidence": "85",
+	          "VsitwavURL": recordingURL,
+	          "ContentLanguage": req.session.vit.lang
+	        },
+	        // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
+	        uri: req.absoluteBaseUrl + "/vitmocks/authenticate",
+	        method: "POST"
+	      };
+
+	      request.post(options, function (error, response, body) {
+	        var twiml = new twilio.TwimlResponse();
+
+	        if (!error && response.statusCode == 200) {
+	          var authenticationResponse = JSON.parse(body);
+
+	          console.log(authenticationResponse);
+
+	          switch (authenticationResponse.Result) {
+	            case "Authentication failed.":
+	              twiml.say("Your authentication did not pass. Please try again.");
+	              twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
+	              break;
+	            default:
+	              twiml.say(authenticationResponse.Result);
+	          }
+	        } else {
+	          twiml.say("API Error. Your authentication did not pass. Please try again.");
+	          twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
+
+	          console.log(new Error(response.statusCode, body));
+	        }
+
+	        res.send(twiml.toString());
+	      });
+	    });
 	  });
 
 	  app.use(function (error, req, res, next) {
@@ -1185,10 +1337,16 @@ module.exports =
 /* 21 */
 /***/ function(module, exports) {
 
-	module.exports = require("jsonwebtoken");
+	module.exports = require("twilio");
 
 /***/ },
 /* 22 */
+/***/ function(module, exports) {
+
+	module.exports = require("jsonwebtoken");
+
+/***/ },
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1234,12 +1392,12 @@ module.exports =
 	module.exports = mocks;
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var fs = __webpack_require__(24);
+	var fs = __webpack_require__(25);
 
 	function JsonFileElementalDB(filePath, schema, seed) {
 	    schema = schema || {};
@@ -1249,6 +1407,10 @@ module.exports =
 
 	    try {
 	        db = JSON.parse(fs.readFileSync(filePath));
+
+	        Object.keys(seed).forEach(function () {
+	            return db[key] = db[key] || seed[key];
+	        });
 	    } catch (error) {
 	        // Ignore if there isn't any previously available data
 	    }
@@ -1344,6 +1506,10 @@ module.exports =
 
 	                        fulfill();
 	                    });
+	                });
+	            } else {
+	                Object.keys(seed).forEach(function () {
+	                    return db[key] = db[key] || seed[key];
 	                });
 	            }
 
@@ -1585,23 +1751,23 @@ module.exports =
 	};
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	module.exports = require("fs");
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(26);
+	var _ = __webpack_require__(27);
 	var request = __webpack_require__(8);
 	var Express = __webpack_require__(10);
 
-	var jwt = __webpack_require__(21);
-	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(27) : __webpack_require__(28);
+	var jwt = __webpack_require__(22);
+	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(28) : __webpack_require__(29);
 
 	module.exports = function (files) {
 	    var hooks = Express.Router();
@@ -1764,25 +1930,25 @@ module.exports =
 	}
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = require("lodash");
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0");
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0@2.1.0");
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1792,6 +1958,7 @@ module.exports =
 		"author": "João Angelo",
 		"description": "Provides multi-factor authentication with VoiceIt.",
 		"type": "application",
+		"codeUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/bundle.js",
 		"logoUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/logo.svg",
 		"keywords": [
 			"biometrics",

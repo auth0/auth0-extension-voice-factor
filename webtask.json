@@ -5,6 +5,8 @@
   "author": "João Angelo",
   "description": "Provides multi-factor authentication with VoiceIt.",
   "type": "application",
+  "codeUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/bundle.js",
+  "logoUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/logo.svg",
   "keywords": [
     "biometrics",
     "extension"
