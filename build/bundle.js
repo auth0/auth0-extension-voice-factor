@@ -1805,7 +1805,11 @@ module.exports =
 
 	    hooks.use(function (req, res, next) {
 	        getToken(req, function (access_token, err) {
-	            if (err) return next(err);
+	            if (err) {
+	                console.log("Failed to obtain access token: " + error);
+
+	                return next(err);
+	            }
 
 	            var management = new auth0.ManagementClient({
 	                domain: req.webtaskContext.data.AUTH0_DOMAIN,
@@ -1877,7 +1881,7 @@ module.exports =
 	                    res.sendStatus(500);
 	                });
 	            }
-	        }).catch(function () {
+	        }).catch(function (error) {
 	            console.log(error);
 	            res.sendStatus(500);
 	        });
@@ -1894,14 +1898,15 @@ module.exports =
 	            if (rule) {
 	                req.auth0.rules.delete({ id: rule.id }).then(function () {
 	                    res.sendStatus(204);
-	                }).catch(function () {
+	                }).catch(function (error) {
+	                    console.log("Failed to delete rule: " + error);
 	                    res.sendStatus(500);
 	                });
 	            } else {
 	                res.sendStatus(204);
 	            }
-	        }).catch(function () {
-	            console.log(error);
+	        }).catch(function (error) {
+	            console.log("Failed to list rules: " + error);
 	            res.sendStatus(500);
 	        });
 	    });
