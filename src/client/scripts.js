@@ -255,7 +255,7 @@
 
                 var callRequestId = Helpers.encodeBase64Url(Helpers.getRandomBytes(4));
 
-                var socket = io('/calls', { path: $("#base_path").val() + "/socket.io" });
+                var socket = io('/calls', { path: $("#base_path").val() + "/socket.io", transports: ["websocket"] });
 
                 socket.on('connect', function () {
                     console.log("connected");
