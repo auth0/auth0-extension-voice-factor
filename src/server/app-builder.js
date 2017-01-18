@@ -163,7 +163,13 @@ module.exports = function (files) {
       req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
     }
 
-    // Provide absolute URL and absolute base URL
+    // Provide base path, absolute URL and absolute base URL
+    function escape(s) {
+      return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    };
+
+    req.basePath = url.parse(req.originalUrl).pathname.replace(new RegExp(escape(url.parse(req.url).pathname) + "$"), "");
+
     var xfproto = req.get('x-forwarded-proto');
     var xfport = req.get('x-forwarded-port');
 
@@ -180,12 +186,12 @@ module.exports = function (files) {
       '://',
       req.get('Host'),
       //xfport ? ':' + xfport.split(',')[0].trim() : '',
-      url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")
+      req.basePath
     ].join('');
 
     // Initialize socket.io if applicable
     if (!io) {
-      io = socket(req.socket.server);
+      io = socket(req.socket.server, { path: req.basePath + "/socket.io" });
 
       io.of('/calls').on('connection', function (socket) {
         socket.on('join', function (id, callback) {
@@ -221,7 +227,7 @@ module.exports = function (files) {
       return;
     }
 
-    res.send(Handlebars.compile(files["index.html"])(req.session));
+    res.send(Handlebars.compile(files["index.html"])({ csrf: req.session.csrf, basePath: req.basePath }));
   });
 
   // Process requests to application resources

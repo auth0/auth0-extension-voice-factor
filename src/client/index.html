@@ -18,6 +18,7 @@
 
     <form action="./continue" method="post" name="continue" id="continue">
         <input type="hidden" id="csrf_token" name="csrf_token" value="{{{ csrf }}}" />
+        <input type="hidden" id="base_path" name="base_path" value="{{ basePath }}" />
     </form>
 
     {{{ template-start "tpl-enrollment" }}}
