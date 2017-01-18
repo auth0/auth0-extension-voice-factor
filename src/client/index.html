@@ -87,16 +87,50 @@
     <!-- -->
     {{{ template-start "tpl-phone-authentication" }}}
     <div class="content">
-        <h2>Authentication</h2>
+        <h2>Phone Authentication</h2>
         <div class="alert alert-global alert-warning" v-if="alert"><strong>Something bad just happened!</strong> \{{ alert }}</div>
-
-        <div class="btn btn-primary" v-on:click="start">START CALL</div>
+        <pre>Remember to wash your hands before eating</pre>
+        <div class="btn btn-primary" v-on:click="start">REQUEST CALL</div>
         <div class="btn btn-default" v-on:click="cancel">CANCEL</div>
+        <h3>Progress</h3>
+        <ol class="progress-track">
+            <li v-bind:class="{ 'progress-todo': progress.step < 0, 'progress-current': progress.step === 0, 'progress-done': progress.step >= 0 }">
+                <center>
+                    <div class="icon-wrap"> </div>
+                    <span class="progress-text">CALL REQUESTED</span>
+                </center>
+            </li>
+            <li v-bind:class="{ 'progress-todo': progress.step < 1, 'progress-current': progress.step === 1, 'progress-done': progress.step >= 1 }">
+                <center>
+                    <div class="icon-wrap"> </div>
+                    <span class="progress-text">CALL INITIATED</span>
+                </center>
+            </li>
+            <li v-bind:class="{ 'progress-todo': progress.step < 2, 'progress-current': progress.step === 2, 'progress-done': progress.step >= 2 }">
+                <center>
+                    <div class="icon-wrap"> </div>
+                    <span class="progress-text">CALL IN PROGRESS</span>
+                </center>
+            </li>
+            <li v-bind:class="{ 'progress-todo': progress.step < 3, 'progress-current': progress.step === 3, 'progress-done': progress.step >= 3 }">
+                <center>
+                    <div class="icon-wrap"> </div>
+                    <span class="progress-text">RECORDING PHRASE</span>
+                </center>
+            </li>
+            <li v-bind:class="{ 'progress-todo': progress.step < 4, 'progress-current': progress.step === 4, 'progress-done': progress.step >= 4 }">
+                <center>
+                    <div class="icon-wrap"> </div>
+                    <span class="progress-text">AUTHENTICATING</span>
+                </center>
+            </li>
+        </ol>
     </div>
     {{{ template-end }}}
 
     <div id="app"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>

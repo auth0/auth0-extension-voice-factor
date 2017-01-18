@@ -81,9 +81,9 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"index.html": "H4sIAAAAAAAAC91YW2/bNhR+H7D/wGgP2YBKqi/tikAWkGUFGqBdiyYdUGDAQInHFl2KVEnKjhfkv++Qkh1JdoF5TYtufoh5OTyX7/tIM0xOfn19cf3+zXNS2FKk33+XtN+uBZRhi+AnKcFSkhdUG7CzoLbz8FlA4u2s5VZAulI8h3BOc6t0EjdjrYHg8gPRIGaBsRsBpgCwASk0zGdBYW1lzuI4ZzKitS0eR7kqY2+3qDmDeBo9i8ZPYi4Z3EQll1FuTBO8671xFjULTWOzF9FuKpgFFm5svHOSxG2h2MwU22xzNpBbriTJBTVmFizrMlNWKxm0Bt6oGKcJLxfE6NwFF2qhIrNaOM/od9wzHQ0QwoHOdJW+qoXl7Sw5RyRAWp5Tn8Sa24L87pZf2iiJq22ScZvlPRhzpUtC/aDLKFfoRNYQEKSwUGwWVMogEpKWiMT9LGedXjcvLqvatsAVnDGQrbHR8z+t+uD6rbPOyIqKGodub2+JGyZ3d3cdvcQuyV3KzshCWQlqITSWaksCW4kQpFZClIhC4Na3axlfbSlx+brZASHPd+uGFHTWUgEYx/8NF0JlVLSdNdWSS2RwFfJ5axekiXHUL9Ir5WDEeZJRRpa1saSgVQUS2AmS0RiRP7CiJsDdXRJj1D7RLzjWTGoD+pKhxSPCLVlTQxhYZBMYsQW1ZKNqwpQ8tacYYgWESk8rtryMCO0r5B6tiLxX9akQRILzpdqp+xTcBxk47CcDnALSagEr7citzf+6gE44UmmVgzG42z7WXIPxmWNYDRVgHS7vfoiq0NQAplBrYnmJu7UJ0aVxkg52wBu/CBmdDBhN+4UllYb0LZRQZqBdGohs4VLSCKNkZlsgpobFYWANXYctW50RKnmJymShhlxphovCrLYWU1qFGR5KZ4wbmgnAPbGzcOpR8syL2Z1A1Gso/qSrT4g0s8iHlSGDOcXDofWaC55/QPVTmYMI0ovz3y6evzwgs/O5RQSwPmOcYBFN0uyuXXTSFoK4eI6U5n9tTTOt1qZBEJXaAFjyXKuqUBLIj3xOUPiYiqv9p0fO4HQoMq9bTzMeU8qB38hCK1aj8lyYRgv7AqA1484WtyAeDBvQgZckiq7d+K4VDLk3GAsdt8T4QxnrX3FYv93W/E4LR0Vj2WPeh+xnUaWvZZtorwwQtGpAIUgDaUJ4sw62jc5MnZXc2gMb6QDRlUaB6E2wL62TQ3X09NAECtKrd7+8urw+IGTcOW+0Wjg9HNhG/lDfZY+/jW1qKIM9mHtnsAhvTPiUuEbJwsnQuGFT4z4WsFtENQuZyk37U+K6o0ML/WK+tyzkSMMOpHb2lpy6YdxRzH9Pfx4RpalcwOlZ57gyJCGjR3u2jwkCA3Jgms7IiNw5vfBPZVeM99Pzd58g3XFFfhgNfoo6qmugGUIcHzjZvgTs468I+/gI2McPAvv4W4X94MIvBPvkCNgnDwL75FuFffoVYZ8eAfv0QWCffibs3X633bugg2Sd2/hJGJIwPGTXucivIQv7V8DjLvT9m+C3ean/rEvnf++K+ZDy8BfK/6lA/vF1r3OPa6i8uj5/e00uzl/uX+2/Bn0d7N3pidU6dXWLSkyueWWbp4/OI87SRLlQNZsLqsG/5dAlvYkFz0xs13j8RUsTj55Gk+hJfO377k1nafyt3LtM/32AVQ3xOBpFz1zrOMeKQbT8WIPeeJ9NMxxH42h6lKOS3rinrEwpi8qgles4h7uBeII+H8eIwm7oWAgiPFK1zUO4qQA15P7pdyFeAeP0ymqgZfOzAHro9YDfqJ01Q9skbt/D/COZexf8G6E5YK0vFAAA",
-		"scripts.js": "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",
-		"styles.css": "H4sIAAAAAAAAC2WOywqDMBBF94H8w0DXirVIwXzN5IFNNZkwxoWU/nvTin3Q2V3u4Z6pr0vQlJkiXFq4gUYzDkxLtJWhibiHzBjnhOxiVnCXQoraUMwlFjyhtT4OPTTQurD3GXX1ZqSAcgF58LFwdecCNEqKF5rY7cS/+eBOrnNntfUf1XNiH8DFeiqPbIz1c5pw7UFPZEb1qz5+i6V4AP0KNyj6AAAA",
+		"index.html": "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",
+		"scripts.js": "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",
+		"styles.css": "H4sIAAAAAAAAC7VVzY7bIBC+R8o7jLTqEct2k27rHCvlPbDBDg0GBLhJWvXdOwH/JM066z3UN2CY72dmcPKja0vtrVZwyOE3lLQ6NlZ3ipFKS20L8JYqZ6jlyu/gz3q1XiWVVh6XGG4oY0I1BaSQ83Y497QkY8x6Bfi11DZCYVyy5S2ku/UqhBrLh4hH5BeWspx93sXzCeqaYkhAOyY0EokxTDgj6aWAUurquLuHzm6BtUyM1Y3lzhFUWB0jjTEBSpA8JJDCeeL8RXLiL4YXoLSKJ6OmsBr5oRFXrLAZ0hDMqDtfQC3OnIX9k2D+gJTS9FNk9MhHircokYpL2fNSnBy4aA6YOU82PaLRTnihkZblknrxM3L1/OwJlaLBgwrrwu0T3ERg9cjJUhMplNoybomlTHSugG0gjTm1KYBkfTkAhrLVdb27Yz5VY+I7XBpNBNp5DSTv9yWv/WCtjZfSfwTS0mnZeX7raD41xxNpzlPfN97IaGvOd6UZ1qMKoYLlk5haSIludvY6G9+v4p8BT1tYiog9V6urr1ka8GfSTTsMu/GuSuH2qzkDmiMYvGRf8mwTuy6Mco/YR4eaQeaAU8eJUAQbNcSSEy+PwpMP3Wn1rw9cWKRtWvVGP3bn48NR19/o9nWxfQsyplm5+RrbOorCMXjD43fxvGb6ablu3rweu5Q0NNyy3Au07Pf7OSE36DNDjz8Lr1vsz/8z9jMjsWy65614GPuRZP+ah5/CevUXn1b/ew8HAAA=",
 		"logo.svg": "H4sIAAAAAAAAC31U246bMBB9br8CsS+tZIyxudjkstpuW7VSVupT1LcoS0hASyECNpeu+u89NiQbtlGDFI5mPHPOXMz49vCrsHZp3eRVObE9ymzrdjpudhsrX03s2fKY1gvPtpr2WKQTOy2Xj0XqPC6Tp01dPZeruEz3FsPjiYgK/CsqRvZlQgTv8nT/qTpM7DcHbQvkcbNdJki9rdMmrXepMZbNxM7adhu77n6/p3tBq3rjcsaYC2n9kfhQ5OXTtYOeUso1Xhu1aOlWe9yCpE0PrZs0jT19/442LXtZ50UR3/B7eXd3N/pjjN5LBUV5e4wZ9dQoKfKts122WfxcFx9ufj7Mvn9eRGrxcdTFsohJJvtY3if8an69UZxYeMTlFxjHrtE0HSd5nUBbUiwbFAw9tpWgTaGkHOgIpGhom0l0vNxnC9uq4QhxxJ2ONxfOIFig3FW6bl4zd9n869mCcJjM7WNR8Q8UfHES9SL1c5OeFqHChNdFtY93eZNjJTBz0+84q9P1xL55JdB5Txmn421VHDdV+VqydykIWwFF2yovWzgjRiURjAbYlpB6RHpUAgoaEk8EwFJSRbRBWQF8xGOBhSBOFJbLsgz1Bpy6ljMhOgu+h5CRwKc849jQOZYxShhhDqO+oyh3PEaFBo1GEelNBsz6yN+DuUhmKr1KFQgakADLdH9G5AoqGOE+DbUOoovwhP4LwaqRZSUGM2Nyzk6D5jq+C+yezBFDw473BkdzeihaB4YGJU4Iu66R01DXqZzAEDoeugCr45s32P4h+qblD1sRRf9phaI+CULdd079HQoQ53oxMwdyDEg0UlClDc7Jo8FcR78h9A1hnSbtgDBL803W4hvk0WAQEOKiWPt81WYTW9AIq2tuCe4GLomMustwXX+/ZpmQGKdUev9YQCJOpCIn51BdfweG6USXLgoxgiCiMsN05hHvB6QIsjsQhLexER+D5rp12E85O4e9YRLdbcMXcvoXoy5XZ9gFAAA=",
 		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVXzQUYdpSnWrPNgtGlmtEbTNIiXAcUwuLR8spnQpEZSTrzU/31H6t2SYwfVh8CR7o7P3T13ehQlIjRMCrKULISIhkYqP9GguiSUwsC9wR+U8wkNbzvk4eefCF5LqkioVrGRpE8U/JswBb6X3vE6v5dGN3emanGjpbiDiZG3IN79GhwHvznrSlApIjZDl+wge2k2E0zMPsGqR7yDh9Hww8Xw4sP40+Dr+PL89Gzw8cv5H4OrtdctXUA4LJhW7jW4OLv6evnn8MvF4473BoRGv2vFnd/p5eX4+uq87pDarwvkUV7D7Fx/Sg3tVHOwud3CChMTcEfeJ1EEyk+TDWpgu8SbUA0nvxRlzN3ZEr3TEgeKiqlcvF8Z0P7xSVnCoowsnoMq7UMF1MCZu8uWvkdBHx6/enMYTkKva4F1MXwzTIYMpjaScw6SGHMDlyBCTUz0xmuHXPq+KJwjJij3q9alvQKTKEG+HTywZWDkyCjseWm77h08FCHX37KD1nmEoyMyMlQZMlmRcA7hLToTFpE7IFQBmWO9uL1F8ZwpUjE0BanTAGjrZ3wPYiWNDCUn/X6feLnDYe7g1TprHZ/ZeQkWYKitS7BkZgxCSc4XIEzNOsN6BSGwZQooD0siqfBfG4qYOTX4B4hKOJApmxIhjRsj0KZMQUuCsyEV1A/ISpkH9kXCeZfUZrraqfVm29142pZn9cjODfCvWgXu6QY3tUFSbPVwT2vNNmq1WRUbJqYrLqllG+6NYIlcjVa+O6+bbYagXAbdzQj2onwmFTPzhe6Rv72Po1evT7x/6mbrOu/yHmZnBzqZkGfYd9dS+2fMpo0WtlYZB/ta0MTMEcF/MB0ohZvUu7b9XDC9oCacB16nWvlG9QtC5WgslWxI5BELsYo/DiUnUygXMQfsWiU8rqB9EeYAhRQhuIK5Lv8IvBFou3kJzmpGwSeX7bE5DPKM22u4nytS06gEGgyyl03opaOMztbkaRx/ziL6VT5166d1AtsBv3iL+K0A7bXvSBdV6gShLWAlNii1O7w1ag232QUCXMNePd8NeF1ZScTBdmhlEy8G0JJDwOUss2g0ZN+REHAf4yrFzkaU8UTBBtcyUM1E3b5SEilqF99l+gsXHwJbgn9cR4QrfyA0Rk/X+5xq8peVW0O7zLmda5KToXRyHKFxPM4fkX7Lve/fycO6dlg5CVXDXW+lXQ51TVacNe3VNiV5Qbx36BgwsaScTavaKr80oBwxvUIstWiak05FAszhHnvSEohTMUvoDFCogTi8HrUdVkxuDxuMLdygXIM3ZUufPM7V4m19vyITzpD+TCS4eSODZLgV8s4qAffOL9pqKTIB3IEaTOmdodu5Lxw551LARbKYOCHoELpbY5HeQ+KUSRRNr5o0iuOUS6Y9rDpJtYp0vwvl3EQScsoWup1A+LqtM6ilh4IuIDOyP1ssqqh71cxbbG8M623R0Zuka/G2Q1GQ/pFxCVozsTY5/XdGSA23RLHc3yNGPiJboqSWsE8+xSDtmqCqgrQyzio2P6VAu4pD6sTIKT0UPXLysk2f2ZC56MUPs1Rouk+nyudayyug9MBvEO+tQ9X3cEflGrYpIfavwxapUzuzOoNviff8yN04qksuj/TsI/wu3nzwhLdtPdXnRyXiRpTNtEvRno02DipJ7PdvNWyz0Xt/X+wnQraJj0J0IPD1/6frkDeuEAAA"
 	};
@@ -105,13 +105,14 @@ module.exports =
 	var cookieParser = __webpack_require__(12);
 	var Dicer = __webpack_require__(13);
 	var twilio = __webpack_require__(21);
+	var socket = __webpack_require__(22);
 
-	var jwt = __webpack_require__(22);
+	var jwt = __webpack_require__(23);
 
-	var mocks = __webpack_require__(23);
-	var elemental = __webpack_require__(24);
-	var hooks = __webpack_require__(26);
-	var metadata = __webpack_require__(30);
+	var mocks = __webpack_require__(24);
+	var elemental = __webpack_require__(25);
+	var hooks = __webpack_require__(27);
+	var metadata = __webpack_require__(31);
 
 	Handlebars.registerHelper("template-start", function (id) {
 	  return new Handlebars.SafeString("<script type=\"text/x-template\" id=\"" + id + "\">");
@@ -217,6 +218,8 @@ module.exports =
 	  }
 	};
 
+	var io = null;
+
 	module.exports = function (files) {
 	  var app = new Express();
 
@@ -276,6 +279,19 @@ module.exports =
 	    req.absoluteBaseUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
 	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
 	    url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")].join('');
+
+	    // Initialize socket.io if applicable
+	    if (!io) {
+	      io = socket(req.socket.server);
+
+	      io.of('/calls').on('connection', function (socket) {
+	        socket.on('join', function (id, callback) {
+	          socket.join(id);
+	          callback();
+	        });
+	        socket.on('disconnect', function () {});
+	      });
+	    }
 
 	    // Make the global configuration available at the request level
 	    req.db.get(function (error, data) {
@@ -500,6 +516,10 @@ module.exports =
 	  });
 
 	  app.post("/api/phone/start-call", checks.session, checks.csrf, function (req, res, next) {
+	    var room = req.body.id;
+
+	    io.of('/calls').in(room).emit("update", 1);
+
 	    var accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
 	    var authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
 
@@ -507,22 +527,27 @@ module.exports =
 
 	    var token = base64url.escape(crypto.randomBytes(32).toString("base64"));
 
-	    req.db.add({ calls: [{ id: token, value: req.session.id }] }, function (error) {
+	    console.log("token: " + token);
+
+	    req.db.add({ calls: [{ id: token, value: { sid: req.session.id, room: room } }] }, function (error) {
 	      if (error) {
 	        return next(error);
 	      }
 
-	      client.calls.create({
-	        url: req.absoluteBaseUrl + "/api/phone/receive-call/" + token,
-	        to: req.session.phoneNumber,
-	        from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
-	      }, function (error, call) {
-	        if (error) {
-	          return next(error);
-	        }
+	      res.sendStatus(200);
+	      io.of('/calls').in(room).emit("update", 1);
 
-	        res.sendStatus(200);
-	      });
+	      // client.calls.create({
+	      //   url: `${req.absoluteBaseUrl}/api/phone/receive-call/${token}`,
+	      //   to: req.session.phoneNumber,
+	      //   from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
+	      // }, function (error, call) {
+	      //   if (error) { return next(error); }
+
+	      //   io.of('/calls').in(room).emit("update", 1);
+
+	      //   res.sendStatus(200);
+	      // });
 	    });
 	  });
 
@@ -534,7 +559,11 @@ module.exports =
 	        return next(error);
 	      }
 
-	      if (!data.calls[req.params.token]) {
+	      var cid = req.params.token;
+
+	      var call = data.calls[cid];
+
+	      if (!call) {
 	        // If the token does not match an expected call fail the request
 	        res.sendStatus(403);
 
@@ -550,12 +579,12 @@ module.exports =
 	      res.cookie("tw_sid", req.params.token, { httpOnly: true, secure: true });
 
 	      res.send(twiml.toString());
+
+	      io.of("/calls").in(call.room).emit("update", 1);
 	    });
 	  });
 
 	  app.post("/api/phone/authentication/record", function (req, res, next) {
-	    console.log("authentication/record: " + req.cookies.tw_sid);
-
 	    req.db.get(function (error, data) {
 	      if (error) {
 	        return next(error);
@@ -563,16 +592,16 @@ module.exports =
 
 	      var cid = req.cookies.tw_sid;
 
-	      if (!data.calls[cid]) {
+	      var call = data.calls[cid];
+
+	      if (!call) {
 	        // If the session call identifier does not match an expected call fail the request
 	        res.sendStatus(403);
 
 	        return;
 	      }
 
-	      var sid = data.calls[cid];
-
-	      req.session = data.sessions[sid];
+	      req.session = data.sessions[call.sid];
 
 	      var twiml = new twilio.TwimlResponse();
 
@@ -587,12 +616,14 @@ module.exports =
 	      });
 
 	      res.send(twiml.toString());
+
+	      setTimeout(function () {
+	        return io.of("/calls").in(call.room).emit("update", 1);
+	      }, 1000);
 	    });
 	  });
 
 	  app.post("/api/phone/authentication/verify", function (req, res, next) {
-	    console.log("authentication/record: " + req.cookies.tw_sid);
-
 	    req.db.get(function (error, data) {
 	      if (error) {
 	        return next(error);
@@ -600,16 +631,16 @@ module.exports =
 
 	      var cid = req.cookies.tw_sid;
 
-	      if (!data.calls[cid]) {
+	      var call = data.calls[cid];
+
+	      if (!call) {
 	        // If the session call identifier does not match an expected call fail the request
 	        res.sendStatus(403);
 
 	        return;
 	      }
 
-	      var sid = data.calls[cid];
-
-	      req.session = data.sessions[sid];
+	      req.session = data.sessions[call.sid];
 
 	      var recordingURL = req.body.RecordingUrl + ".wav";
 
@@ -627,8 +658,12 @@ module.exports =
 	        method: "POST"
 	      };
 
+	      io.of("/calls").in(call.room).emit("update", 1);
+
 	      request.post(options, function (error, response, body) {
 	        var twiml = new twilio.TwimlResponse();
+
+	        var progress = 0;
 
 	        if (!error && response.statusCode == 200) {
 	          var authenticationResponse = JSON.parse(body);
@@ -637,13 +672,18 @@ module.exports =
 
 	          switch (authenticationResponse.Result) {
 	            case "Authentication failed.":
+	              progress--;
 	              twiml.say("Your authentication did not pass. Please try again.");
 	              twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
 	              break;
+
 	            default:
+	              progress++;
 	              twiml.say(authenticationResponse.Result);
+	              break;
 	          }
 	        } else {
+	          progress--;
 	          twiml.say("API Error. Your authentication did not pass. Please try again.");
 	          twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
 
@@ -651,6 +691,7 @@ module.exports =
 	        }
 
 	        res.send(twiml.toString());
+	        io.of("/calls").in(call.room).emit("update", progress);
 	      });
 	    });
 	  });
@@ -1343,10 +1384,16 @@ module.exports =
 /* 22 */
 /***/ function(module, exports) {
 
-	module.exports = require("jsonwebtoken");
+	module.exports = require("socket.io");
 
 /***/ },
 /* 23 */
+/***/ function(module, exports) {
+
+	module.exports = require("jsonwebtoken");
+
+/***/ },
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1392,12 +1439,12 @@ module.exports =
 	module.exports = mocks;
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var fs = __webpack_require__(25);
+	var fs = __webpack_require__(26);
 
 	function JsonFileElementalDB(filePath, schema, seed) {
 	    schema = schema || {};
@@ -1407,13 +1454,13 @@ module.exports =
 
 	    try {
 	        db = JSON.parse(fs.readFileSync(filePath));
-
-	        Object.keys(seed).forEach(function (key) {
-	            return db[key] = db[key] || seed[key];
-	        });
 	    } catch (error) {
-	        // Ignore if there isn't any previously available data
+	        writeToDisk();
 	    }
+
+	    Object.keys(seed).forEach(function (key) {
+	        return db[key] = db[key] || seed[key];
+	    });
 
 	    this.get = function (collection, callback) {
 	        if (!callback && typeof collection === "function") {
@@ -1755,23 +1802,23 @@ module.exports =
 	};
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	module.exports = require("fs");
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(27);
+	var _ = __webpack_require__(28);
 	var request = __webpack_require__(8);
 	var Express = __webpack_require__(10);
 
-	var jwt = __webpack_require__(22);
-	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(28) : __webpack_require__(29);
+	var jwt = __webpack_require__(23);
+	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(29) : __webpack_require__(30);
 
 	module.exports = function (files) {
 	    var hooks = Express.Router();
@@ -1939,25 +1986,25 @@ module.exports =
 	}
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	module.exports = require("lodash");
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0");
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0@2.1.0");
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = {

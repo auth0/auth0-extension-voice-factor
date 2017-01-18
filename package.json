@@ -4,7 +4,7 @@
   "description": "Provides multi-factor authentication with VoiceIt.",
   "main": "dist\bundle.js",
   "scripts": {
-    "start": "supervisor -t -e \"js|css|html\" -w src\\ -- --debug src\\runtimes\\wrapper-dev-local.js",
+    "start": "supervisor -t -e \"js|css|html\" -w src/ -- --debug src/runtimes/wrapper-dev-local.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pack": "node build/pack.js",
     "build": "npm run-script pack && wt-bundle -o build/bundle.js src/runtimes/wrapper-webtask.js"
@@ -22,6 +22,7 @@
     "jsonwebtoken": "^7.2.1",
     "lodash": "^4.8.2",
     "request": "^2.67.0",
+    "socket.io": "^1.7.2",
     "twilio": "^2.11.1"
   },
   "devDependencies": {

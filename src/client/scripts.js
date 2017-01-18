@@ -1,4 +1,37 @@
 (function () {
+    var Helpers = {};
+
+    Helpers.getRandomBytes = function (count) {
+        count = count || 16;
+
+        var array = new Uint8Array(count);
+
+        var crypto = window.crypto || window.msCrypto;
+
+        if (crypto) {
+            array = crypto.getRandomValues(array);
+        } else {
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+
+            for (var index = 0; index < array.length; index++) {
+                array[index] = getRandomInt(0, 255);
+            }
+        }
+
+        return array;
+    };
+
+    Helpers.encodeBase64Url = function (bytes) {
+        var base64 = btoa(String.fromCharCode.apply(null, bytes));
+
+        return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
+    };
+
     var ResponseCode = {
         SUCCESS: "SUC"
     };
@@ -207,27 +240,49 @@
         template: "#tpl-phone-authentication",
         data: function () {
             return {
-                alert: null
+                alert: null,
+                calling: false,
+                progress: {
+                    step: -1
+                }
             };
         },
         methods: {
             start: function (event) {
-                $.ajax({
-                    url: './api/phone/start-call',
-                    headers: {
-                        "X-CSRF-Token": $("#csrf_token").val()
-                    },
-                    data: {},
-                    processData: false,
-                    contentType: false,
-                    type: 'POST',
-                    success: function (result) {
+                var vm = this;
 
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
+                vm.calling = true;
+
+                var callRequestId = Helpers.encodeBase64Url(Helpers.getRandomBytes(4));
+
+                var socket = io('/calls');
+
+                socket.on('connect', function () {
+                    console.log("connected");
+                    socket.emit('join', callRequestId, function () {
+                        $.ajax({
+                            url: './api/phone/start-call',
+                            headers: {
+                                "X-CSRF-Token": $("#csrf_token").val()
+                            },
+                            data: { id: callRequestId },
+                            type: 'POST',
+                            success: function () { },
+                            error: function (error) {
+                                console.log(error);
+                                vm.calling = false;
+                                vm.alert = "An unknown error occurred.";
+                                // TODO : Destroy socket
+                            }
+                        });
+                    });
                 });
+                socket.on('update', function (progress) {
+                    console.log(progress);
+                    
+                    vm.progress.step += progress;
+                });
+                socket.on('disconnect', function () { console.log("disconnect"); });
             },
             cancel: function (event) {
                 $("#continue").submit();

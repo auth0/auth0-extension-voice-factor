@@ -7,13 +7,82 @@
 }
 
 pre {
-    background-color: #e3e5e7;
+    background-color: #d0d2d3;
     padding: 0.5em;
 }
 
 audio { 
     display: block;
     margin: 1em 0;
+}
+
+ol.progress-track {
+  display: table;
+  list-style-type: none;
+  margin: 0;
+  padding: 2em 1em;
+  table-layout: fixed;
+  width: 100%;
+}
+ol.progress-track li {
+  display: table-cell;
+  line-height: 2.4em;
+  position: relative;
+  text-align: center;
+}
+ol.progress-track li .icon-wrap {
+  border-radius: 50%;
+  top: -1.5em;
+  color: #fff;
+  display: block;
+  height: 2.5em;
+  margin: 0 auto -2em;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 2.5em;
+}
+ol.progress-track li .icon-state {
+  height: 25px;
+  width: 15px;
+  display: inline-block;
+  fill: currentColor;
+}
+ol.progress-track li .progress-text {
+  position: relative;
+  top: 10px;
+}
+ol.progress-track li.progress-done {
+  border-top: 7px solid #16214d;
+  transition: border-color 1s ease-in-out;
+  -webkit-transition: border-color 1s ease-in-out;
+  -moz-transition: border-color 1s ease-in-out;
+}
+ol.progress-track li.progress-done.progress-current .icon-wrap {
+  background-color: #ff9a57;
+}
+ol.progress-track li.progress-done .icon-wrap {
+  background-color: #01b48f;
+  border: 5px solid #16214d;
+}
+ol.progress-track li.progress-todo {
+  border-top: 7px solid #d0d2d3;
+  color: black;
+}
+ol.progress-track li.progress-todo .icon-wrap {
+  background-color: #FFF;
+  border: 5px solid #d0d2d3;
+  border-radius: 50%;
+  bottom: 1.5em;
+  color: #fff;
+  display: block;
+  height: 2.5em;
+  margin: 0 auto -2em;
+  position: relative;
+  width: 2.5em;
+}
+ol.progress-track li.progress-todo .icon-wrap .icon-state {
+  display: none;
 }
 
 

@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Dicer = require("dicer");
 const twilio = require("twilio");
+const socket = require('socket.io');
 
 const jwt = require("jsonwebtoken");
 
@@ -116,6 +117,8 @@ const checks = {
   }
 };
 
+var io = null;
+
 module.exports = function (files) {
   let app = new Express();
 
@@ -179,6 +182,19 @@ module.exports = function (files) {
       //xfport ? ':' + xfport.split(',')[0].trim() : '',
       url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")
     ].join('');
+
+    // Initialize socket.io if applicable
+    if (!io) {
+      io = socket(req.socket.server);
+
+      io.of('/calls').on('connection', function (socket) {
+        socket.on('join', function (id, callback) {
+          socket.join(id);
+          callback();
+        });
+        socket.on('disconnect', function () { });
+      });
+    }
 
     // Make the global configuration available at the request level
     req.db.get(function (error, data) {
@@ -395,6 +411,10 @@ module.exports = function (files) {
   });
 
   app.post("/api/phone/start-call", checks.session, checks.csrf, (req, res, next) => {
+    var room = req.body.id;
+
+    io.of('/calls').in(room).emit("update", 1);
+
     const accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
     const authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
 
@@ -402,7 +422,7 @@ module.exports = function (files) {
 
     var token = base64url.escape(crypto.randomBytes(32).toString("base64"));
 
-    req.db.add({ calls: [{ id: token, value: req.session.id }] }, (error) => {
+    req.db.add({ calls: [{ id: token, value: { sid: req.session.id, room: room } }] }, (error) => {
       if (error) { return next(error); }
 
       client.calls.create({
@@ -411,6 +431,8 @@ module.exports = function (files) {
         from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
       }, function (error, call) {
         if (error) { return next(error); }
+
+        io.of('/calls').in(room).emit("update", 1);
 
         res.sendStatus(200);
       });
@@ -423,7 +445,11 @@ module.exports = function (files) {
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
-      if (!data.calls[req.params.token]) {
+      var cid = req.params.token;
+
+      var call = data.calls[cid];
+
+      if (!call) {
         // If the token does not match an expected call fail the request
         res.sendStatus(403);
 
@@ -439,27 +465,27 @@ module.exports = function (files) {
       res.cookie("tw_sid", req.params.token, { httpOnly: true, secure: true });
 
       res.send(twiml.toString());
+
+      io.of("/calls").in(call.room).emit("update", 1);
     });
   });
 
   app.post("/api/phone/authentication/record", (req, res, next) => {
-    console.log("authentication/record: " + req.cookies.tw_sid);
-
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
       var cid = req.cookies.tw_sid;
 
-      if (!data.calls[cid]) {
+      var call = data.calls[cid];
+
+      if (!call) {
         // If the session call identifier does not match an expected call fail the request
         res.sendStatus(403);
 
         return;
       }
 
-      var sid = data.calls[cid];
-
-      req.session = data.sessions[sid];
+      req.session = data.sessions[call.sid];
 
       var twiml = new twilio.TwimlResponse();
 
@@ -474,27 +500,27 @@ module.exports = function (files) {
       });
 
       res.send(twiml.toString());
+
+      setTimeout(() => io.of("/calls").in(call.room).emit("update", 1), 1000);
     });
   });
 
   app.post("/api/phone/authentication/verify", (req, res, next) => {
-    console.log("authentication/record: " + req.cookies.tw_sid)
-
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
       var cid = req.cookies.tw_sid;
 
-      if (!data.calls[cid]) {
+      var call = data.calls[cid];
+
+      if (!call) {
         // If the session call identifier does not match an expected call fail the request
         res.sendStatus(403);
 
         return;
       }
 
-      var sid = data.calls[cid];
-
-      req.session = data.sessions[sid];
+      req.session = data.sessions[call.sid];
 
       var recordingURL = req.body.RecordingUrl + ".wav";
 
@@ -512,8 +538,12 @@ module.exports = function (files) {
         method: "POST"
       };
 
+      io.of("/calls").in(call.room).emit("update", 1);
+
       request.post(options, function (error, response, body) {
         var twiml = new twilio.TwimlResponse();
+
+        var progress = 0;
 
         if (!error && response.statusCode == 200) {
           var authenticationResponse = JSON.parse(body);
@@ -522,13 +552,18 @@ module.exports = function (files) {
 
           switch (authenticationResponse.Result) {
             case "Authentication failed.":
+              progress--;
               twiml.say("Your authentication did not pass. Please try again.");
               twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
               break;
+
             default:
+              progress++;
               twiml.say(authenticationResponse.Result);
+              break;
           }
         } else {
+          progress--;
           twiml.say("API Error. Your authentication did not pass. Please try again.");
           twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
 
@@ -536,6 +571,7 @@ module.exports = function (files) {
         }
 
         res.send(twiml.toString());
+        io.of("/calls").in(call.room).emit("update", progress);
       });
     });
   });
