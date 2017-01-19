@@ -9,14 +9,16 @@ function JsonFileElementalDB(filePath, schema, seed) {
     var db = seed;
 
     try {
-        db = JSON.parse(fs.readFileSync(filePath));
-    } catch (error) {
-        writeToDisk();
+        db = readFromDisk();
+
+        Object.keys(seed).forEach((key) => db[key] = db[key] || seed[key]);
+    } finally {
+        writeToDisk(db);
     }
 
-    Object.keys(seed).forEach((key) => db[key] = db[key] || seed[key]);
-
     this.get = function (collection, callback) {
+        var db = readFromDisk();
+
         if (!callback && typeof collection === "function") {
             callback = collection;
             collection = null;
@@ -32,9 +34,11 @@ function JsonFileElementalDB(filePath, schema, seed) {
     this.add = function (data, callback) {
         data = data || {};
 
+        var db = readFromDisk();
+
         doAdd(db, data, schema);
 
-        writeToDisk();
+        writeToDisk(db);
 
         callback();
     };
@@ -42,9 +46,11 @@ function JsonFileElementalDB(filePath, schema, seed) {
     this.remove = function (data, callback) {
         data = data || {};
 
+        var db = readFromDisk();
+
         doRemove(db, data, schema);
 
-        writeToDisk();
+        writeToDisk(db);
 
         callback();
     };
@@ -52,15 +58,19 @@ function JsonFileElementalDB(filePath, schema, seed) {
     this.update = function (data, callback) {
         data = data || {};
 
+        var db = readFromDisk();
+
         doUpdate(db, data, schema);
 
-        writeToDisk();
+        writeToDisk(db);
 
         callback();
     };
 
     this.mutate = function (changes, callback) {
         changes = changes || {};
+
+        var db = readFromDisk();
 
         if (changes.update) {
             doUpdate(db, changes.update, schema);
@@ -74,12 +84,16 @@ function JsonFileElementalDB(filePath, schema, seed) {
             doAdd(db, changes.add, schema);
         }
 
-        writeToDisk();
+        writeToDisk(db);
 
         callback();
     };
 
-    function writeToDisk() {
+    function readFromDisk() {
+        return JSON.parse(fs.readFileSync(filePath));
+    }
+
+    function writeToDisk(db) {
         fs.writeFileSync(filePath, JSON.stringify(db, null, 2));
     }
 }

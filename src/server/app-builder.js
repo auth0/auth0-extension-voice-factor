@@ -3,6 +3,7 @@
 const url = require("url");
 const crypto = require("crypto");
 
+const _ = require("lodash");
 const Handlebars = require("handlebars");
 const request = require("request");
 const base64url = require("base64-url");
@@ -259,6 +260,10 @@ module.exports = function (files) {
       data.calls = [{ id: req.session.cid }]
     }
 
+    if (req.session.pcid) {
+      data.calls_progress = [{ id: req.session.pcid }]
+    }
+
     req.db.remove(data, (error) => {
       if (error) { return next(error); }
 
@@ -459,8 +464,6 @@ module.exports = function (files) {
   });
 
   app.post("/api/phone/receive-call/:cid", (req, res, next) => {
-    console.log("receive-call: " + req.params.cid);
-
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
@@ -541,6 +544,8 @@ module.exports = function (files) {
         return;
       }
 
+      var pcid = _.findKey(data.calls_progress, _.matches(cid));
+
       req.session = data.sessions[call.sid];
 
       var recordingURL = req.body.RecordingUrl + ".wav";
@@ -584,8 +589,13 @@ module.exports = function (files) {
               default:
                 progress++;
 
+                // Tag the session with the call and call progress identifiers so that that they get cleaned up
                 req.session.cid = cid;
+                req.session.pcid = pcid;
+
+                // Flag that authentication was completed for this session
                 req.session.vit.authenticated = true;
+
                 data.sessions = [{ id: call.sid, value: req.session }];
 
                 twiml.say(authenticationResponse.Result);
