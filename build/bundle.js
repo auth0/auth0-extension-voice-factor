@@ -2113,7 +2113,7 @@ module.exports =
 				"type": "password"
 			},
 			"TWILIO_PHONE_NUMBER": {
-				"description": "The Twilio number to user for making outgoing calls.",
+				"description": "The Twilio number to use for outgoing calls.",
 				"type": "text"
 			}
 		}
