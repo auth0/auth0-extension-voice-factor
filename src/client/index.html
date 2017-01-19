@@ -18,7 +18,6 @@
 
     <form action="./continue" method="post" name="continue" id="continue">
         <input type="hidden" id="csrf_token" name="csrf_token" value="{{{ csrf }}}" />
-        <input type="hidden" id="base_path" name="base_path" value="{{ basePath }}" />
     </form>
 
     {{{ template-start "tpl-enrollment" }}}
@@ -98,25 +97,25 @@
             <li v-bind:class="{ 'progress-todo': progress.step < 0, 'progress-current': progress.step === 0, 'progress-done': progress.step >= 0 }">
                 <center>
                     <div class="icon-wrap"> </div>
-                    <span class="progress-text">CALL REQUESTED</span>
+                    <span class="progress-text">REQUESTED</span>
                 </center>
             </li>
             <li v-bind:class="{ 'progress-todo': progress.step < 1, 'progress-current': progress.step === 1, 'progress-done': progress.step >= 1 }">
                 <center>
                     <div class="icon-wrap"> </div>
-                    <span class="progress-text">CALL INITIATED</span>
+                    <span class="progress-text">INITIATED</span>
                 </center>
             </li>
             <li v-bind:class="{ 'progress-todo': progress.step < 2, 'progress-current': progress.step === 2, 'progress-done': progress.step >= 2 }">
                 <center>
                     <div class="icon-wrap"> </div>
-                    <span class="progress-text">CALL IN PROGRESS</span>
+                    <span class="progress-text">IN PROGRESS</span>
                 </center>
             </li>
             <li v-bind:class="{ 'progress-todo': progress.step < 3, 'progress-current': progress.step === 3, 'progress-done': progress.step >= 3 }">
                 <center>
                     <div class="icon-wrap"> </div>
-                    <span class="progress-text">RECORDING PHRASE</span>
+                    <span class="progress-text">RECORDING</span>
                 </center>
             </li>
             <li v-bind:class="{ 'progress-todo': progress.step < 4, 'progress-current': progress.step === 4, 'progress-done': progress.step >= 4 }">
@@ -131,7 +130,6 @@
 
     <div id="app"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -142,3 +140,4 @@
 </body>
 
 </html>
+

@@ -11,7 +11,6 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Dicer = require("dicer");
 const twilio = require("twilio");
-const socket = require('socket.io');
 
 const jwt = require("jsonwebtoken");
 
@@ -117,8 +116,6 @@ const checks = {
   }
 };
 
-var io = null;
-
 module.exports = function (files) {
   let app = new Express();
 
@@ -150,6 +147,7 @@ module.exports = function (files) {
       tokens: { type: "array" },
       sessions: { type: "map" },
       calls: { type: "map" },
+      calls_progress: { type: "map" }
     };
 
     var config = {};
@@ -189,19 +187,6 @@ module.exports = function (files) {
       req.basePath
     ].join('');
 
-    // Initialize socket.io if applicable
-    if (!io) {
-      io = socket(req.socket.server, { path: req.basePath + "/socket.io" });
-
-      io.of('/calls').on('connection', function (socket) {
-        socket.on('join', function (id, callback) {
-          socket.join(id);
-          callback();
-        });
-        socket.on('disconnect', function () { });
-      });
-    }
-
     // Make the global configuration available at the request level
     req.db.get(function (error, data) {
       if (error) { return next(error); }
@@ -227,7 +212,7 @@ module.exports = function (files) {
       return;
     }
 
-    res.send(Handlebars.compile(files["index.html"])({ csrf: req.session.csrf, basePath: req.basePath }));
+    res.send(Handlebars.compile(files["index.html"])({ csrf: req.session.csrf }));
   });
 
   // Process requests to application resources
@@ -267,8 +252,14 @@ module.exports = function (files) {
     res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
     res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
 
-    // Remove session and redirect
-    req.db.remove({ sessions: [{ id: sid }] }, (error) => {
+    // Remove session, any associated information and redirect
+    var data = { sessions: [{ id: sid }] };
+
+    if (req.session.cid) {
+      data.calls = [{ id: req.session.cid }]
+    }
+
+    req.db.remove(data, (error) => {
       if (error) { return next(error); }
 
       // Redirect to Auth0 with JWT and state
@@ -416,47 +407,69 @@ module.exports = function (files) {
     req.pipe(dicer);
   });
 
-  app.post("/api/phone/start-call", checks.session, checks.csrf, (req, res, next) => {
-    var room = req.body.id;
-
-    io.of('/calls').in(room).emit("update", 1);
-
-    const accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
-    const authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
-
-    var client = twilio(accountSid, authToken);
-
-    var token = base64url.escape(crypto.randomBytes(32).toString("base64"));
-
-    req.db.add({ calls: [{ id: token, value: { sid: req.session.id, room: room } }] }, (error) => {
+  app.get("/api/phone/call-progress/:cpid", checks.session, checks.csrf, (req, res, next) => {
+    req.db.get(function (error, data) {
       if (error) { return next(error); }
 
+      var cpid = req.params.cpid;
+
+      var cid = data.calls_progress[cpid];
+
+      if (!cid) {
+        res.sendStatus(400);
+
+        return;
+      }
+
+      res.json({ step: data.calls[cid].step });
+    });
+  });
+
+  app.post("/api/phone/start-call", checks.session, checks.csrf, (req, res, next) => {
+    var cid = base64url.escape(crypto.randomBytes(32).toString("base64"));
+    var cpid = base64url.escape(crypto.randomBytes(16).toString("base64"));
+
+    var data = {
+      calls: [{ id: cid, value: { sid: req.session.id, step: 0 } }],
+      calls_progress: [{ id: cpid, value: cid }]
+    };
+
+    req.db.add(data, (error) => {
+      if (error) { return next(error); }
+
+      const accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+      const authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+
+      var client = twilio(accountSid, authToken);
+
       client.calls.create({
-        url: `${req.absoluteBaseUrl}/api/phone/receive-call/${token}`,
+        url: `${req.absoluteBaseUrl}/api/phone/receive-call/${cid}`,
         to: req.session.phoneNumber,
         from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
       }, function (error, call) {
         if (error) { return next(error); }
 
-        io.of('/calls').in(room).emit("update", 1);
+        req.db.add({ calls: [{ id: cid, value: { sid: req.session.id, step: 1 } }] }, (error) => {
+          if (error) { return next(error); }
 
-        res.sendStatus(200);
+          res.json({ cpid: cpid });
+        });
       });
     });
   });
 
-  app.post("/api/phone/receive-call/:token", (req, res, next) => {
-    console.log("receive-call: " + req.params.token);
+  app.post("/api/phone/receive-call/:cid", (req, res, next) => {
+    console.log("receive-call: " + req.params.cid);
 
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
-      var cid = req.params.token;
+      var cid = req.params.cid;
 
       var call = data.calls[cid];
 
       if (!call) {
-        // If the token does not match an expected call fail the request
+        // If the cid does not match an expected call fail the request
         res.sendStatus(403);
 
         return;
@@ -468,11 +481,13 @@ module.exports = function (files) {
       twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
 
       // Set Twilio session cookie
-      res.cookie("tw_sid", req.params.token, { httpOnly: true, secure: true });
+      res.cookie("tw_cid", cid, { httpOnly: true, secure: true });
 
-      res.send(twiml.toString());
+      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 2 } }] }, (error) => {
+        if (error) { return next(error); }
 
-      io.of("/calls").in(call.room).emit("update", 1);
+        res.send(twiml.toString());
+      });
     });
   });
 
@@ -480,7 +495,7 @@ module.exports = function (files) {
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
-      var cid = req.cookies.tw_sid;
+      var cid = req.cookies.tw_cid;
 
       var call = data.calls[cid];
 
@@ -490,8 +505,6 @@ module.exports = function (files) {
 
         return;
       }
-
-      req.session = data.sessions[call.sid];
 
       var twiml = new twilio.TwimlResponse();
 
@@ -505,9 +518,11 @@ module.exports = function (files) {
         trim: "do-not-trim",
       });
 
-      res.send(twiml.toString());
+      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 3 } }] }, (error) => {
+        if (error) { return next(error); }
 
-      setTimeout(() => io.of("/calls").in(call.room).emit("update", 1), 1000);
+        res.send(twiml.toString());
+      });
     });
   });
 
@@ -515,7 +530,7 @@ module.exports = function (files) {
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
-      var cid = req.cookies.tw_sid;
+      var cid = req.cookies.tw_cid;
 
       var call = data.calls[cid];
 
@@ -544,40 +559,55 @@ module.exports = function (files) {
         method: "POST"
       };
 
-      io.of("/calls").in(call.room).emit("update", 1);
+      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 4 } }] }, (error) => {
+        if (error) { return next(error); }
 
-      request.post(options, function (error, response, body) {
-        var twiml = new twilio.TwimlResponse();
+        request.post(options, function (error, response, body) {
+          var twiml = new twilio.TwimlResponse();
 
-        var progress = 0;
+          var progress = 0;
 
-        if (!error && response.statusCode == 200) {
-          var authenticationResponse = JSON.parse(body);
+          if (!error && response.statusCode == 200) {
+            var authenticationResponse = JSON.parse(body);
+            var data = {};
 
-          console.log(authenticationResponse);
+            console.log(authenticationResponse);
 
-          switch (authenticationResponse.Result) {
-            case "Authentication failed.":
-              progress--;
-              twiml.say("Your authentication did not pass. Please try again.");
-              twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
-              break;
+            switch (authenticationResponse.Result) {
+              case "Authentication failed.":
+                progress--;
 
-            default:
-              progress++;
-              twiml.say(authenticationResponse.Result);
-              break;
+                twiml.say("Your authentication did not pass. Please try again.");
+                twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+                break;
+
+              default:
+                progress++;
+
+                req.session.cid = cid;
+                req.session.vit.authenticated = true;
+                data.sessions = [{ id: call.sid, value: req.session }];
+
+                twiml.say(authenticationResponse.Result);
+                break;
+            }
+          } else {
+            progress--;
+
+            twiml.say("API Error. Your authentication did not pass. Please try again.");
+            twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+
+            console.log(new Error(response.statusCode, body));
           }
-        } else {
-          progress--;
-          twiml.say("API Error. Your authentication did not pass. Please try again.");
-          twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
 
-          console.log(new Error(response.statusCode, body));
-        }
+          data.calls = [{ id: cid, value: { sid: call.sid, step: 4 + progress } }];
 
-        res.send(twiml.toString());
-        io.of("/calls").in(call.room).emit("update", progress);
+          req.db.add(data, (error) => {
+            if (error) { return next(error); }
+
+            res.send(twiml.toString());
+          });
+        });
       });
     });
   });

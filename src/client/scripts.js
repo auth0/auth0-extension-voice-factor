@@ -243,7 +243,8 @@
                 alert: null,
                 calling: false,
                 progress: {
-                    step: -1
+                    step: -1,
+                    checker: null
                 }
             };
         },
@@ -252,37 +253,44 @@
                 var vm = this;
 
                 vm.calling = true;
+                vm.progress.step = 0;
 
-                var callRequestId = Helpers.encodeBase64Url(Helpers.getRandomBytes(4));
+                function checkCallProgress(cpid) {
+                    $.ajax({
+                        url: './api/phone/call-progress/' + cpid,
+                        headers: {
+                            "X-CSRF-Token": $("#csrf_token").val()
+                        },
+                        type: 'GET',
+                        success: function (progress) {
+                            vm.progress.step = progress.step;
 
-                var socket = io('/calls', { path: $("#base_path").val() + "/socket.io", transports: ["websocket"] });
-
-                socket.on('connect', function () {
-                    console.log("connected");
-                    socket.emit('join', callRequestId, function () {
-                        $.ajax({
-                            url: './api/phone/start-call',
-                            headers: {
-                                "X-CSRF-Token": $("#csrf_token").val()
-                            },
-                            data: { id: callRequestId },
-                            type: 'POST',
-                            success: function () { },
-                            error: function (error) {
-                                console.log(error);
-                                vm.calling = false;
-                                vm.alert = "An unknown error occurred.";
-                                // TODO : Destroy socket
+                            if (progress.step >= 5) {
+                                clearInterval(vm.progress.checker);
+                                $("#continue").submit();
                             }
-                        });
+                        },
+                        error: function (error) { }
                     });
+                }
+
+                $.ajax({
+                    url: './api/phone/start-call',
+                    headers: {
+                        "X-CSRF-Token": $("#csrf_token").val()
+                    },
+                    type: 'POST',
+                    success: function (call) {
+                        checkCallProgress(call.cpid);
+
+                        vm.progress.checker = setInterval(function () { checkCallProgress(call.cpid); }, 750);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        vm.calling = false;
+                        vm.alert = "An unknown error occurred.";
+                    }
                 });
-                socket.on('update', function (progress) {
-                    console.log(progress);
-                    
-                    vm.progress.step += progress;
-                });
-                socket.on('disconnect', function () { console.log("disconnect"); });
             },
             cancel: function (event) {
                 $("#continue").submit();
