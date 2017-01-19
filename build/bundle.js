@@ -85,7 +85,7 @@ module.exports =
 		"scripts.js": "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",
 		"styles.css": "H4sIAAAAAAAAC7VVzY7bIBC+R8o7jLTqEct2k27rHCvlPbDBDg0GBLhJWvXdOwH/JM066z3UN2CY72dmcPKja0vtrVZwyOE3lLQ6NlZ3ipFKS20L8JYqZ6jlyu/gz3q1XiWVVh6XGG4oY0I1BaSQ83Y497QkY8x6Bfi11DZCYVyy5S2ku/UqhBrLh4hH5BeWspx93sXzCeqaYkhAOyY0EokxTDgj6aWAUurquLuHzm6BtUyM1Y3lzhFUWB0jjTEBSpA8JJDCeeL8RXLiL4YXoLSKJ6OmsBr5oRFXrLAZ0hDMqDtfQC3OnIX9k2D+gJTS9FNk9MhHircokYpL2fNSnBy4aA6YOU82PaLRTnihkZblknrxM3L1/OwJlaLBgwrrwu0T3ERg9cjJUhMplNoybomlTHSugG0gjTm1KYBkfTkAhrLVdb27Yz5VY+I7XBpNBNp5DSTv9yWv/WCtjZfSfwTS0mnZeX7raD41xxNpzlPfN97IaGvOd6UZ1qMKoYLlk5haSIludvY6G9+v4p8BT1tYiog9V6urr1ka8GfSTTsMu/GuSuH2qzkDmiMYvGRf8mwTuy6Mco/YR4eaQeaAU8eJUAQbNcSSEy+PwpMP3Wn1rw9cWKRtWvVGP3bn48NR19/o9nWxfQsyplm5+RrbOorCMXjD43fxvGb6ablu3rweu5Q0NNyy3Au07Pf7OSE36DNDjz8Lr1vsz/8z9jMjsWy65614GPuRZP+ah5/CevUXn1b/ew8HAAA=",
 		"logo.svg": "H4sIAAAAAAAAC31U246bMBB9br8CsS+tZIyxudjkstpuW7VSVupT1LcoS0hASyECNpeu+u89NiQbtlGDFI5mPHPOXMz49vCrsHZp3eRVObE9ymzrdjpudhsrX03s2fKY1gvPtpr2WKQTOy2Xj0XqPC6Tp01dPZeruEz3FsPjiYgK/CsqRvZlQgTv8nT/qTpM7DcHbQvkcbNdJki9rdMmrXepMZbNxM7adhu77n6/p3tBq3rjcsaYC2n9kfhQ5OXTtYOeUso1Xhu1aOlWe9yCpE0PrZs0jT19/442LXtZ50UR3/B7eXd3N/pjjN5LBUV5e4wZ9dQoKfKts122WfxcFx9ufj7Mvn9eRGrxcdTFsohJJvtY3if8an69UZxYeMTlFxjHrtE0HSd5nUBbUiwbFAw9tpWgTaGkHOgIpGhom0l0vNxnC9uq4QhxxJ2ONxfOIFig3FW6bl4zd9n869mCcJjM7WNR8Q8UfHES9SL1c5OeFqHChNdFtY93eZNjJTBz0+84q9P1xL55JdB5Txmn421VHDdV+VqydykIWwFF2yovWzgjRiURjAbYlpB6RHpUAgoaEk8EwFJSRbRBWQF8xGOBhSBOFJbLsgz1Bpy6ljMhOgu+h5CRwKc849jQOZYxShhhDqO+oyh3PEaFBo1GEelNBsz6yN+DuUhmKr1KFQgakADLdH9G5AoqGOE+DbUOoovwhP4LwaqRZSUGM2Nyzk6D5jq+C+yezBFDw473BkdzeihaB4YGJU4Iu66R01DXqZzAEDoeugCr45s32P4h+qblD1sRRf9phaI+CULdd079HQoQ53oxMwdyDEg0UlClDc7Jo8FcR78h9A1hnSbtgDBL803W4hvk0WAQEOKiWPt81WYTW9AIq2tuCe4GLomMustwXX+/ZpmQGKdUev9YQCJOpCIn51BdfweG6USXLgoxgiCiMsN05hHvB6QIsjsQhLexER+D5rp12E85O4e9YRLdbcMXcvoXoy5XZ9gFAAA=",
-		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVXzQUYdpSnWrPNgtGlmtEbTNIiXAcUwuLR8spnQpEZSTrzU/31H6t2SYwfVh8CR7o7P3T13ehQlIjRMCrKULISIhkYqP9GguiSUwsC9wR+U8wkNbzvk4eefCF5LqkioVrGRpE8U/JswBb6X3vE6v5dGN3emanGjpbiDiZG3IN79GhwHvznrSlApIjZDl+wge2k2E0zMPsGqR7yDh9Hww8Xw4sP40+Dr+PL89Gzw8cv5H4OrtdctXUA4LJhW7jW4OLv6evnn8MvF4473BoRGv2vFnd/p5eX4+uq87pDarwvkUV7D7Fx/Sg3tVHOwud3CChMTcEfeJ1EEyk+TDWpgu8SbUA0nvxRlzN3ZEr3TEgeKiqlcvF8Z0P7xSVnCoowsnoMq7UMF1MCZu8uWvkdBHx6/enMYTkKva4F1MXwzTIYMpjaScw6SGHMDlyBCTUz0xmuHXPq+KJwjJij3q9alvQKTKEG+HTywZWDkyCjseWm77h08FCHX37KD1nmEoyMyMlQZMlmRcA7hLToTFpE7IFQBmWO9uL1F8ZwpUjE0BanTAGjrZ3wPYiWNDCUn/X6feLnDYe7g1TprHZ/ZeQkWYKitS7BkZgxCSc4XIEzNOsN6BSGwZQooD0siqfBfG4qYOTX4B4hKOJApmxIhjRsj0KZMQUuCsyEV1A/ISpkH9kXCeZfUZrraqfVm29142pZn9cjODfCvWgXu6QY3tUFSbPVwT2vNNmq1WRUbJqYrLqllG+6NYIlcjVa+O6+bbYagXAbdzQj2onwmFTPzhe6Rv72Po1evT7x/6mbrOu/yHmZnBzqZkGfYd9dS+2fMpo0WtlYZB/ta0MTMEcF/MB0ohZvUu7b9XDC9oCacB16nWvlG9QtC5WgslWxI5BELsYo/DiUnUygXMQfsWiU8rqB9EeYAhRQhuIK5Lv8IvBFou3kJzmpGwSeX7bE5DPKM22u4nytS06gEGgyyl03opaOMztbkaRx/ziL6VT5166d1AtsBv3iL+K0A7bXvSBdV6gShLWAlNii1O7w1ag232QUCXMNePd8NeF1ZScTBdmhlEy8G0JJDwOUss2g0ZN+REHAf4yrFzkaU8UTBBtcyUM1E3b5SEilqF99l+gsXHwJbgn9cR4QrfyA0Rk/X+5xq8peVW0O7zLmda5KToXRyHKFxPM4fkX7Lve/fycO6dlg5CVXDXW+lXQ51TVacNe3VNiV5Qbx36BgwsaScTavaKr80oBwxvUIstWiak05FAszhHnvSEohTMUvoDFCogTi8HrUdVkxuDxuMLdygXIM3ZUufPM7V4m19vyITzpD+TCS4eSODZLgV8s4qAffOL9pqKTIB3IEaTOmdodu5Lxw551LARbKYOCHoELpbY5HeQ+KUSRRNr5o0iuOUS6Y9rDpJtYp0vwvl3EQScsoWup1A+LqtM6ilh4IuIDOyP1ssqqh71cxbbG8M623R0Zuka/G2Q1GQ/pFxCVozsTY5/XdGSA23RLHc3yNGPiJboqSWsE8+xSDtmqCqgrQyzio2P6VAu4pD6sTIKT0UPXLysk2f2ZC56MUPs1Rouk+nyudayyug9MBvEO+tQ9X3cEflGrYpIfavwxapUzuzOoNviff8yN04qksuj/TsI/wu3nzwhLdtPdXnRyXiRpTNtEvRno02DipJ7PdvNWyz0Xt/X+wnQraJj0J0IPD1/6frkDeuEAAA"
+		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVWDQkYdpSm2rPNgtGlmNFkzx4jrAcUwuLR8spnIpEZSTjzX/31H6t2SYxfVB0OW7o7He547PQxi7msmOFkK5kNAfS2kGyuQbeILruFR4w0Nwwn171tk/eMPBK8llcSXq0gL0iUS/o2ZBNdJnjit3wqjuwddtrhTgj/ARIt74O9+8U69X611KajgAZuhS7qQuRSbccZnH2HVIc7Renj1oX/V/zD+2Ps8HlyfX/Qub65/791unHbhAtzmgtvKvHr9i9vPg09XN/2nHR81cIV+Ixlav/PBYDy6vd7p4FM+UjCYCw7nsZ4D18ynZuEO+WN40/ciKhVu/Gh9cd4fj4a98eDypt8bn48+XVZjtpKYm7wcQQZMuhl3SjVtlQtjCnYPK6wWhwfyPg4CkG5SQa9SgTZxJlTB2U85Npk7W6J3gpsnKZ+KxfuVBuWenhW45NiwaA6ysPclUA0X9ilbug4FdXz6+s2xP/GdtkmsjeHrYdLMYGoiWWcvjnBvYDeIqcY6eOM0p1z4vsydA8Zp6JatC3sJOpacfDlas6WnxVBLJFJhu+kcrfOQmy/pQpsswskJGWoqNZmsiD8H/x6dCQvIAxAqgcyxXqF5RHGdKfLb13mnJAHQ1k2byIuk0MIXIel2u8TJHI4zB6eCrHF8ZprQW4Cmpi7ekukxcCnCcIEkq1inud6CD2yZJJSFJYGQ+NeEInpONf4AkXEIZMqmhAttexOULragBMGGExKqC6SlzAK7PA7DNqkMijJSm23Ybc8byNN6pOt6+CtXnn27xU2lkRQ7PezbCtharrarYsJEdBUKatiGw8hbIleDlWvXa6fjxismTHs7grloOBOS6flCdcjfzuXw9c9nzj9Vs02VdxmG6dqeiifkGeJuITU/YzatQdhYZWzsEac4WTCD/2DakxLHszMyeC6YWlDtzz2nVa58rfo5obJsDJVoMazg+1PJyOSLRRQCokYrs/DQDLMEueA+2IJZlL8nvSEoM84J9mpKwW8u21N96GU7bq7hYa5ITS1jqDHIXGZDryxlVDomz6PozzSiW+ZTu7payzMIuPlXxG1M0FyHtnRepZbnmwKWYoOU+8Mbo8Zw2ygQCBUchPn+hDelkURs2jZbUc8XAygRgheKWWpRA+TQluDwGOEoRWQDysJYwhbX0qTqG7XzSgqkqBl8g+QOBx8mtgT3tJoRjvweVxg9Ge9zqshfRsNdmWEemr4mGRkKJ8sRGkXj7BXpNjz7+pWsN5XFik4oG+77Ku1zqAq9fK1ppzIpyUvivENHj/ElDdm0rL+ySwHKEd3JxVKDpjlrlSTAHB4Rk4ZAIeWzmM4A1R/w49GwabG8czsIMEK4RbkabwpIv7mdy8Xb+X1FJlwg/RmPcfIGGslwz8WDUQL2m5/DaigyAZyBCnThnWa3d15Ychqh248XEysEbYb20Zgnz5A4xSZy0MsmteJY5ZJqD6NOEq0i7H0ux+uZ+CFlC9VMIPzcVhnUgCGnC0iNzG2DRTnrTnnnDbZ3mnV26Oht0jV4m6bISf9Eu3iNOzE2Gf33RkgMd0Qx3D8gRtYiO6IklnDIfvJG2tdBZQVpZJxRbG5CgWYVh9SJkFPqCg9iZ6+a9JkJmYlePO0lQtMenUpnwIZPQOGBZxDnrc2q6+CMyjRsXUIcXocdUqeyZrkHX7zIst55ECVvifP8xDqdVGWZQzrmFR7It198wxe5Wo7nJ8WualG2S1MI+7T9sZlJbA7e5bB1Mhx8BjlMqOwSKLkwwcQ3/wMSK+AUJxEAAA=="
 	};
 
 /***/ },
@@ -559,7 +559,7 @@ module.exports =
 	      client.calls.create({
 	        url: req.absoluteBaseUrl + "/api/phone/receive-call/" + cid,
 	        to: req.session.phoneNumber,
-	        from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
+	        from: req.webtaskContext.data.TWILIO_PHONE_NUMBER
 	      }, function (error, call) {
 	        if (error) {
 	          return next(error);
@@ -1955,10 +1955,16 @@ module.exports =
 	            }
 	        }
 
+	        var canUsePhoneAuthentication = true;
+	        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+	        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+	        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_PHONE_NUMBER;
+
 	        var placeholders = {
 	            "${SIGNING_KEY_PLACEHOLDER}": req.config.signingKey,
 	            "${ENCRYPTION_KEY_PLACEHOLDER}": req.webtaskContext.data.ENCRYPTION_KEY,
-	            "${APP_URL_PLACEHOLDER}": webtaskUrl
+	            "${APP_URL_PLACEHOLDER}": webtaskUrl,
+	            "${CAN_USE_PHONE_AUTH_PLACEHOLDER}": canUsePhoneAuthentication
 	        };
 
 	        _.forEach(placeholders, function (value, key) {
@@ -2100,17 +2106,14 @@ module.exports =
 			},
 			"TWILIO_ACCOUNT_SID": {
 				"description": "The Twilio account identifier.",
-				"required": true,
 				"type": "password"
 			},
 			"TWILIO_AUTH_TOKEN": {
 				"description": "The Twilio authentication token.",
-				"required": true,
 				"type": "password"
 			},
-			"TWILIO_OUTGOING_PHONE_NUMBER": {
+			"TWILIO_PHONE_NUMBER": {
 				"description": "The Twilio number to user for making outgoing calls.",
-				"required": true,
 				"type": "text"
 			}
 		}

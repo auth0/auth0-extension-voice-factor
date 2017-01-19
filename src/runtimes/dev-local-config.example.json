@@ -5,7 +5,7 @@
     "ExtensionSecret": "[secret used to validate calls to extension installation hooks]",
     "VoiceItDeveloperId": "[VoiceIt developer identifier]",
     "EncryptionKey": "[base64 encoded encryption key (AES 128)]",
-    "TwilioAccountSid": "",
-    "TwilioAuthToken": "",
-    "TwilioOutgoingPhoneNumber": ""
+    "TwilioAccountSid": "[Twilio account SID]",
+    "TwilioAuthToken": "[Twilio authentication token]",
+    "TwilioPhoneNumber": "[Twilio number used for outgoing calls]"
 }

@@ -5,7 +5,8 @@ function voicefactor(user, context, callback) {
     var config = {
         signingKey: "${SIGNING_KEY_PLACEHOLDER}",
         encryptionKey: "${ENCRYPTION_KEY_PLACEHOLDER}",
-        extensionUrl: "${APP_URL_PLACEHOLDER}"
+        extensionUrl: "${APP_URL_PLACEHOLDER}",
+        canUsePhoneAuthentication: JSON.parse("${CAN_USE_PHONE_AUTH_PLACEHOLDER}")
     };
 
     function encrypt(data) {
@@ -103,7 +104,7 @@ function voicefactor(user, context, callback) {
             redirectUrl += "?token=" + token;
 
             if (user.app_metadata.vit_enrollment.completed) {
-                redirectUrl += phoneNumber ? "#/phone/authentication" : "#/web/authentication";
+                redirectUrl += phoneNumber && config.canUsePhoneAuthentication ? "#/phone/authentication" : "#/web/authentication";
             } else {
                 redirectUrl += "#/enrollment";
             }

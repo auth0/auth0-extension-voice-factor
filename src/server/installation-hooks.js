@@ -75,10 +75,16 @@ module.exports = function (files) {
             }
         }
 
+        var canUsePhoneAuthentication = true;
+        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_PHONE_NUMBER;
+
         var placeholders = {
             "${SIGNING_KEY_PLACEHOLDER}": req.config.signingKey,
             "${ENCRYPTION_KEY_PLACEHOLDER}": req.webtaskContext.data.ENCRYPTION_KEY,
-            "${APP_URL_PLACEHOLDER}": webtaskUrl
+            "${APP_URL_PLACEHOLDER}": webtaskUrl,
+            "${CAN_USE_PHONE_AUTH_PLACEHOLDER}": canUsePhoneAuthentication
         };
 
         _.forEach(placeholders, function (value, key) {

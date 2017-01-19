@@ -450,7 +450,7 @@ module.exports = function (files) {
       client.calls.create({
         url: `${req.absoluteBaseUrl}/api/phone/receive-call/${cid}`,
         to: req.session.phoneNumber,
-        from: req.webtaskContext.data.TWILIO_OUTGOING_PHONE_NUMBER
+        from: req.webtaskContext.data.TWILIO_PHONE_NUMBER
       }, function (error, call) {
         if (error) { return next(error); }
 
