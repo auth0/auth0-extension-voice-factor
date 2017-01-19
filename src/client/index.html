@@ -90,9 +90,8 @@
         <h2>Phone Authentication</h2>
         <div class="alert alert-global alert-warning" v-if="alert"><strong>Something bad just happened!</strong> \{{ alert }}</div>
         <pre>Remember to wash your hands before eating</pre>
-        <div class="btn btn-primary" v-on:click="start">REQUEST CALL</div>
         <div class="btn btn-default" v-on:click="cancel">CANCEL</div>
-        <h3>Progress</h3>
+        <h3>Call Progress</h3>
         <ol class="progress-track">
             <li v-bind:class="{ 'progress-todo': progress.step < 0, 'progress-current': progress.step === 0, 'progress-done': progress.step >= 0 }">
                 <center>

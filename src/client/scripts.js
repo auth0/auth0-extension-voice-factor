@@ -241,57 +241,54 @@
         data: function () {
             return {
                 alert: null,
-                calling: false,
                 progress: {
                     step: -1,
                     checker: null
                 }
             };
         },
-        methods: {
-            start: function (event) {
-                var vm = this;
+        mounted: function () {
+            var vm = this;
 
-                vm.calling = true;
-                vm.progress.step = 0;
+            vm.progress.step = 0;
 
-                function checkCallProgress(cpid) {
-                    $.ajax({
-                        url: './api/phone/call-progress/' + cpid,
-                        headers: {
-                            "X-CSRF-Token": $("#csrf_token").val()
-                        },
-                        type: 'GET',
-                        success: function (progress) {
-                            vm.progress.step = progress.step;
-
-                            if (progress.step >= 5) {
-                                clearInterval(vm.progress.checker);
-                                $("#continue").submit();
-                            }
-                        },
-                        error: function (error) { }
-                    });
-                }
-
+            function checkCallProgress(cpid) {
                 $.ajax({
-                    url: './api/phone/start-call',
+                    url: './api/phone/call-progress/' + cpid,
                     headers: {
                         "X-CSRF-Token": $("#csrf_token").val()
                     },
-                    type: 'POST',
-                    success: function (call) {
-                        checkCallProgress(call.cpid);
+                    type: 'GET',
+                    success: function (progress) {
+                        vm.progress.step = progress.step;
 
-                        vm.progress.checker = setInterval(function () { checkCallProgress(call.cpid); }, 750);
+                        if (progress.step >= 5) {
+                            clearInterval(vm.progress.checker);
+                            $("#continue").submit();
+                        }
                     },
-                    error: function (error) {
-                        console.log(error);
-                        vm.calling = false;
-                        vm.alert = "An unknown error occurred.";
-                    }
+                    error: function (error) { }
                 });
-            },
+            }
+
+            $.ajax({
+                url: './api/phone/start-call',
+                headers: {
+                    "X-CSRF-Token": $("#csrf_token").val()
+                },
+                type: 'POST',
+                success: function (call) {
+                    checkCallProgress(call.cpid);
+
+                    vm.progress.checker = setInterval(function () { checkCallProgress(call.cpid); }, 750);
+                },
+                error: function (error) {
+                    console.log(error);
+                    vm.alert = "An unknown error occurred.";
+                }
+            });
+        },
+        methods: {
             cancel: function (event) {
                 $("#continue").submit();
             }

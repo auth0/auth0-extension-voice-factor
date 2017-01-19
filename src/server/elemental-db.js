@@ -264,11 +264,12 @@ function doUpdate(db, data, schema) {
 
         switch (type) {
             case "map":
-                db[key] = data[key];
+                db[key] = db[key] || {};
+                data[key].forEach((element) => db[key][element.id] = element.value);
                 break;
 
             case "array":
-                db[key] = data[key];
+                throw new Error("Performing an update on an array collection is not supported.");
                 break;
 
             case "singleton":
