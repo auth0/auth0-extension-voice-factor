@@ -54,7 +54,7 @@
     },
     "PUSHER_SECRET": {
       "description": "Your Pusher account secret.",
-      "type": "text"
+      "type": "password"
     }
   }
 }

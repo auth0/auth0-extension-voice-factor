@@ -309,8 +309,8 @@ module.exports = function (files) {
           "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
           "ContentLanguage": req.session.vit.lang
         },
-        // uri: 'https://siv.voiceprintportal.com/sivservice/api/enrollments',
-        uri: `${req.absoluteBaseUrl}/vitmocks/enroll`,
+        uri: 'https://siv.voiceprintportal.com/sivservice/api/enrollments',
+        // uri: `${req.absoluteBaseUrl}/vitmocks/enroll`,
         body: buffer,
         method: 'POST'
       }, function (error, response, body) {
@@ -348,8 +348,8 @@ module.exports = function (files) {
               "VsitFirstName": "User",
               "VsitLastName": req.session.userId
             },
-            // uri: 'https://siv.voiceprintportal.com/sivservice/api/users',
-            uri: `${req.absoluteBaseUrl}/vitmocks/createuser`,
+            uri: 'https://siv.voiceprintportal.com/sivservice/api/users',
+            // uri: `${req.absoluteBaseUrl}/vitmocks/createuser`,
             body: '',
             method: 'POST'
           }, function (error, response, body) {
@@ -402,8 +402,8 @@ module.exports = function (files) {
             "VsitConfidence": "85",
             "ContentLanguage": req.session.vit.lang
           },
-          // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications',
-          uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
+          uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications',
+          // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
           body: buffer,
           method: 'POST'
         }, function (error, response, body) {
@@ -546,7 +546,7 @@ module.exports = function (files) {
 
       twiml.record({
         action: `${req.absoluteBaseUrl}/api/phone/authentication/verify`,
-        maxLength: "5",
+        maxLength: "4",
         trim: "do-not-trim",
       });
 
@@ -555,7 +555,7 @@ module.exports = function (files) {
 
         res.send(twiml.toString());
 
-        if (pusher) { setTimeout(() => pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 3, seq: call.seq + 1 }), 1000); }
+        if (pusher) { setTimeout(() => pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 3, seq: call.seq + 1 }), 2500); }
       });
     });
   });
@@ -590,8 +590,8 @@ module.exports = function (files) {
           "VsitwavURL": recordingURL,
           "ContentLanguage": req.session.vit.lang
         },
-        // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
-        uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
+        uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
+        // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
         method: "POST"
       };
 
