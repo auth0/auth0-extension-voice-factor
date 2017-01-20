@@ -29,15 +29,31 @@
       "type": "password"
     },
     "TWILIO_ACCOUNT_SID": {
-      "description": "The Twilio account identifier.",
+      "description": "Your Twilio account identifier.",
       "type": "password"
     },
     "TWILIO_AUTH_TOKEN": {
-      "description": "The Twilio authentication token.",
+      "description": "Your Twilio authentication token.",
       "type": "password"
     },
     "TWILIO_PHONE_NUMBER": {
       "description": "The Twilio number to use for outgoing calls.",
+      "type": "text"
+    },
+    "PUSHER_APPID": {
+      "description": "The Pusher application identifier.",
+      "type": "text"
+    },
+    "PUSHER_CLUSTER": {
+      "description": "Your Pusher account cluster.",
+      "type": "text"
+    },
+    "PUSHER_KEY": {
+      "description": "Your Pusher account key.",
+      "type": "text"
+    },
+    "PUSHER_SECRET": {
+      "description": "Your Pusher account secret.",
       "type": "text"
     }
   }

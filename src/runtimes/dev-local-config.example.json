@@ -7,5 +7,9 @@
     "ENCRYPTION_KEY": "[base64 encoded encryption key (AES 128)]",
     "TWILIO_ACCOUNT_SID": "[Twilio account SID]",
     "TWILIO_AUTH_TOKEN": "[Twilio authentication token]",
-    "TWILIO_PHONE_NUMBER": "[Twilio number used for outgoing calls]"
+    "TWILIO_PHONE_NUMBER": "[Twilio number used for outgoing calls]",
+    "PUSHER_APPID": "[Pusher application identifier]",
+    "PUSHER_CLUSTER": "[Pusher cluster]",
+    "PUSHER_KEY": "[Pusher key]",
+    "PUSHER_SECRET": "[Pusher secret]"
 }

@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Dicer = require("dicer");
 const twilio = require("twilio");
+const Pusher = require('pusher');
 
 const jwt = require("jsonwebtoken");
 
@@ -117,6 +118,8 @@ const checks = {
   }
 };
 
+var pusher = null;
+
 module.exports = function (files) {
   let app = new Express();
 
@@ -188,6 +191,17 @@ module.exports = function (files) {
       req.basePath
     ].join('');
 
+    // Initialize Pusher instance if applicable
+    if (!pusher && req.webtaskContext.data.PUSHER_APPID && req.webtaskContext.data.PUSHER_CLUSTER && req.webtaskContext.data.PUSHER_KEY && req.webtaskContext.data.PUSHER_SECRET) {
+      pusher = new Pusher({
+        appId: req.webtaskContext.data.PUSHER_APPID,
+        cluster: req.webtaskContext.data.PUSHER_CLUSTER,
+        key: req.webtaskContext.data.PUSHER_KEY,
+        secret: req.webtaskContext.data.PUSHER_SECRET,
+        encrypted: true
+      });
+    }
+
     // Make the global configuration available at the request level
     req.db.get(function (error, data) {
       if (error) { return next(error); }
@@ -213,7 +227,16 @@ module.exports = function (files) {
       return;
     }
 
-    res.send(Handlebars.compile(files["index.html"])({ csrf: req.session.csrf }));
+    var data = {
+      csrf: req.session.csrf,
+      pusher: {
+        enabled: !!pusher,
+        key: req.webtaskContext.data.PUSHER_KEY,
+        cluster: req.webtaskContext.data.PUSHER_CLUSTER
+      }
+    };
+
+    res.send(Handlebars.compile(files["index.html"])(data));
   });
 
   // Process requests to application resources
@@ -426,18 +449,20 @@ module.exports = function (files) {
         return;
       }
 
-      res.json({ step: data.calls[cid].step });
+      res.json({ step: data.calls[cid].step, seq: data.calls[cid].seq });
     });
   });
 
   app.post("/api/phone/start-call", checks.session, checks.csrf, (req, res, next) => {
     var cid = base64url.escape(crypto.randomBytes(32).toString("base64"));
-    var cpid = base64url.escape(crypto.randomBytes(16).toString("base64"));
+    var cpid = req.body.cpid;
 
     var data = {
-      calls: [{ id: cid, value: { sid: req.session.id, step: 0 } }],
+      calls: [{ id: cid, value: { sid: req.session.id, cpid: cpid, step: 0, seq: 1 } }],
       calls_progress: [{ id: cpid, value: cid }]
     };
+
+    if (pusher) { pusher.trigger(`callprogress-${cpid}`, "update", { "step": 0, seq: 1 }); }
 
     req.db.add(data, (error) => {
       if (error) { return next(error); }
@@ -454,10 +479,12 @@ module.exports = function (files) {
       }, function (error, call) {
         if (error) { return next(error); }
 
-        req.db.add({ calls: [{ id: cid, value: { sid: req.session.id, step: 1 } }] }, (error) => {
+        req.db.patch({ calls: [{ id: cid, value: { step: 1, seq: 2 } }] }, (error) => {
           if (error) { return next(error); }
 
-          res.json({ cpid: cpid });
+          if (pusher) { pusher.trigger(`callprogress-${cpid}`, "update", { "step": 1, seq: 2 }); }
+
+          res.sendStatus(200);
         });
       });
     });
@@ -486,10 +513,12 @@ module.exports = function (files) {
       // Set Twilio session cookie
       res.cookie("tw_cid", cid, { httpOnly: true, secure: true });
 
-      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 2 } }] }, (error) => {
+      req.db.patch({ calls: [{ id: cid, value: { step: 2, seq: call.seq + 1 } }] }, (error) => {
         if (error) { return next(error); }
 
         res.send(twiml.toString());
+
+        if (pusher) { pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 2, seq: call.seq + 1 }); }
       });
     });
   });
@@ -521,10 +550,12 @@ module.exports = function (files) {
         trim: "do-not-trim",
       });
 
-      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 3 } }] }, (error) => {
+      req.db.patch({ calls: [{ id: cid, value: { step: 3, seq: call.seq + 1 } }] }, (error) => {
         if (error) { return next(error); }
 
         res.send(twiml.toString());
+
+        if (pusher) { setTimeout(() => pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 3, seq: call.seq + 1 }), 1000); }
       });
     });
   });
@@ -564,8 +595,10 @@ module.exports = function (files) {
         method: "POST"
       };
 
-      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 4 } }] }, (error) => {
+      req.db.patch({ calls: [{ id: cid, value: { step: 4, seq: call.seq + 1 } }] }, (error) => {
         if (error) { return next(error); }
+
+        if (pusher) { pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 4, seq: call.seq + 1 }); }
 
         request.post(options, function (error, response, body) {
           var twiml = new twilio.TwimlResponse();
@@ -610,12 +643,13 @@ module.exports = function (files) {
             console.log(new Error(response.statusCode, body));
           }
 
-          data.calls = [{ id: cid, value: { sid: call.sid, step: 4 + progress } }];
+          data.calls = [{ id: cid, value: { step: 4 + progress, seq: call.seq + 2 } }];
 
-          req.db.add(data, (error) => {
+          req.db.patch(data, (error) => {
             if (error) { return next(error); }
 
             res.send(twiml.toString());
+            if (pusher) { pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 4 + progress, seq: call.seq + 2 }); }
           });
         });
       });

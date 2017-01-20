@@ -81,8 +81,8 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"index.html": "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",
-		"scripts.js": "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",
+		"index.html": "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",
+		"scripts.js": "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",
 		"styles.css": "H4sIAAAAAAAAC7VVzY7bIBC+R8o7jLTqEct2k27rHCvlPbDBDg0GBLhJWvXdOwH/JM066z3UN2CY72dmcPKja0vtrVZwyOE3lLQ6NlZ3ipFKS20L8JYqZ6jlyu/gz3q1XiWVVh6XGG4oY0I1BaSQ83Y497QkY8x6Bfi11DZCYVyy5S2ku/UqhBrLh4hH5BeWspx93sXzCeqaYkhAOyY0EokxTDgj6aWAUurquLuHzm6BtUyM1Y3lzhFUWB0jjTEBSpA8JJDCeeL8RXLiL4YXoLSKJ6OmsBr5oRFXrLAZ0hDMqDtfQC3OnIX9k2D+gJTS9FNk9MhHircokYpL2fNSnBy4aA6YOU82PaLRTnihkZblknrxM3L1/OwJlaLBgwrrwu0T3ERg9cjJUhMplNoybomlTHSugG0gjTm1KYBkfTkAhrLVdb27Yz5VY+I7XBpNBNp5DSTv9yWv/WCtjZfSfwTS0mnZeX7raD41xxNpzlPfN97IaGvOd6UZ1qMKoYLlk5haSIludvY6G9+v4p8BT1tYiog9V6urr1ka8GfSTTsMu/GuSuH2qzkDmiMYvGRf8mwTuy6Mco/YR4eaQeaAU8eJUAQbNcSSEy+PwpMP3Wn1rw9cWKRtWvVGP3bn48NR19/o9nWxfQsyplm5+RrbOorCMXjD43fxvGb6ablu3rweu5Q0NNyy3Au07Pf7OSE36DNDjz8Lr1vsz/8z9jMjsWy65614GPuRZP+ah5/CevUXn1b/ew8HAAA=",
 		"logo.svg": "H4sIAAAAAAAAC31U246bMBB9br8CsS+tZIyxudjkstpuW7VSVupT1LcoS0hASyECNpeu+u89NiQbtlGDFI5mPHPOXMz49vCrsHZp3eRVObE9ymzrdjpudhsrX03s2fKY1gvPtpr2WKQTOy2Xj0XqPC6Tp01dPZeruEz3FsPjiYgK/CsqRvZlQgTv8nT/qTpM7DcHbQvkcbNdJki9rdMmrXepMZbNxM7adhu77n6/p3tBq3rjcsaYC2n9kfhQ5OXTtYOeUso1Xhu1aOlWe9yCpE0PrZs0jT19/442LXtZ50UR3/B7eXd3N/pjjN5LBUV5e4wZ9dQoKfKts122WfxcFx9ufj7Mvn9eRGrxcdTFsohJJvtY3if8an69UZxYeMTlFxjHrtE0HSd5nUBbUiwbFAw9tpWgTaGkHOgIpGhom0l0vNxnC9uq4QhxxJ2ONxfOIFig3FW6bl4zd9n869mCcJjM7WNR8Q8UfHES9SL1c5OeFqHChNdFtY93eZNjJTBz0+84q9P1xL55JdB5Txmn421VHDdV+VqydykIWwFF2yovWzgjRiURjAbYlpB6RHpUAgoaEk8EwFJSRbRBWQF8xGOBhSBOFJbLsgz1Bpy6ljMhOgu+h5CRwKc849jQOZYxShhhDqO+oyh3PEaFBo1GEelNBsz6yN+DuUhmKr1KFQgakADLdH9G5AoqGOE+DbUOoovwhP4LwaqRZSUGM2Nyzk6D5jq+C+yezBFDw473BkdzeihaB4YGJU4Iu66R01DXqZzAEDoeugCr45s32P4h+qblD1sRRf9phaI+CULdd079HQoQ53oxMwdyDEg0UlClDc7Jo8FcR78h9A1hnSbtgDBL803W4hvk0WAQEOKiWPt81WYTW9AIq2tuCe4GLomMustwXX+/ZpmQGKdUev9YQCJOpCIn51BdfweG6USXLgoxgiCiMsN05hHvB6QIsjsQhLexER+D5rp12E85O4e9YRLdbcMXcvoXoy5XZ9gFAAA=",
 		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVWDQkYdpSm2rPNgtGlmNFkzx4jrAcUwuLR8spnIpEZSTjzX/31H6t2SYxfVB0OW7o7He547PQxi7msmOFkK5kNAfS2kGyuQbeILruFR4w0Nwwn171tk/eMPBK8llcSXq0gL0iUS/o2ZBNdJnjit3wqjuwddtrhTgj/ARIt74O9+8U69X611KajgAZuhS7qQuRSbccZnH2HVIc7Renj1oX/V/zD+2Ps8HlyfX/Qub65/791unHbhAtzmgtvKvHr9i9vPg09XN/2nHR81cIV+Ixlav/PBYDy6vd7p4FM+UjCYCw7nsZ4D18ynZuEO+WN40/ciKhVu/Gh9cd4fj4a98eDypt8bn48+XVZjtpKYm7wcQQZMuhl3SjVtlQtjCnYPK6wWhwfyPg4CkG5SQa9SgTZxJlTB2U85Npk7W6J3gpsnKZ+KxfuVBuWenhW45NiwaA6ysPclUA0X9ilbug4FdXz6+s2xP/GdtkmsjeHrYdLMYGoiWWcvjnBvYDeIqcY6eOM0p1z4vsydA8Zp6JatC3sJOpacfDlas6WnxVBLJFJhu+kcrfOQmy/pQpsswskJGWoqNZmsiD8H/x6dCQvIAxAqgcyxXqF5RHGdKfLb13mnJAHQ1k2byIuk0MIXIel2u8TJHI4zB6eCrHF8ZprQW4Cmpi7ekukxcCnCcIEkq1inud6CD2yZJJSFJYGQ+NeEInpONf4AkXEIZMqmhAttexOULragBMGGExKqC6SlzAK7PA7DNqkMijJSm23Ybc8byNN6pOt6+CtXnn27xU2lkRQ7PezbCtharrarYsJEdBUKatiGw8hbIleDlWvXa6fjxismTHs7grloOBOS6flCdcjfzuXw9c9nzj9Vs02VdxmG6dqeiifkGeJuITU/YzatQdhYZWzsEac4WTCD/2DakxLHszMyeC6YWlDtzz2nVa58rfo5obJsDJVoMazg+1PJyOSLRRQCokYrs/DQDLMEueA+2IJZlL8nvSEoM84J9mpKwW8u21N96GU7bq7hYa5ITS1jqDHIXGZDryxlVDomz6PozzSiW+ZTu7payzMIuPlXxG1M0FyHtnRepZbnmwKWYoOU+8Mbo8Zw2ygQCBUchPn+hDelkURs2jZbUc8XAygRgheKWWpRA+TQluDwGOEoRWQDysJYwhbX0qTqG7XzSgqkqBl8g+QOBx8mtgT3tJoRjvweVxg9Ge9zqshfRsNdmWEemr4mGRkKJ8sRGkXj7BXpNjz7+pWsN5XFik4oG+77Ku1zqAq9fK1ppzIpyUvivENHj/ElDdm0rL+ySwHKEd3JxVKDpjlrlSTAHB4Rk4ZAIeWzmM4A1R/w49GwabG8czsIMEK4RbkabwpIv7mdy8Xb+X1FJlwg/RmPcfIGGslwz8WDUQL2m5/DaigyAZyBCnThnWa3d15Ychqh248XEysEbYb20Zgnz5A4xSZy0MsmteJY5ZJqD6NOEq0i7H0ux+uZ+CFlC9VMIPzcVhnUgCGnC0iNzG2DRTnrTnnnDbZ3mnV26Oht0jV4m6bISf9Eu3iNOzE2Gf33RkgMd0Qx3D8gRtYiO6IklnDIfvJG2tdBZQVpZJxRbG5CgWYVh9SJkFPqCg9iZ6+a9JkJmYlePO0lQtMenUpnwIZPQOGBZxDnrc2q6+CMyjRsXUIcXocdUqeyZrkHX7zIst55ECVvifP8xDqdVGWZQzrmFR7It198wxe5Wo7nJ8WualG2S1MI+7T9sZlJbA7e5bB1Mhx8BjlMqOwSKLkwwcQ3/wMSK+AUJxEAAA=="
@@ -106,13 +106,14 @@ module.exports =
 	var cookieParser = __webpack_require__(13);
 	var Dicer = __webpack_require__(14);
 	var twilio = __webpack_require__(22);
+	var Pusher = __webpack_require__(23);
 
-	var jwt = __webpack_require__(23);
+	var jwt = __webpack_require__(24);
 
-	var mocks = __webpack_require__(24);
-	var elemental = __webpack_require__(25);
-	var hooks = __webpack_require__(27);
-	var metadata = __webpack_require__(30);
+	var mocks = __webpack_require__(25);
+	var elemental = __webpack_require__(26);
+	var hooks = __webpack_require__(28);
+	var metadata = __webpack_require__(31);
 
 	Handlebars.registerHelper("template-start", function (id) {
 	  return new Handlebars.SafeString("<script type=\"text/x-template\" id=\"" + id + "\">");
@@ -218,6 +219,8 @@ module.exports =
 	  }
 	};
 
+	var pusher = null;
+
 	module.exports = function (files) {
 	  var app = new Express();
 
@@ -285,6 +288,17 @@ module.exports =
 	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
 	    req.basePath].join('');
 
+	    // Initialize Pusher instance if applicable
+	    if (!pusher && req.webtaskContext.data.PUSHER_APPID && req.webtaskContext.data.PUSHER_CLUSTER && req.webtaskContext.data.PUSHER_KEY && req.webtaskContext.data.PUSHER_SECRET) {
+	      pusher = new Pusher({
+	        appId: req.webtaskContext.data.PUSHER_APPID,
+	        cluster: req.webtaskContext.data.PUSHER_CLUSTER,
+	        key: req.webtaskContext.data.PUSHER_KEY,
+	        secret: req.webtaskContext.data.PUSHER_SECRET,
+	        encrypted: true
+	      });
+	    }
+
 	    // Make the global configuration available at the request level
 	    req.db.get(function (error, data) {
 	      if (error) {
@@ -312,7 +326,16 @@ module.exports =
 	      return;
 	    }
 
-	    res.send(Handlebars.compile(files["index.html"])({ csrf: req.session.csrf }));
+	    var data = {
+	      csrf: req.session.csrf,
+	      pusher: {
+	        enabled: !!pusher,
+	        key: req.webtaskContext.data.PUSHER_KEY,
+	        cluster: req.webtaskContext.data.PUSHER_CLUSTER
+	      }
+	    };
+
+	    res.send(Handlebars.compile(files["index.html"])(data));
 	  });
 
 	  // Process requests to application resources
@@ -533,18 +556,22 @@ module.exports =
 	        return;
 	      }
 
-	      res.json({ step: data.calls[cid].step });
+	      res.json({ step: data.calls[cid].step, seq: data.calls[cid].seq });
 	    });
 	  });
 
 	  app.post("/api/phone/start-call", checks.session, checks.csrf, function (req, res, next) {
 	    var cid = base64url.escape(crypto.randomBytes(32).toString("base64"));
-	    var cpid = base64url.escape(crypto.randomBytes(16).toString("base64"));
+	    var cpid = req.body.cpid;
 
 	    var data = {
-	      calls: [{ id: cid, value: { sid: req.session.id, step: 0 } }],
+	      calls: [{ id: cid, value: { sid: req.session.id, cpid: cpid, step: 0, seq: 1 } }],
 	      calls_progress: [{ id: cpid, value: cid }]
 	    };
+
+	    if (pusher) {
+	      pusher.trigger("callprogress-" + cpid, "update", { "step": 0, seq: 1 });
+	    }
 
 	    req.db.add(data, function (error) {
 	      if (error) {
@@ -565,12 +592,16 @@ module.exports =
 	          return next(error);
 	        }
 
-	        req.db.add({ calls: [{ id: cid, value: { sid: req.session.id, step: 1 } }] }, function (error) {
+	        req.db.patch({ calls: [{ id: cid, value: { step: 1, seq: 2 } }] }, function (error) {
 	          if (error) {
 	            return next(error);
 	          }
 
-	          res.json({ cpid: cpid });
+	          if (pusher) {
+	            pusher.trigger("callprogress-" + cpid, "update", { "step": 1, seq: 2 });
+	          }
+
+	          res.sendStatus(200);
 	        });
 	      });
 	    });
@@ -601,12 +632,16 @@ module.exports =
 	      // Set Twilio session cookie
 	      res.cookie("tw_cid", cid, { httpOnly: true, secure: true });
 
-	      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 2 } }] }, function (error) {
+	      req.db.patch({ calls: [{ id: cid, value: { step: 2, seq: call.seq + 1 } }] }, function (error) {
 	        if (error) {
 	          return next(error);
 	        }
 
 	        res.send(twiml.toString());
+
+	        if (pusher) {
+	          pusher.trigger("callprogress-" + call.cpid, "update", { "step": 2, seq: call.seq + 1 });
+	        }
 	      });
 	    });
 	  });
@@ -640,12 +675,18 @@ module.exports =
 	        trim: "do-not-trim"
 	      });
 
-	      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 3 } }] }, function (error) {
+	      req.db.patch({ calls: [{ id: cid, value: { step: 3, seq: call.seq + 1 } }] }, function (error) {
 	        if (error) {
 	          return next(error);
 	        }
 
 	        res.send(twiml.toString());
+
+	        if (pusher) {
+	          setTimeout(function () {
+	            return pusher.trigger("callprogress-" + call.cpid, "update", { "step": 3, seq: call.seq + 1 });
+	          }, 1000);
+	        }
 	      });
 	    });
 	  });
@@ -687,9 +728,13 @@ module.exports =
 	        method: "POST"
 	      };
 
-	      req.db.add({ calls: [{ id: cid, value: { sid: call.sid, step: 4 } }] }, function (error) {
+	      req.db.patch({ calls: [{ id: cid, value: { step: 4, seq: call.seq + 1 } }] }, function (error) {
 	        if (error) {
 	          return next(error);
+	        }
+
+	        if (pusher) {
+	          pusher.trigger("callprogress-" + call.cpid, "update", { "step": 4, seq: call.seq + 1 });
 	        }
 
 	        request.post(options, function (error, response, body) {
@@ -735,14 +780,17 @@ module.exports =
 	            console.log(new Error(response.statusCode, body));
 	          }
 
-	          data.calls = [{ id: cid, value: { sid: call.sid, step: 4 + progress } }];
+	          data.calls = [{ id: cid, value: { step: 4 + progress, seq: call.seq + 2 } }];
 
-	          req.db.add(data, function (error) {
+	          req.db.patch(data, function (error) {
 	            if (error) {
 	              return next(error);
 	            }
 
 	            res.send(twiml.toString());
+	            if (pusher) {
+	              pusher.trigger("callprogress-" + call.cpid, "update", { "step": 4 + progress, seq: call.seq + 2 });
+	            }
 	          });
 	        });
 	      });
@@ -1443,10 +1491,16 @@ module.exports =
 /* 23 */
 /***/ function(module, exports) {
 
-	module.exports = require("jsonwebtoken");
+	module.exports = require("pusher");
 
 /***/ },
 /* 24 */
+/***/ function(module, exports) {
+
+	module.exports = require("jsonwebtoken");
+
+/***/ },
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1492,12 +1546,12 @@ module.exports =
 	module.exports = mocks;
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var fs = __webpack_require__(26);
+	var fs = __webpack_require__(27);
 
 	function JsonFileElementalDB(filePath, schema, seed) {
 	    schema = schema || {};
@@ -1511,7 +1565,7 @@ module.exports =
 	        Object.keys(seed).forEach(function (key) {
 	            return db[key] = db[key] || seed[key];
 	        });
-	    } finally {
+	    } catch (error) {} finally {
 	        writeToDisk(db);
 	    }
 
@@ -1566,6 +1620,18 @@ module.exports =
 	        callback();
 	    };
 
+	    this.patch = function (data, callback) {
+	        data = data || {};
+
+	        var db = readFromDisk();
+
+	        doPatch(db, data, schema);
+
+	        writeToDisk(db);
+
+	        callback();
+	    };
+
 	    this.mutate = function (changes, callback) {
 	        changes = changes || {};
 
@@ -1573,6 +1639,10 @@ module.exports =
 
 	        if (changes.update) {
 	            doUpdate(db, changes.update, schema);
+	        }
+
+	        if (changes.patch) {
+	            doPatch(db, changes.patch, schema);
 	        }
 
 	        if (changes.remove) {
@@ -1690,6 +1760,20 @@ module.exports =
 	        });
 	    };
 
+	    this.patch = function (data, callback) {
+	        data = data || {};
+
+	        this.get(function (error, db) {
+	            if (error) {
+	                return callback(error);
+	            }
+
+	            doPatch(db, data, schema);
+
+	            storage.set(db, callback);
+	        });
+	    };
+
 	    this.mutate = function (changes, callback) {
 	        changes = changes || {};
 
@@ -1700,6 +1784,10 @@ module.exports =
 
 	            if (changes.update) {
 	                doUpdate(db, changes.update, schema);
+	            }
+
+	            if (changes.patch) {
+	                doPatch(db, changes.patch, schema);
 	            }
 
 	            if (changes.remove) {
@@ -1722,27 +1810,27 @@ module.exports =
 
 	    try {
 	        for (var _iterator = Object.keys(data)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	            var key = _step.value;
+	            var collection = _step.value;
 
-	            var type = schema[key] && schema[key].type || "array";
+	            var type = schema[collection] && schema[collection].type || "array";
 
 	            switch (type) {
 	                case "map":
-	                    db[key] = db[key] || {};
-	                    data[key].forEach(function (element) {
-	                        return db[key][element.id] = element.value;
+	                    db[collection] = db[collection] || {};
+	                    data[collection].forEach(function (element) {
+	                        return db[collection][element.id] = element.value;
 	                    });
 	                    break;
 
 	                case "array":
-	                    db[key] = db[key] || [];
-	                    data[key].forEach(function (element) {
-	                        return db[key].push(element);
+	                    db[collection] = db[collection] || [];
+	                    data[collection].forEach(function (element) {
+	                        return db[collection].push(element);
 	                    });
 	                    break;
 
 	                case "singleton":
-	                    db[key] = data[key];
+	                    db[collection] = data[collection];
 	                    break;
 
 	                default:
@@ -1772,31 +1860,31 @@ module.exports =
 
 	    try {
 	        for (var _iterator2 = Object.keys(data)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var key = _step2.value;
+	            var collection = _step2.value;
 
-	            var type = schema[key] && schema[key].type || "array";
+	            var type = schema[collection] && schema[collection].type || "array";
 
 	            switch (type) {
 	                case "map":
-	                    db[key] = db[key] || {};
-	                    data[key].forEach(function (element) {
-	                        return delete db[key][element.id];
+	                    db[collection] = db[collection] || {};
+	                    data[collection].forEach(function (element) {
+	                        return delete db[collection][element.id];
 	                    });
 	                    break;
 
 	                case "array":
-	                    db[key] = db[key] || [];
-	                    data[key].forEach(function (element) {
-	                        var index = db[key].indexOf(element);
+	                    db[collection] = db[collection] || [];
+	                    data[collection].forEach(function (element) {
+	                        var index = db[collection].indexOf(element);
 
 	                        if (index > -1) {
-	                            db[key].splice(index, 1);
+	                            db[collection].splice(index, 1);
 	                        }
 	                    });
 	                    break;
 
 	                case "singleton":
-	                    delete db[key];
+	                    delete db[collection];
 	                    break;
 
 	                default:
@@ -1826,15 +1914,15 @@ module.exports =
 
 	    try {
 	        for (var _iterator3 = Object.keys(data)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	            var key = _step3.value;
+	            var collection = _step3.value;
 
-	            var type = schema[key] && schema[key].type || "array";
+	            var type = schema[collection] && schema[collection].type || "array";
 
 	            switch (type) {
 	                case "map":
-	                    db[key] = db[key] || {};
-	                    data[key].forEach(function (element) {
-	                        return db[key][element.id] = element.value;
+	                    db[collection] = db[collection] || {};
+	                    data[collection].forEach(function (element) {
+	                        return db[collection][element.id] = element.value;
 	                    });
 	                    break;
 
@@ -1843,7 +1931,7 @@ module.exports =
 	                    break;
 
 	                case "singleton":
-	                    db[key] = data[key];
+	                    db[collection] = data[collection];
 	                    break;
 
 	                default:
@@ -1866,19 +1954,73 @@ module.exports =
 	    }
 	}
 
+	function doPatch(db, data, schema) {
+	    var _iteratorNormalCompletion4 = true;
+	    var _didIteratorError4 = false;
+	    var _iteratorError4 = undefined;
+
+	    try {
+	        for (var _iterator4 = Object.keys(data)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	            var collection = _step4.value;
+
+	            var type = schema[collection] && schema[collection].type || "array";
+
+	            switch (type) {
+	                case "map":
+	                    db[collection] = db[collection] || {};
+
+	                    data[collection].forEach(function (element) {
+	                        var existing = db[collection][element.id];
+
+	                        Object.keys(element.value).forEach(function (key) {
+	                            return existing[key] = element.value[key];
+	                        });
+	                    });
+	                    break;
+
+	                case "array":
+	                    throw new Error("Performing a patch on an array collection is not supported.");
+	                    break;
+
+	                case "singleton":
+	                    Object.keys(data[collection]).forEach(function (key) {
+	                        return db[collection][key] = data[collection][key];
+	                    });
+	                    break;
+
+	                default:
+	                    break;
+	            }
+	        }
+	    } catch (err) {
+	        _didIteratorError4 = true;
+	        _iteratorError4 = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+	                _iterator4.return();
+	            }
+	        } finally {
+	            if (_didIteratorError4) {
+	                throw _iteratorError4;
+	            }
+	        }
+	    }
+	}
+
 	module.exports = {
 	    JsonFileElementalDB: JsonFileElementalDB,
 	    WebtaskStorageElementalDB: WebtaskStorageElementalDB
 	};
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = require("fs");
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -1887,8 +2029,8 @@ module.exports =
 	var request = __webpack_require__(9);
 	var Express = __webpack_require__(11);
 
-	var jwt = __webpack_require__(23);
-	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(28) : __webpack_require__(29);
+	var jwt = __webpack_require__(24);
+	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(29) : __webpack_require__(30);
 
 	module.exports = function (files) {
 	    var hooks = Express.Router();
@@ -2062,19 +2204,19 @@ module.exports =
 	}
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0");
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0@2.1.0");
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -2108,15 +2250,31 @@ module.exports =
 				"type": "password"
 			},
 			"TWILIO_ACCOUNT_SID": {
-				"description": "The Twilio account identifier.",
+				"description": "Your Twilio account identifier.",
 				"type": "password"
 			},
 			"TWILIO_AUTH_TOKEN": {
-				"description": "The Twilio authentication token.",
+				"description": "Your Twilio authentication token.",
 				"type": "password"
 			},
 			"TWILIO_PHONE_NUMBER": {
 				"description": "The Twilio number to use for outgoing calls.",
+				"type": "text"
+			},
+			"PUSHER_APPID": {
+				"description": "The Pusher application identifier.",
+				"type": "text"
+			},
+			"PUSHER_CLUSTER": {
+				"description": "Your Pusher account cluster.",
+				"type": "text"
+			},
+			"PUSHER_KEY": {
+				"description": "Your Pusher account key.",
+				"type": "text"
+			},
+			"PUSHER_SECRET": {
+				"description": "Your Pusher account secret.",
 				"type": "text"
 			}
 		}

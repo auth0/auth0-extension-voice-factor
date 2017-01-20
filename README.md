@@ -32,11 +32,15 @@ Then create a `dev-local-config.json` file under `./src/runtimes/` containing th
     "ENCRYPTION_KEY": "[base64 encoded encryption key (AES 128)]",
     "TWILIO_ACCOUNT_SID": "[Twilio account SID]",
     "TWILIO_AUTH_TOKEN": "[Twilio authentication token]",
-    "TWILIO_PHONE_NUMBER": "[Twilio number used for outgoing calls]"
+    "TWILIO_PHONE_NUMBER": "[Twilio number used for outgoing calls]",
+    "PUSHER_APPID": "[Pusher application identifier]",
+    "PUSHER_CLUSTER": "[Pusher cluster]",
+    "PUSHER_KEY": "[Pusher key]",
+    "PUSHER_SECRET": "[Pusher secret]"
 }
 ```
 
-The Twilio related settings are only required in order to do the authentication step through a phone.
+The Twilio related settings are only required in order to do the authentication step through a phone. In addition, the Pusher settings are only used when doing authentication through a phone, however, they are not mandatory given they are used to provide real-time update on the progress of the call which can fallback to a less real-time client-side polling technique if Pusher settings are not available.
 
 To run the extension locally:
 

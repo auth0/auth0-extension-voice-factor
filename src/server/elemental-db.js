@@ -12,7 +12,10 @@ function JsonFileElementalDB(filePath, schema, seed) {
         db = readFromDisk();
 
         Object.keys(seed).forEach((key) => db[key] = db[key] || seed[key]);
-    } finally {
+    } catch (error) {
+
+    }
+    finally {
         writeToDisk(db);
     }
 
@@ -67,6 +70,18 @@ function JsonFileElementalDB(filePath, schema, seed) {
         callback();
     };
 
+    this.patch = function (data, callback) {
+        data = data || {};
+
+        var db = readFromDisk();
+
+        doPatch(db, data, schema);
+
+        writeToDisk(db);
+
+        callback();
+    };
+
     this.mutate = function (changes, callback) {
         changes = changes || {};
 
@@ -74,6 +89,10 @@ function JsonFileElementalDB(filePath, schema, seed) {
 
         if (changes.update) {
             doUpdate(db, changes.update, schema);
+        }
+
+        if (changes.patch) {
+            doPatch(db, changes.patch, schema);
         }
 
         if (changes.remove) {
@@ -179,6 +198,18 @@ function WebtaskStorageElementalDB(storage, schema, seed) {
         });
     };
 
+    this.patch = function (data, callback) {
+        data = data || {};
+
+        this.get(function (error, db) {
+            if (error) { return callback(error); }
+
+            doPatch(db, data, schema);
+
+            storage.set(db, callback);
+        });
+    };
+
     this.mutate = function (changes, callback) {
         changes = changes || {};
 
@@ -187,6 +218,10 @@ function WebtaskStorageElementalDB(storage, schema, seed) {
 
             if (changes.update) {
                 doUpdate(db, changes.update, schema);
+            }
+
+            if (changes.patch) {
+                doPatch(db, changes.patch, schema);
             }
 
             if (changes.remove) {
@@ -203,22 +238,22 @@ function WebtaskStorageElementalDB(storage, schema, seed) {
 }
 
 function doAdd(db, data, schema) {
-    for (var key of Object.keys(data)) {
-        var type = (schema[key] && schema[key].type) || "array";
+    for (var collection of Object.keys(data)) {
+        var type = (schema[collection] && schema[collection].type) || "array";
 
         switch (type) {
             case "map":
-                db[key] = db[key] || {};
-                data[key].forEach((element) => db[key][element.id] = element.value);
+                db[collection] = db[collection] || {};
+                data[collection].forEach((element) => db[collection][element.id] = element.value);
                 break;
 
             case "array":
-                db[key] = db[key] || [];
-                data[key].forEach((element) => db[key].push(element));
+                db[collection] = db[collection] || [];
+                data[collection].forEach((element) => db[collection].push(element));
                 break;
 
             case "singleton":
-                db[key] = data[key];
+                db[collection] = data[collection];
                 break;
 
             default:
@@ -228,28 +263,28 @@ function doAdd(db, data, schema) {
 }
 
 function doRemove(db, data, schema) {
-    for (var key of Object.keys(data)) {
-        var type = (schema[key] && schema[key].type) || "array";
+    for (var collection of Object.keys(data)) {
+        var type = (schema[collection] && schema[collection].type) || "array";
 
         switch (type) {
             case "map":
-                db[key] = db[key] || {};
-                data[key].forEach((element) => delete db[key][element.id]);
+                db[collection] = db[collection] || {};
+                data[collection].forEach((element) => delete db[collection][element.id]);
                 break;
 
             case "array":
-                db[key] = db[key] || [];
-                data[key].forEach((element) => {
-                    var index = db[key].indexOf(element);
+                db[collection] = db[collection] || [];
+                data[collection].forEach((element) => {
+                    var index = db[collection].indexOf(element);
 
                     if (index > -1) {
-                        db[key].splice(index, 1);
+                        db[collection].splice(index, 1);
                     }
                 });
                 break;
 
             case "singleton":
-                delete db[key];
+                delete db[collection];
                 break;
 
             default:
@@ -259,13 +294,13 @@ function doRemove(db, data, schema) {
 }
 
 function doUpdate(db, data, schema) {
-    for (var key of Object.keys(data)) {
-        var type = (schema[key] && schema[key].type) || "array";
+    for (var collection of Object.keys(data)) {
+        var type = (schema[collection] && schema[collection].type) || "array";
 
         switch (type) {
             case "map":
-                db[key] = db[key] || {};
-                data[key].forEach((element) => db[key][element.id] = element.value);
+                db[collection] = db[collection] || {};
+                data[collection].forEach((element) => db[collection][element.id] = element.value);
                 break;
 
             case "array":
@@ -273,7 +308,36 @@ function doUpdate(db, data, schema) {
                 break;
 
             case "singleton":
-                db[key] = data[key];
+                db[collection] = data[collection];
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+
+function doPatch(db, data, schema) {
+    for (var collection of Object.keys(data)) {
+        var type = (schema[collection] && schema[collection].type) || "array";
+
+        switch (type) {
+            case "map":
+                db[collection] = db[collection] || {};
+
+                data[collection].forEach((element) => {
+                    var existing = db[collection][element.id];
+
+                    Object.keys(element.value).forEach((key) => existing[key] = element.value[key]);
+                });
+                break;
+
+            case "array":
+                throw new Error("Performing a patch on an array collection is not supported.");
+                break;
+
+            case "singleton":
+                Object.keys(data[collection]).forEach((key) => db[collection][key] = data[collection][key]);
                 break;
 
             default:

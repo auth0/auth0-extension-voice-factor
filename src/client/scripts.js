@@ -36,6 +36,15 @@
         SUCCESS: "SUC"
     };
 
+    var pusher = null;
+
+    if ($("body").data("pusher-enabled")) {
+        pusher = new Pusher($("body").data("pusher-key"), {
+            cluster: $("body").data("pusher-cluster"),
+            encrypted: true
+        });
+    }
+
     function record(callback) {
         var constraints = { audio: true };
 
@@ -242,6 +251,7 @@
             return {
                 alert: null,
                 progress: {
+                    seq: -1,
                     step: -1,
                     checker: null
                 }
@@ -250,43 +260,67 @@
         mounted: function () {
             var vm = this;
 
-            vm.progress.step = 0;
+            var cpid = Helpers.encodeBase64Url(Helpers.getRandomBytes(8));
 
-            function checkCallProgress(cpid) {
+            function startCall() {
                 $.ajax({
-                    url: './api/phone/call-progress/' + cpid,
+                    url: './api/phone/start-call',
                     headers: {
                         "X-CSRF-Token": $("#csrf_token").val()
                     },
-                    type: 'GET',
-                    success: function (progress) {
-                        vm.progress.step = progress.step;
-
-                        if (progress.step >= 5) {
-                            clearInterval(vm.progress.checker);
-                            $("#continue").submit();
-                        }
-                    },
-                    error: function (error) { }
+                    data: { cpid: cpid },
+                    type: 'POST',
+                    success: function () { },
+                    error: function (error) {
+                        console.log(error);
+                        vm.alert = "An unknown error occurred.";
+                    }
                 });
             }
 
-            $.ajax({
-                url: './api/phone/start-call',
-                headers: {
-                    "X-CSRF-Token": $("#csrf_token").val()
-                },
-                type: 'POST',
-                success: function (call) {
-                    checkCallProgress(call.cpid);
+            function handleCallProgressUpdate(progress) {
+                console.log(progress);
 
-                    vm.progress.checker = setInterval(function () { checkCallProgress(call.cpid); }, 750);
-                },
-                error: function (error) {
-                    console.log(error);
-                    vm.alert = "An unknown error occurred.";
+                if (progress.seq > vm.progress.seq) {
+                    vm.progress.seq = progress.seq;
+                    vm.progress.step = progress.step;
+
+                    if (progress.step >= 5) {
+                        if (vm.progress.checker) {
+                            clearInterval(vm.progress.checker);
+                        }
+
+                        $("#continue").submit();
+                    }
                 }
-            });
+            }
+
+            if (pusher) {
+                var channel = pusher.subscribe("callprogress-" + cpid);
+
+                channel.bind("update", handleCallProgressUpdate);
+
+                channel.bind('pusher:subscription_succeeded', startCall);
+
+                channel.bind('pusher:subscription_error', function (status) {
+                });
+            } else {
+                function checkCallProgress() {
+                    $.ajax({
+                        url: './api/phone/call-progress/' + cpid,
+                        headers: {
+                            "X-CSRF-Token": $("#csrf_token").val()
+                        },
+                        type: 'GET',
+                        success: handleCallProgressUpdate,
+                        error: function (error) { }
+                    });
+                }
+
+                startCall();
+
+                vm.progress.checker = setInterval(checkCallProgress, 1000);
+            }
         },
         methods: {
             cancel: function (event) {
