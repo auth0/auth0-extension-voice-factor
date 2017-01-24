@@ -4,13 +4,13 @@ This extension illustrates how it's possible to use voice authentication as an a
 
 ## How it works
 
-1. The user initiates the authentication process by providing the first authentication factor (usually a username and password);
-2. After successfully completing the first step, a rule, redirects the user to a web application running as a webtask where he'll be able to perform voice authentication;
-3. For first-time users they will need to complete a voice enrollment procedure before being allowed to authenticate using their voice;
-4. For recurring users, they just need to complete the authenticate process using their voice;
+1. The user initiates the authentication process by providing the first authentication factor (usually a username and password).
+2. After successfully completing the first step, a rule, redirects the user to a web application running as a webtask where he'll be able to perform voice authentication.
+3. For first-time users they will need to complete a voice enrollment procedure before being allowed to authenticate using their voice. This can be accomplished through the web application and a suitable browser with access to a audio recording device.
+4. For recurring users, they just need to complete the authenticate process using their voice. This can either be accomplished also through the web browser or if Twilio integration is enabled through a phone call received by the end-user. In order for phone call authentication to be used, the Auth0 user profile must contain the target phone number available as one of the following profile properties (`user.phone_number` or `user.user_metadata.phone_number`).
 5. After completing voice authentication the user is redirected back to Auth0 which completes the process and performs the final redirect to the application that started the authentication process.
 
-The voice enrollment and authentication is performed by integrating with VoiceIt API. All the integration work is done by the extension itself so the only thing you need to provide is your VoiceIt developer identifier. For the purposes of this extension each user is uniquely identified by their assigned Auth0 user identifier and the provision of users in the VoiceIt API is also done automatically based on that unique identifier.
+The voice enrollment and authentication is performed by integrating with VoiceIt API. All the integration work is done by the extension itself so the only thing you need to provide is your VoiceIt developer identifier. For the purpose of this extension each user is uniquely identified by their assigned Auth0 user identifier and the provision of users in the VoiceIt API is also done automatically based on that unique identifier.
 
 In order to comply with the VoiceIt API requirements each user will have an associated secret; this secret is generated automatically and stored encrypted within the Auth0 user profile.
 
@@ -63,6 +63,13 @@ Click **CREATE EXTENSION** and install the extension from this repository. When 
 
 * *VIT_DEVELOPER_ID* - The developer ID assigned when you registered a VoiceIt account.
 * *ENCRYPTION_KEY* - An AES 128 encryption key (encoded in base64) that will be used to encrypt sensitive information when in transit or when stored as part of the Auth0 user profile.
+* *TWILIO_ACCOUNT_SID* - (*Required for authentication by phone*) The acount identifier assigned when you registered a Twilio account.
+* *TWILIO_AUTH_TOKEN* - (*Required for authentication by phone*) The authentication token associated with your Twilio account.
+* *TWILIO_PHONE_NUMBER* - (*Required for authentication by phone*) The Twilio phone number used to perform the calls.
+* *PUSHER_APPID* - (*Optional*) The Pusher application identifier.
+* *PUSHER_CLUSTER* - (*Optional*) The Pusher cluster.
+* *PUSHER_KEY* - (*Optional*) The Pusher key assigned to the account.
+* *PUSHER_SECRET* - (*Optional*) The Pusher secret assigned when you registered a Pusher account.
 
 ### Uninstalling
 
