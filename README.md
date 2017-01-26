@@ -78,3 +78,5 @@ If you uninstall the extension the redirect rule and extension client that were 
 ## Disclaimer
 
 The purpose of this extension is to illustrate how to integrate additional custom authentication steps into the Auth0 authentication pipeline. The provided code should be considered sample code and used only after being thorougly reviewed. In particular, error handling is not meant to be complete and the components of the application that run within the browser depend on resources available in public CDN's.
+
+The extension was only tested against the latest version of Chrome. Having said that, the client-side logic of the extension is fairly simple so it should probably work with most browsers.
