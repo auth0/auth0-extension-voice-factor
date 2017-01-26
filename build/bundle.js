@@ -85,7 +85,7 @@ module.exports =
 		"scripts.js": "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",
 		"styles.css": "H4sIAAAAAAAAC7VVzY7bIBC+R8o7jLTqEct2k27rHCvlPbDBDg0GBLhJWvXdOwH/JM066z3UN2CY72dmcPKja0vtrVZwyOE3lLQ6NlZ3ipFKS20L8JYqZ6jlyu/gz3q1XiWVVh6XGG4oY0I1BaSQ83Y497QkY8x6Bfi11DZCYVyy5S2ku/UqhBrLh4hH5BeWspx93sXzCeqaYkhAOyY0EokxTDgj6aWAUurquLuHzm6BtUyM1Y3lzhFUWB0jjTEBSpA8JJDCeeL8RXLiL4YXoLSKJ6OmsBr5oRFXrLAZ0hDMqDtfQC3OnIX9k2D+gJTS9FNk9MhHircokYpL2fNSnBy4aA6YOU82PaLRTnihkZblknrxM3L1/OwJlaLBgwrrwu0T3ERg9cjJUhMplNoybomlTHSugG0gjTm1KYBkfTkAhrLVdb27Yz5VY+I7XBpNBNp5DSTv9yWv/WCtjZfSfwTS0mnZeX7raD41xxNpzlPfN97IaGvOd6UZ1qMKoYLlk5haSIludvY6G9+v4p8BT1tYiog9V6urr1ka8GfSTTsMu/GuSuH2qzkDmiMYvGRf8mwTuy6Mco/YR4eaQeaAU8eJUAQbNcSSEy+PwpMP3Wn1rw9cWKRtWvVGP3bn48NR19/o9nWxfQsyplm5+RrbOorCMXjD43fxvGb6ablu3rweu5Q0NNyy3Au07Pf7OSE36DNDjz8Lr1vsz/8z9jMjsWy65614GPuRZP+ah5/CevUXn1b/ew8HAAA=",
 		"logo.svg": "H4sIAAAAAAAAC31U246bMBB9br8CsS+tZIyxudjkstpuW7VSVupT1LcoS0hASyECNpeu+u89NiQbtlGDFI5mPHPOXMz49vCrsHZp3eRVObE9ymzrdjpudhsrX03s2fKY1gvPtpr2WKQTOy2Xj0XqPC6Tp01dPZeruEz3FsPjiYgK/CsqRvZlQgTv8nT/qTpM7DcHbQvkcbNdJki9rdMmrXepMZbNxM7adhu77n6/p3tBq3rjcsaYC2n9kfhQ5OXTtYOeUso1Xhu1aOlWe9yCpE0PrZs0jT19/442LXtZ50UR3/B7eXd3N/pjjN5LBUV5e4wZ9dQoKfKts122WfxcFx9ufj7Mvn9eRGrxcdTFsohJJvtY3if8an69UZxYeMTlFxjHrtE0HSd5nUBbUiwbFAw9tpWgTaGkHOgIpGhom0l0vNxnC9uq4QhxxJ2ONxfOIFig3FW6bl4zd9n869mCcJjM7WNR8Q8UfHES9SL1c5OeFqHChNdFtY93eZNjJTBz0+84q9P1xL55JdB5Txmn421VHDdV+VqydykIWwFF2yovWzgjRiURjAbYlpB6RHpUAgoaEk8EwFJSRbRBWQF8xGOBhSBOFJbLsgz1Bpy6ljMhOgu+h5CRwKc849jQOZYxShhhDqO+oyh3PEaFBo1GEelNBsz6yN+DuUhmKr1KFQgakADLdH9G5AoqGOE+DbUOoovwhP4LwaqRZSUGM2Nyzk6D5jq+C+yezBFDw473BkdzeihaB4YGJU4Iu66R01DXqZzAEDoeugCr45s32P4h+qblD1sRRf9phaI+CULdd079HQoQ53oxMwdyDEg0UlClDc7Jo8FcR78h9A1hnSbtgDBL803W4hvk0WAQEOKiWPt81WYTW9AIq2tuCe4GLomMustwXX+/ZpmQGKdUev9YQCJOpCIn51BdfweG6USXLgoxgiCiMsN05hHvB6QIsjsQhLexER+D5rp12E85O4e9YRLdbcMXcvoXoy5XZ9gFAAA=",
-		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVWDQkYdpSm2rPNgtGlmNFkzx4jrAcUwuLR8spnIpEZSTjzX/31H6t2SYxfVB0OW7o7He547PQxi7msmOFkK5kNAfS2kGyuQbeILruFR4w0Nwwn171tk/eMPBK8llcSXq0gL0iUS/o2ZBNdJnjit3wqjuwddtrhTgj/ARIt74O9+8U69X611KajgAZuhS7qQuRSbccZnH2HVIc7Renj1oX/V/zD+2Ps8HlyfX/Qub65/791unHbhAtzmgtvKvHr9i9vPg09XN/2nHR81cIV+Ixlav/PBYDy6vd7p4FM+UjCYCw7nsZ4D18ynZuEO+WN40/ciKhVu/Gh9cd4fj4a98eDypt8bn48+XVZjtpKYm7wcQQZMuhl3SjVtlQtjCnYPK6wWhwfyPg4CkG5SQa9SgTZxJlTB2U85Npk7W6J3gpsnKZ+KxfuVBuWenhW45NiwaA6ysPclUA0X9ilbug4FdXz6+s2xP/GdtkmsjeHrYdLMYGoiWWcvjnBvYDeIqcY6eOM0p1z4vsydA8Zp6JatC3sJOpacfDlas6WnxVBLJFJhu+kcrfOQmy/pQpsswskJGWoqNZmsiD8H/x6dCQvIAxAqgcyxXqF5RHGdKfLb13mnJAHQ1k2byIuk0MIXIel2u8TJHI4zB6eCrHF8ZprQW4Cmpi7ekukxcCnCcIEkq1inud6CD2yZJJSFJYGQ+NeEInpONf4AkXEIZMqmhAttexOULragBMGGExKqC6SlzAK7PA7DNqkMijJSm23Ybc8byNN6pOt6+CtXnn27xU2lkRQ7PezbCtharrarYsJEdBUKatiGw8hbIleDlWvXa6fjxismTHs7grloOBOS6flCdcjfzuXw9c9nzj9Vs02VdxmG6dqeiifkGeJuITU/YzatQdhYZWzsEac4WTCD/2DakxLHszMyeC6YWlDtzz2nVa58rfo5obJsDJVoMazg+1PJyOSLRRQCokYrs/DQDLMEueA+2IJZlL8nvSEoM84J9mpKwW8u21N96GU7bq7hYa5ITS1jqDHIXGZDryxlVDomz6PozzSiW+ZTu7payzMIuPlXxG1M0FyHtnRepZbnmwKWYoOU+8Mbo8Zw2ygQCBUchPn+hDelkURs2jZbUc8XAygRgheKWWpRA+TQluDwGOEoRWQDysJYwhbX0qTqG7XzSgqkqBl8g+QOBx8mtgT3tJoRjvweVxg9Ge9zqshfRsNdmWEemr4mGRkKJ8sRGkXj7BXpNjz7+pWsN5XFik4oG+77Ku1zqAq9fK1ppzIpyUvivENHj/ElDdm0rL+ySwHKEd3JxVKDpjlrlSTAHB4Rk4ZAIeWzmM4A1R/w49GwabG8czsIMEK4RbkabwpIv7mdy8Xb+X1FJlwg/RmPcfIGGslwz8WDUQL2m5/DaigyAZyBCnThnWa3d15Ychqh248XEysEbYb20Zgnz5A4xSZy0MsmteJY5ZJqD6NOEq0i7H0ux+uZ+CFlC9VMIPzcVhnUgCGnC0iNzG2DRTnrTnnnDbZ3mnV26Oht0jV4m6bISf9Eu3iNOzE2Gf33RkgMd0Qx3D8gRtYiO6IklnDIfvJG2tdBZQVpZJxRbG5CgWYVh9SJkFPqCg9iZ6+a9JkJmYlePO0lQtMenUpnwIZPQOGBZxDnrc2q6+CMyjRsXUIcXocdUqeyZrkHX7zIst55ECVvifP8xDqdVGWZQzrmFR7It198wxe5Wo7nJ8WualG2S1MI+7T9sZlJbA7e5bB1Mhx8BjlMqOwSKLkwwcQ3/wMSK+AUJxEAAA=="
+		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVWDQkYdpSm2rPNgtGlmNFkzx4jrAcUwuLR8spnIpEZSTjzX/31H6t2SYxfVB0OW7h4e7547PQxi7msmOFkK5kNAfS2kGyuQbeILruFR4w0Nwwn171tk/eMPBK8llcSXq0gL0iUS/o2ZBNdJnjit3wqjuwddtrhTgj/ARIt74O9+8U69X611CVTwgM3QJV3IXIrNOOOzj7DqEOdoPbz60L/qfxh/7H0eD67PL3qXN9e/9243TrtwAW5jwW1lXr3+xe3nwaerm/7Tjo8auEK/kQyt3/lgMB7dXu908CkfKRjMBYfzWM+Ba+ZTs3CH/DG86XsRlQo3frS+OO+PR8PeeHB50++Nz0efLquYrQRzk6cjyAqTbsadUk1b5cSYhN3DCrPF4YG8j4MApJtk0KtkoE2cCVVw9lNem8ydLdE7qZsnKZ+KxfuVBuWenhV1yWvDojnIwt6XQDVc2Kds6ToU1PHp6zfH/sR32iawNsLXYdLIYGqQrLMXR7g3sBvEUGMdvHGaQy58X+bOAeM0dMvWhb0EHUtOvhyt2dLTYqglEqmw3XSO1jnk5ku60CZDODkhQ02lJpMV8efg36MzYQF5AEIlkDnmKzSPKK4zRX77Ou+UBABt3bSJvEgKLXwRkm63S5zM4ThzcCqVNY7PTBN6C9DU5MVbMj0GLkUYLpBkFes01lvwgS2TgDJYEgiJfw0U0XOq8QeIjEMgUzYlXGjbm6B0sQUlCDackFBdIE1lBuzyOAzbpDIoypXabJfd9rwpeZqPdF0Pf+XKs2+3uKk0kmKnh31bKbaWq+2sGJiIrkJBDdtwGHlL5Gqwcu167XTceMWEaW8jmIuGMyGZni9Uh/ztXA5f/3zm/FM121R5l9UwXdtT8YQ8w7rbkpqfMZvWStiYZWzsEac4WTCC/2DakxLHszMy9VwwtaDan3tOq5z5WvZzQmXRGCrRYljB94eSkckXiygErBqtzMJDI8wC5IL7YBNmq/w94Q1BmXFOsFdTCn5z2p7qQy/bcXMOD3NFamoZQ41B5jIbemUpo9IxeR5Ff6aIbplP7epqLc9UwM2/Im5jgOY6tKXzLLU83ySwhA1S7oc3Ro1w21UgECo4qOb7A96URhKxYdtoRT1eBFAiBC8Us9SiVpBDW4LDY4SjFCsbUBbGEra4lgZV36idV1IgRc3gGyR3OPgwsCW4p9WIcOT3uEL0ZLzPqSJ/GQ13ZYZ5aPqaZGQonCxHaBSNs1ek2/Ds61ey3lQWKzqhbLjvq7TPoSr08rWmncqkJC+J8w4dPcaXNGTTsv7KLgUoR3QnF0sNmuasVZIAc3jEmjQAhZTPYjoDVH/Aj0fDpsXyzu1ggbGEW5Sr8aYo6Te3czl5O7+vyIQLpD/jMU7eQCMZ7rl4MErAfvPzshqKTABnoAJdeKfR7Z0XRXTb3Kk+zMhT9rXENiK5Hy8mVkRaR/tozJNn6FdHq5jUEmtVT6pbjLJJdI6w97mUr0fih5QtVDP58FNdZV9D/TldQGpkbhssylF3yjtvsL3TrLNDg28TtsHbNFTeME+0mte4E2OTtc5ehMRwB4rpmwMwsvbagZJYwiH7yZtwX/eV1aeRgEbtuQkFmhUgUidCTqkrPMSdvWrSdgYyE8x4UkxEqj12lc6PDZ+PwgPPL85bG1XXwfmW6d+6/Dg8DztkUmXNcg++eJFFvfMQS94S5/mJdTqpSjqHdMwrPMxvv/iGr3k1Hc9Pil3VULZTUxwK0vbHZiaxObSXYetkOPj8cpjI2SVuclGDgW/+B0BQA6ljEQAA"
 	};
 
 /***/ },
@@ -410,8 +410,8 @@ module.exports =
 	          "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
 	          "ContentLanguage": req.session.vit.lang
 	        },
-	        // uri: 'https://siv.voiceprintportal.com/sivservice/api/enrollments',
-	        uri: req.absoluteBaseUrl + "/vitmocks/enroll",
+	        uri: 'https://siv.voiceprintportal.com/sivservice/api/enrollments',
+	        // uri: `${req.absoluteBaseUrl}/vitmocks/enroll`,
 	        body: buffer,
 	        method: 'POST'
 	      }, function (error, response, body) {
@@ -449,8 +449,8 @@ module.exports =
 	              "VsitFirstName": "User",
 	              "VsitLastName": req.session.userId
 	            },
-	            // uri: 'https://siv.voiceprintportal.com/sivservice/api/users',
-	            uri: req.absoluteBaseUrl + "/vitmocks/createuser",
+	            uri: 'https://siv.voiceprintportal.com/sivservice/api/users',
+	            // uri: `${req.absoluteBaseUrl}/vitmocks/createuser`,
 	            body: '',
 	            method: 'POST'
 	          }, function (error, response, body) {
@@ -505,8 +505,8 @@ module.exports =
 	            "VsitConfidence": "85",
 	            "ContentLanguage": req.session.vit.lang
 	          },
-	          // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications',
-	          uri: req.absoluteBaseUrl + "/vitmocks/authenticate",
+	          uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications',
+	          // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
 	          body: buffer,
 	          method: 'POST'
 	        }, function (error, response, body) {
@@ -671,7 +671,7 @@ module.exports =
 
 	      twiml.record({
 	        action: req.absoluteBaseUrl + "/api/phone/authentication/verify",
-	        maxLength: "5",
+	        maxLength: "4",
 	        trim: "do-not-trim"
 	      });
 
@@ -685,7 +685,7 @@ module.exports =
 	        if (pusher) {
 	          setTimeout(function () {
 	            return pusher.trigger("callprogress-" + call.cpid, "update", { "step": 3, seq: call.seq + 1 });
-	          }, 1000);
+	          }, 2500);
 	        }
 	      });
 	    });
@@ -723,8 +723,8 @@ module.exports =
 	          "VsitwavURL": recordingURL,
 	          "ContentLanguage": req.session.vit.lang
 	        },
-	        // uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
-	        uri: req.absoluteBaseUrl + "/vitmocks/authenticate",
+	        uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
+	        // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
 	        method: "POST"
 	      };
 
@@ -2275,7 +2275,7 @@ module.exports =
 			},
 			"PUSHER_SECRET": {
 				"description": "Your Pusher account secret.",
-				"type": "text"
+				"type": "password"
 			}
 		}
 	};
