@@ -83,6 +83,7 @@ function voicefactor(user, context, callback) {
 
         // Continue after knowing that metadata has been set
         promise.then(function () {
+            user.user_metadata = user.user_metadata || {};
             var phoneNumber = user.phone_number || user.user_metadata.phone_number;
 
             // Redirect the user to the extension
