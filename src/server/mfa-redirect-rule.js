@@ -5,7 +5,8 @@ function voicefactor(user, context, callback) {
     var config = {
         signingKey: "${SIGNING_KEY_PLACEHOLDER}",
         encryptionKey: "${ENCRYPTION_KEY_PLACEHOLDER}",
-        extensionUrl: "${APP_URL_PLACEHOLDER}"
+        extensionUrl: "${APP_URL_PLACEHOLDER}",
+        canUsePhoneAuthentication: JSON.parse("${CAN_USE_PHONE_AUTH_PLACEHOLDER}")
     };
 
     function encrypt(data) {
@@ -59,6 +60,8 @@ function voicefactor(user, context, callback) {
                 return callback(null, user, context);
             }
         } catch (error) {
+            console.log(error);
+
             return callback(new UnauthorizedError("Unexpected failure."));
         }
     } else {
@@ -80,10 +83,14 @@ function voicefactor(user, context, callback) {
 
         // Continue after knowing that metadata has been set
         promise.then(function () {
+            user.user_metadata = user.user_metadata || {};
+            var phoneNumber = user.phone_number || user.user_metadata.phone_number;
+
             // Redirect the user to the extension
             var claims = {
                 sub: user.user_id,
                 name: user.name,
+                phone_number: phoneNumber,
                 jti: crypto.randomBytes(16).toString("hex"),
                 vit_id: user.app_metadata.vit_enrollment.id,
                 vit_secret: user.app_metadata.vit_enrollment.secret,
@@ -96,7 +103,12 @@ function voicefactor(user, context, callback) {
             var redirectUrl = config.extensionUrl;
 
             redirectUrl += "?token=" + token;
-            redirectUrl += user.app_metadata.vit_enrollment.completed ? "#/authentication" : "#/enrollment";
+
+            if (user.app_metadata.vit_enrollment.completed) {
+                redirectUrl += phoneNumber && config.canUsePhoneAuthentication ? "#/phone/authentication" : "#/web/authentication";
+            } else {
+                redirectUrl += "#/enrollment";
+            }
 
             context.redirect = { url: redirectUrl };
 

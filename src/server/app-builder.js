@@ -3,13 +3,16 @@
 const url = require("url");
 const crypto = require("crypto");
 
-const ejs = require("ejs");
+const _ = require("lodash");
+const Handlebars = require("handlebars");
 const request = require("request");
 const base64url = require("base64-url");
 const Express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Dicer = require("dicer");
+const twilio = require("twilio");
+const Pusher = require('pusher');
 
 const jwt = require("jsonwebtoken");
 
@@ -18,103 +21,31 @@ const elemental = require("./elemental-db.js");
 const hooks = require("./installation-hooks.js");
 const metadata = require("./../../webtask.json");
 
-module.exports = function (files) {
-  function decrypt(data, key) {
-    if (!data || data.indexOf(":") === -1) {
-      return "";
-    }
+Handlebars.registerHelper("template-start", function (id) {
+  return new Handlebars.SafeString(`<script type="text/x-template" id="${id}">`);
+});
 
-    var parts = data.split(":");
+Handlebars.registerHelper("template-end", function () {
+  return new Handlebars.SafeString('</script>');
+});
 
-    var key = new Buffer(key, "base64");
-    var iv = new Buffer(parts[0], "base64");
-
-    var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
-
-    return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+function decrypt(data, key) {
+  if (!data || data.indexOf(":") === -1) {
+    return "";
   }
 
-  var config = {};
-  config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+  var parts = data.split(":");
 
-  let app = new Express();
+  var key = new Buffer(key, "base64");
+  var iv = new Buffer(parts[0], "base64");
 
-  app.use(cookieParser());
-  app.use(bodyParser.urlencoded({ extended: true }));
+  var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
 
-  app.get("/debug", (req, res) => res.json({}));
+  return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+}
 
-  app.post("/decrypt", (req, res) => {
-    var plaintext, ciphertext, key;
-
-    key = req.body.key;
-    ciphertext = req.body.ciphertext;
-    plaintext = decrypt(ciphertext, key);
-
-    res.json({ plaintext });
-  });
-
-  app.get("/ping", (req, res) => res.send("PONG"));
-
-  app.get("/meta", (req, res) => {
-    res.status(200).send(metadata);
-  });
-
-  app.use("/", (req, res, next) => {
-    // Ensure that database is available at the request level
-    var schema = {
-      config: { type: "singleton" },
-      tokens: { type: "array" },
-      sessions: { type: "map" },
-    };
-
-    var seed = { config: config, tokens: [], sessions: {} };
-
-    if (req.webtaskContext.storage) {
-      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
-    } else {
-      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
-    }
-
-    // Provide absolute URL and absolute base URL
-    var xfproto = req.get('x-forwarded-proto');
-    var xfport = req.get('x-forwarded-port');
-
-    req.absoluteUrl = [
-      xfproto ? xfproto.split(',')[0].trim() : 'https',
-      '://',
-      req.get('Host'),
-      //xfport ? ':' + xfport.split(',')[0].trim() : '',
-      url.parse(req.originalUrl).pathname
-    ].join('');
-
-    req.absoluteBaseUrl = [
-      xfproto ? xfproto.split(',')[0].trim() : 'https',
-      '://',
-      req.get('Host'),
-      //xfport ? ':' + xfport.split(',')[0].trim() : '',
-      url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")
-    ].join('');
-
-    // Make the global configuration available at the request level
-    req.db.get(function (error, data) {
-      if (error) { return next(error); }
-
-      req.config = data.config;
-
-      next();
-    });
-  });
-
-  // Make the extension installation hooks available without session requirements
-  app.use("/.extensions", hooks(files));
-
-  // Make the mocks available without session requirements
-  app.use("/vitmocks", mocks);
-
-  // Ensure that the current request is either starting a session
-  // or that the request is associated with a valid session
-  app.use("/", (req, res, next) => {
+const checks = {
+  session: function (req, res, next) {
     req.db.get(function (error, data) {
       if (error) { return next(error); }
 
@@ -145,6 +76,7 @@ module.exports = function (files) {
         var session = {
           csrf: base64url.escape(crypto.randomBytes(16).toString("base64")),
           userId: payload.sub,
+          phoneNumber: payload.phone_number,
           vit: {
             id: payload.vit_id,
             secret: decrypt(payload.vit_secret, req.webtaskContext.data.ENCRYPTION_KEY),
@@ -160,31 +92,151 @@ module.exports = function (files) {
 
           res.redirect(url.parse(req.originalUrl).pathname);
         });
-
-        return;
-      }
-
-      var sid = req.cookies.vf_sid;
-
-      req.session = sid ? data.sessions[sid] : null;
-
-      if (!req.session) {
-        res.sendStatus(403);
       } else {
-        next();
+        var sid = req.cookies.vf_sid;
+
+        req.session = sid ? data.sessions[sid] : null;
+
+        if (!req.session) {
+          res.sendStatus(403);
+        } else {
+          req.session.id = sid;
+
+          next();
+        }
       }
+    });
+  },
+  csrf: (req, res, next) => {
+    var csrf = req.get("X-CSRF-Token") || req.body.csrf_token;
+
+    if (csrf !== req.session.csrf) {
+      res.sendStatus(403);
+    } else {
+      next();
+    }
+  }
+};
+
+var pusher = null;
+
+module.exports = function (files) {
+  let app = new Express();
+
+  app.use(cookieParser());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.get("/debug", (req, res) => res.json({}));
+
+  app.get("/ping", (req, res) => res.send("PONG"));
+
+  app.post("/decrypt", (req, res) => {
+    var plaintext, ciphertext, key;
+
+    key = req.body.key;
+    ciphertext = req.body.ciphertext;
+    plaintext = decrypt(ciphertext, key);
+
+    res.json({ plaintext });
+  });
+
+  app.get("/meta", (req, res) => {
+    res.status(200).send(metadata);
+  });
+
+  app.use("/", (req, res, next) => {
+    // Ensure that database is available at the request level
+    var schema = {
+      config: { type: "singleton" },
+      tokens: { type: "array" },
+      sessions: { type: "map" },
+      calls: { type: "map" },
+      calls_progress: { type: "map" }
+    };
+
+    var config = {};
+    config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+
+    var seed = { config: config, tokens: [], sessions: {}, calls: {} };
+
+    if (req.webtaskContext.storage) {
+      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
+    } else {
+      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
+    }
+
+    // Provide base path, absolute URL and absolute base URL
+    function escape(s) {
+      return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    };
+
+    req.basePath = url.parse(req.originalUrl).pathname.replace(new RegExp(escape(url.parse(req.url).pathname) + "$"), "");
+
+    var xfproto = req.get('x-forwarded-proto');
+    var xfport = req.get('x-forwarded-port');
+
+    req.absoluteUrl = [
+      xfproto ? xfproto.split(',')[0].trim() : 'https',
+      '://',
+      req.get('Host'),
+      //xfport ? ':' + xfport.split(',')[0].trim() : '',
+      url.parse(req.originalUrl).pathname
+    ].join('');
+
+    req.absoluteBaseUrl = [
+      xfproto ? xfproto.split(',')[0].trim() : 'https',
+      '://',
+      req.get('Host'),
+      //xfport ? ':' + xfport.split(',')[0].trim() : '',
+      req.basePath
+    ].join('');
+
+    // Initialize Pusher instance if applicable
+    if (!pusher && req.webtaskContext.data.PUSHER_APPID && req.webtaskContext.data.PUSHER_CLUSTER && req.webtaskContext.data.PUSHER_KEY && req.webtaskContext.data.PUSHER_SECRET) {
+      pusher = new Pusher({
+        appId: req.webtaskContext.data.PUSHER_APPID,
+        cluster: req.webtaskContext.data.PUSHER_CLUSTER,
+        key: req.webtaskContext.data.PUSHER_KEY,
+        secret: req.webtaskContext.data.PUSHER_SECRET,
+        encrypted: true
+      });
+    }
+
+    // Make the global configuration available at the request level
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      req.config = data.config;
+
+      next();
     });
   });
 
+  // Make the extension installation hooks available without
+  // security checks as they do their own authentication
+  app.use("/.extensions", hooks(files));
+
+  // Make the mocks available publicly
+  app.use("/vitmocks", mocks);
+
   // Process the application root
-  app.get("/", (req, res) => {
+  app.get("/", checks.session, (req, res) => {
     if (!req.originalUrl.endsWith("/")) {
       res.redirect(req.originalUrl + "/");
 
       return;
     }
 
-    res.send(ejs.render(files["index.html"], req.session));
+    var data = {
+      csrf: req.session.csrf,
+      pusher: {
+        enabled: !!pusher,
+        key: req.webtaskContext.data.PUSHER_KEY,
+        cluster: req.webtaskContext.data.PUSHER_CLUSTER
+      }
+    };
+
+    res.send(Handlebars.compile(files["index.html"])(data));
   });
 
   // Process requests to application resources
@@ -202,59 +254,52 @@ module.exports = function (files) {
   });
 
   // Process the request to continue the transaction at Auth0
-  app.post("/continue", (req, res, next) => {
-    var csrf = req.body.csrf_token;
+  app.post("/continue", checks.session, checks.csrf, (req, res, next) => {
+    var domain = req.webtaskContext.data.AUTH0_DOMAIN;
 
-    if (csrf !== req.session.csrf) {
-      res.sendStatus(403);
-    } else {
-      var domain = req.webtaskContext.data.AUTH0_DOMAIN;
+    // Get the session identifier and state from the cookies
+    var sid = req.cookies.vf_sid;
+    var state = req.cookies.vf_state;
 
-      // Get the session identifier and state from the cookies
-      var sid = req.cookies.vf_sid;
-      var state = req.cookies.vf_state;
+    // Create a token based on current session state
+    var claims = {
+      sub: req.session.userId,
+      nonce: state,
+      vit_authenticated: req.session.vit.authenticated
+    };
 
-      // Create a token based on current session state
-      var claims = {
-        sub: req.session.userId,
-        nonce: state,
-        vit_authenticated: req.session.vit.authenticated
-      };
+    var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
 
-      var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
+    // Clear cookies
+    var now = new Date();
 
-      // Clear cookies
-      var now = new Date();
+    res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
+    res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
 
-      res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
-      res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
+    // Remove session, any associated information and redirect
+    var data = { sessions: [{ id: sid }] };
 
-      // Remove session and redirect
-      req.db.remove({ sessions: [{ id: sid }] }, (error) => {
-        if (error) { return next(error); }
-
-        // Redirect to Auth0 with JWT and state
-        res.redirect(`https://${domain}/continue?state=${state}&token=${token}`);
-      });
+    if (req.session.cid) {
+      data.calls = [{ id: req.session.cid }]
     }
-  });
 
-  // Require a CSRF token for all internal API requests
-  app.use("/api/*", (req, res, next) => {
-    var csrf = req.get("X-CSRF-Token");
-
-    if (csrf !== req.session.csrf) {
-      res.sendStatus(403);
-    } else {
-      next();
+    if (req.session.pcid) {
+      data.calls_progress = [{ id: req.session.pcid }]
     }
+
+    req.db.remove(data, (error) => {
+      if (error) { return next(error); }
+
+      // Redirect to Auth0 with JWT and state
+      res.redirect(`https://${domain}/continue?state=${state}&token=${token}`);
+    });
   });
 
   // Create an helper regular expression to process multipart requests
   const RE_BOUNDARY = /^multipart\/.+?(?:; boundary=(?:(?:"(.+)")|(?:([^\s]+))))$/i;
 
   // Process an enrollment request
-  app.post("/api/enroll", (req, res, next) => {
+  app.post("/api/web/enroll", checks.session, checks.csrf, (req, res, next) => {
     function enroll(buffer) {
       request({
         headers: {
@@ -334,7 +379,7 @@ module.exports = function (files) {
   });
 
   // Process an authentication request
-  app.post("/api/authenticate", (req, res, next) => {
+  app.post("/api/web/authenticate", checks.session, checks.csrf, (req, res, next) => {
     var parts = RE_BOUNDARY.exec(req.get("Content-Type"));
 
     var dicer = new Dicer({ boundary: parts[1] || parts[2] });
@@ -390,10 +435,231 @@ module.exports = function (files) {
     req.pipe(dicer);
   });
 
+  app.get("/api/phone/call-progress/:cpid", checks.session, checks.csrf, (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      var cpid = req.params.cpid;
+
+      var cid = data.calls_progress[cpid];
+
+      if (!cid) {
+        res.sendStatus(400);
+
+        return;
+      }
+
+      res.json({ step: data.calls[cid].step, seq: data.calls[cid].seq });
+    });
+  });
+
+  app.post("/api/phone/start-call", checks.session, checks.csrf, (req, res, next) => {
+    var cid = base64url.escape(crypto.randomBytes(32).toString("base64"));
+    var cpid = req.body.cpid;
+
+    var data = {
+      calls: [{ id: cid, value: { sid: req.session.id, cpid: cpid, step: 0, seq: 1 } }],
+      calls_progress: [{ id: cpid, value: cid }]
+    };
+
+    if (pusher) { pusher.trigger(`callprogress-${cpid}`, "update", { "step": 0, seq: 1 }); }
+
+    req.db.add(data, (error) => {
+      if (error) { return next(error); }
+
+      const accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+      const authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+
+      var client = twilio(accountSid, authToken);
+
+      client.calls.create({
+        url: `${req.absoluteBaseUrl}/api/phone/receive-call/${cid}`,
+        to: req.session.phoneNumber,
+        from: req.webtaskContext.data.TWILIO_PHONE_NUMBER
+      }, function (error, call) {
+        if (error) { return next(error); }
+
+        req.db.patch({ calls: [{ id: cid, value: { step: 1, seq: 2 } }] }, (error) => {
+          if (error) { return next(error); }
+
+          if (pusher) { pusher.trigger(`callprogress-${cpid}`, "update", { "step": 1, seq: 2 }); }
+
+          res.sendStatus(200);
+        });
+      });
+    });
+  });
+
+  app.post("/api/phone/receive-call/:cid", (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      var cid = req.params.cid;
+
+      var call = data.calls[cid];
+
+      if (!call) {
+        // If the cid does not match an expected call fail the request
+        res.sendStatus(403);
+
+        return;
+      }
+
+      var twiml = new twilio.TwimlResponse();
+
+      twiml.say("You have initiated a Voice Authentication process.");
+      twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+
+      // Set Twilio session cookie
+      res.cookie("tw_cid", cid, { httpOnly: true, secure: true });
+
+      req.db.patch({ calls: [{ id: cid, value: { step: 2, seq: call.seq + 1 } }] }, (error) => {
+        if (error) { return next(error); }
+
+        res.send(twiml.toString());
+
+        if (pusher) { pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 2, seq: call.seq + 1 }); }
+      });
+    });
+  });
+
+  app.post("/api/phone/authentication/record", (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      var cid = req.cookies.tw_cid;
+
+      var call = data.calls[cid];
+
+      if (!call) {
+        // If the session call identifier does not match an expected call fail the request
+        res.sendStatus(403);
+
+        return;
+      }
+
+      var twiml = new twilio.TwimlResponse();
+
+      twiml.say("Please say the following phrase to authenticate.");
+      twiml.pause(1);
+      twiml.say("Remember to wash your hands before eating.");
+
+      twiml.record({
+        action: `${req.absoluteBaseUrl}/api/phone/authentication/verify`,
+        maxLength: "4",
+        trim: "do-not-trim",
+      });
+
+      req.db.patch({ calls: [{ id: cid, value: { step: 3, seq: call.seq + 1 } }] }, (error) => {
+        if (error) { return next(error); }
+
+        res.send(twiml.toString());
+
+        if (pusher) { setTimeout(() => pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 3, seq: call.seq + 1 }), 2500); }
+      });
+    });
+  });
+
+  app.post("/api/phone/authentication/verify", (req, res, next) => {
+    req.db.get(function (error, data) {
+      if (error) { return next(error); }
+
+      var cid = req.cookies.tw_cid;
+
+      var call = data.calls[cid];
+
+      if (!call) {
+        // If the session call identifier does not match an expected call fail the request
+        res.sendStatus(403);
+
+        return;
+      }
+
+      var pcid = _.findKey(data.calls_progress, _.matches(cid));
+
+      req.session = data.sessions[call.sid];
+
+      var recordingURL = req.body.RecordingUrl + ".wav";
+
+      var options = {
+        headers: {
+          "VsitEmail": req.session.vit.id,
+          "VsitPassword": crypto.createHash("sha256").update(req.session.vit.secret).digest("hex"),
+          "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
+          "VsitConfidence": "85",
+          "VsitwavURL": recordingURL,
+          "ContentLanguage": req.session.vit.lang
+        },
+        uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
+        // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
+        method: "POST"
+      };
+
+      req.db.patch({ calls: [{ id: cid, value: { step: 4, seq: call.seq + 1 } }] }, (error) => {
+        if (error) { return next(error); }
+
+        if (pusher) { pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 4, seq: call.seq + 1 }); }
+
+        request.post(options, function (error, response, body) {
+          var twiml = new twilio.TwimlResponse();
+
+          var progress = 0;
+
+          if (!error && response.statusCode == 200) {
+            var authenticationResponse = JSON.parse(body);
+            var data = {};
+
+            console.log(authenticationResponse);
+
+            switch (authenticationResponse.Result) {
+              case "Authentication failed.":
+                progress--;
+
+                twiml.say("Your authentication did not pass. Please try again.");
+                twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+                break;
+
+              default:
+                progress++;
+
+                // Tag the session with the call and call progress identifiers so that that they get cleaned up
+                req.session.cid = cid;
+                req.session.pcid = pcid;
+
+                // Flag that authentication was completed for this session
+                req.session.vit.authenticated = true;
+
+                data.sessions = [{ id: call.sid, value: req.session }];
+
+                twiml.say(authenticationResponse.Result);
+                break;
+            }
+          } else {
+            progress--;
+
+            twiml.say("API Error. Your authentication did not pass. Please try again.");
+            twiml.redirect(`${req.absoluteBaseUrl}/api/phone/authentication/record`);
+
+            console.log(new Error(response.statusCode, body));
+          }
+
+          data.calls = [{ id: cid, value: { step: 4 + progress, seq: call.seq + 2 } }];
+
+          req.db.patch(data, (error) => {
+            if (error) { return next(error); }
+
+            res.send(twiml.toString());
+            if (pusher) { pusher.trigger(`callprogress-${call.cpid}`, "update", { "step": 4 + progress, seq: call.seq + 2 }); }
+          });
+        });
+      });
+    });
+  });
+
   app.use(function (error, req, res, next) {
     console.log(error);
     res.sendStatus(500);
   })
 
   return app;
-}
+};

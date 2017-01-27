@@ -5,6 +5,8 @@
   "author": "João Angelo",
   "description": "Provides multi-factor authentication with VoiceIt.",
   "type": "application",
+  "codeUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/bundle.js",
+  "logoUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/logo.svg",
   "keywords": [
     "biometrics",
     "extension"
@@ -24,6 +26,34 @@
     "ENCRYPTION_KEY": {
       "description": "Base64 encoded encryption key (AES 128) used for encryption of VoiceIt user secrets.",
       "required": true,
+      "type": "password"
+    },
+    "TWILIO_ACCOUNT_SID": {
+      "description": "Your Twilio account identifier.",
+      "type": "password"
+    },
+    "TWILIO_AUTH_TOKEN": {
+      "description": "Your Twilio authentication token.",
+      "type": "password"
+    },
+    "TWILIO_PHONE_NUMBER": {
+      "description": "The Twilio number to use for outgoing calls.",
+      "type": "text"
+    },
+    "PUSHER_APPID": {
+      "description": "The Pusher application identifier.",
+      "type": "text"
+    },
+    "PUSHER_CLUSTER": {
+      "description": "Your Pusher account cluster.",
+      "type": "text"
+    },
+    "PUSHER_KEY": {
+      "description": "Your Pusher account key.",
+      "type": "text"
+    },
+    "PUSHER_SECRET": {
+      "description": "Your Pusher account secret.",
       "type": "password"
     }
   }

@@ -81,11 +81,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = {
-		"index.html": "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",
-		"scripts.js": "H4sIAAAAAAAAC61XbYvjNhD+fnD/QfgWYnOxd48uFLLthyO7Vw563ZJkoXAcRZGVWLeOFCQ5uVLy3yvJ77IcO6HzYTe2ZkYzj2bmkf1NRpEkjAI/AP++fQOUHCAHCyz2jAo8ZzEGv5YrWpYv8/nTcjkDnvrl5e9PD2/f1LYcI8ZjQrdCWX79Vq1VW+UKvuRku8V8CtA6aO6gfexwTOBcRSA5JFSKdgxaYBYTNgOSZ7heqAPRQuGBbKFkPNpi+SIw/6K9+rbvKWDUrCwzhLCon584ZzxouaxyaJv4yheGu8AOskplYVLGXOVB8RHktsamXCldtLbT0rKPdmSHV//s9aFMDAS3R3iYDBgJCbn07+/u7rru8xPbKSTUiSmvPz2014tTiiT+IX1v8TR/Xjx+/uM34N+LwAseus5IrLwcCY3ZMRJYfqYS8wNMfUeljdrHA+/rAMNQPXmOnU9T8MGZXxsJRmMoITxAksJ1qlGsw1qnbO0MrUgGpRjyKh0S2yF0s1iuPi5WoMrF60bnOiu2992KaJ3HaKfeeD6dK1ZTzz7u5IhUL7AUR9isT0w8wDxMpgAHbfetXeqWZpnE7YO98b2YHCLlXGIqvSBKSIytzMSRSJQAv0A4ZQhqd1ECRdINEwoMvHe3mHKWpjvtdNYFSW37rqERRCJhR991VmvVb68doGO8gVkqezzDTCbKLcnjHOO9D7oCsWr/Ou7QtKvyjVKCXvv6pqEPU8xluBNbZbOHXMXnN9AuDepfxfy98WVCRDAdaoF6nkf7TCRVDXZbX6+8LH5XXaX+RkghIPHz+jtGUj07a1dlYaaYihxKyX1PcORNS0fdXZooZesdkZVhTITu6FhZb2Aq2mVbPpzceJeezgKuE9yQtD1925PXqDC+e1Qzppj0n4rH1lGUOhHc7zGN/crtezAJde6q72rUvzYOIMV0KxMQgg/f2uDcRPA7/OFbR5fxdAYm0S3ck6JtJtO2RoKhmjpi5pp73l/hfLn4FK7YK6bezECGBN/8Lc2LINJzMLDnsNVOKs1ZlbC1uOdMs+djrqNPzVIohofGxq0gzcrkz+flys5M5NQ8a5Q3x0K1tnPGjyosfdlwj+ZykOU7RM3rk3M7k5yeZ03NqLxbufWLMF394vVQSym6MBHLqFRV2amms5ZkA/zc8hdw35tKE0UEeRxq0s7NFF0DUoWLUiiEDthoxQyJkKhDBvpPuFaZ6f/3P9+BLce6xByDtZQTwKoexkRkjdULjrUpLo5ScCpCskhh0FM9+ntz619ys1Yp/exVbd6Y5sVNo0+1h2LM3aYudN1RlzupeKqXQO2E7fcnGwN79JgbTLP9zQtnDZc3oJRtCy0Xo2dSqnMfppsx+HkfKcjoK2VHmgcKGEIZ5ziOnFV/FYyNMuqjwEbt4nEXD0P0BgpV/cUdok1Fttvz95POvSR3Pngt6TsOdzePYO9KbQSDaxnD4u67kpustTQJu4mhTW5azlG3lmvoW4vdR1rO0riWQSrXMkjnWs5QupbLaN1YXMHNJtor+FmLwVllSmiG9ReCuU6cHXFazs91LcOz3fi5dErZofe27mVzf9DdeAZowuNac7Clq4Yv4AMtozjBhHYN4sNIX8oQg16HAbeAPI35hmpthyBFOB3z6drfIO5vtP/N8ykwz/8BZp5bDPkUAAA=",
-		"styles.css": "H4sIAAAAAAAAC2WQywrCQAxF94X+Q8CtFh+I0H5NOhPa0ZmkxOlCxH83Wuozq4Qc7gmpjmNqJasw9Fu4Qovu1KmM7FdOomgNWZHPAypxbuBWFmVROeFso+EDeh+4q2ENW0rzPmO7ejFlAVYJtQtsXLWnBOumLJ7ooDQT/+YF7WhPh2bav1WPiDkARx/EDpkYH85DxEsNbRR3ar7Vm09xhZE0L83BKjEmO9UGHHNvXXCYg33k+pPKwjQH3AHnG9XkOQEAAA==",
+		"index.html": "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",
+		"scripts.js": "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",
+		"styles.css": "H4sIAAAAAAAAC7VVzY7bIBC+R8o7jLTqEct2k27rHCvlPbDBDg0GBLhJWvXdOwH/JM066z3UN2CY72dmcPKja0vtrVZwyOE3lLQ6NlZ3ipFKS20L8JYqZ6jlyu/gz3q1XiWVVh6XGG4oY0I1BaSQ83Y497QkY8x6Bfi11DZCYVyy5S2ku/UqhBrLh4hH5BeWspx93sXzCeqaYkhAOyY0EokxTDgj6aWAUurquLuHzm6BtUyM1Y3lzhFUWB0jjTEBSpA8JJDCeeL8RXLiL4YXoLSKJ6OmsBr5oRFXrLAZ0hDMqDtfQC3OnIX9k2D+gJTS9FNk9MhHircokYpL2fNSnBy4aA6YOU82PaLRTnihkZblknrxM3L1/OwJlaLBgwrrwu0T3ERg9cjJUhMplNoybomlTHSugG0gjTm1KYBkfTkAhrLVdb27Yz5VY+I7XBpNBNp5DSTv9yWv/WCtjZfSfwTS0mnZeX7raD41xxNpzlPfN97IaGvOd6UZ1qMKoYLlk5haSIludvY6G9+v4p8BT1tYiog9V6urr1ka8GfSTTsMu/GuSuH2qzkDmiMYvGRf8mwTuy6Mco/YR4eaQeaAU8eJUAQbNcSSEy+PwpMP3Wn1rw9cWKRtWvVGP3bn48NR19/o9nWxfQsyplm5+RrbOorCMXjD43fxvGb6ablu3rweu5Q0NNyy3Au07Pf7OSE36DNDjz8Lr1vsz/8z9jMjsWy65614GPuRZP+ah5/CevUXn1b/ew8HAAA=",
 		"logo.svg": "H4sIAAAAAAAAC31U246bMBB9br8CsS+tZIyxudjkstpuW7VSVupT1LcoS0hASyECNpeu+u89NiQbtlGDFI5mPHPOXMz49vCrsHZp3eRVObE9ymzrdjpudhsrX03s2fKY1gvPtpr2WKQTOy2Xj0XqPC6Tp01dPZeruEz3FsPjiYgK/CsqRvZlQgTv8nT/qTpM7DcHbQvkcbNdJki9rdMmrXepMZbNxM7adhu77n6/p3tBq3rjcsaYC2n9kfhQ5OXTtYOeUso1Xhu1aOlWe9yCpE0PrZs0jT19/442LXtZ50UR3/B7eXd3N/pjjN5LBUV5e4wZ9dQoKfKts122WfxcFx9ufj7Mvn9eRGrxcdTFsohJJvtY3if8an69UZxYeMTlFxjHrtE0HSd5nUBbUiwbFAw9tpWgTaGkHOgIpGhom0l0vNxnC9uq4QhxxJ2ONxfOIFig3FW6bl4zd9n869mCcJjM7WNR8Q8UfHES9SL1c5OeFqHChNdFtY93eZNjJTBz0+84q9P1xL55JdB5Txmn421VHDdV+VqydykIWwFF2yovWzgjRiURjAbYlpB6RHpUAgoaEk8EwFJSRbRBWQF8xGOBhSBOFJbLsgz1Bpy6ljMhOgu+h5CRwKc849jQOZYxShhhDqO+oyh3PEaFBo1GEelNBsz6yN+DuUhmKr1KFQgakADLdH9G5AoqGOE+DbUOoovwhP4LwaqRZSUGM2Nyzk6D5jq+C+yezBFDw473BkdzeihaB4YGJU4Iu66R01DXqZzAEDoeugCr45s32P4h+qblD1sRRf9phaI+CULdd079HQoQ53oxMwdyDEg0UlClDc7Jo8FcR78h9A1hnSbtgDBL803W4hvk0WAQEOKiWPt81WYTW9AIq2tuCe4GLomMustwXX+/ZpmQGKdUev9YQCJOpCIn51BdfweG6USXLgoxgiCiMsN05hHvB6QIsjsQhLexER+D5rp12E85O4e9YRLdbcMXcvoXoy5XZ9gFAAA=",
-		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/4arlg4w6SlNsWefBaNPUaINmaRAvA4phcGn5ZDORSY2knHip//uO1Lstxy6qD4Is3/vz3PEUpSI0XApYSB5ixEIjlZ9qVF0IpTD4YOiBxfGYhXcdePzxB6BrwRSEapkYCX1Q+G/KFfpe9sbr/F4J3d6busStluIex0beoXjza3Ac/Oaka0aliPiUVHJH9tJ8KriYfsRlD7yDx+H5+8vzy/ejj4PPo6uL07PBh08X7wbXK69bqaBwsVBahdbg8uz689Wf558un1Z8MCg06d2o2OmdXl2Nbq4vmgqZ/KqMPCpqmPv1J8ywTj0Hm9sdLikxgffwNo0iVH6WbNAItgvemGk8+bksY6HOF6SdlThQTEzk/O3SoPaPT6oSlmXkyQxVJR8qZAbP3Fu+8D2G+vD45avDcBx6XRtYl8xvmskjw4m15JSDNKHc0CVIoaYmeuW1h1zpPi+VIy5Y7NelK3mFJlUCvhw88kVg5NAowrySXfUOHkuTqy+5o1Vh4egIhoYpA+MlhDMM70gZeAT3CEwhzKhesX3FyM+EqBiaktSZAZL1c74HiZJGhjKGfr8PXqFwWCh4DWSt4jPbL8EcDbN1CRbcjFAoGcdzFKYhncd6jSHyRRZQYRYiqeinNQVmxgzdEFQaI0z4BIQ0ro1QmyoFLYF6QypsOshLWRj2RRrHXWj0dB2p1Trsrj0t5Hk9cr8B3dUycP+ucVMbIsVWDfdvA2yjlutVsWYStowls2yjuREsiKvR0nf+uvlkCKph0F23YC8WT6XiZjbXPfjb+zB8+cuJ909TbNXkXYFh7jvQ6RieEe4OUnsb8ckGhK1Vpsa+ESw1M4rgP5wMlKJJ6t1YPOdcz5kJZ4HXqVd+o/oloYpoLJWsSeIRD6mK3x9KQaZQzpMYCbWaeRpB+0ZYBCikCNEVzKH8PeENUdvJC9SrOQW/uWxP9WFQZNxew/1UiZpGpbjBIHvZhF44yuh8TJ4myR+5Rb/Op27TWyewCPjlKeK3BmivfVu6rFInCG0Ba7ZRqd3mrVCruXUUAGONe2G+O+BVbSSBC9tFKzfj3ZfvAh8SmpMEW8R4nCpcI1LucTMLN4yUJP7ZqXaVPdFU0zJeoH/cnCA0zwdCk/Vsds+Yhr/sLnVuJ3VsmxYKpCslRwCWJKPiL+i3vPv6FR5XDWcVzeuCu46cXQrNhav0Nek1xiA8B+8NKQZcLFjMJ/XFqbg00q5heuUm1LKwnHRq5/sMHwiTFkMxE9OUTZG2MBSHN8M2Z2Vb9ghggnCNTxtdWkH6zb1aL97Ww5OYcEbc5iKlsRoZIsOdkPf2mHcHegmrpcgYacBpNJV2Ht3OYeD2h3wDsDtCtjFI91zur5uHaxgzPtftSNOh14S6pdiCzTEXso8tEreG97ZsqOuIt2hbRpaMe4KrQWt0Vqbg3k4LmeAWK5Z4e9go+LnFSiaJ++RTsngXfeu7mV2Q7C7kZ7C270dEh4R4os9FD05etG0+1mSxTtInT7bCuY+S2ofQhlZdg7Z777WLqu/RgFjfDlvE9y8IvAbvp6PmguJBz76sxL2N8KotNO8S4jyk9oOuHslmffdemPc7VbedpuUpSrNj9T/GRAPIfw8AAA=="
+		"mfa-redirect-rule.js": "H4sIAAAAAAAAC6VXbW/bNhD+PmD/gVWDQkYdpSm2rPNgtGlmNFkzx4jrAcUwuLR8spnIpEZSTjzX/31H6t2SYxfVB0OW7h4e7547PQxi7msmOFkK5kNAfS2kGyuQbeILruFR4w0Nwwn171tk/eMPBK8llcSXq0gL0iUS/o2ZBNdJnjit3wqjuwddtrhTgj/ARIt74O9+8U69X611CVTwgM3QJV3IXIrNOOOzj7DqEOdoPbz60L/qfxh/7H0eD67PL3qXN9e/9243TrtwAW5jwW1lXr3+xe3nwaerm/7Tjo8auEK/kQyt3/lgMB7dXu908CkfKRjMBYfzWM+Ba+ZTs3CH/DG86XsRlQo3frS+OO+PR8PeeHB50++Nz0efLquYrQRzk6cjyAqTbsadUk1b5cSYhN3DCrPF4YG8j4MApJtk0KtkoE2cCVVw9lNem8ydLdE7qZsnKZ+KxfuVBuWenhV1yWvDojnIwt6XQDVc2Kds6ToU1PHp6zfH/sR32iawNsLXYdLIYGqQrLMXR7g3sBvEUGMdvHGaQy58X+bOAeM0dMvWhb0EHUtOvhyt2dLTYqglEqmw3XSO1jnk5ku60CZDODkhQ02lJpMV8efg36MzYQF5AEIlkDnmKzSPKK4zRX77Ou+UBABt3bSJvEgKLXwRkm63S5zM4ThzcCqVNY7PTBN6C9DU5MVbMj0GLkUYLpBkFes01lvwgS2TgDJYEgiJfw0U0XOq8QeIjEMgUzYlXGjbm6B0sQUlCDackFBdIE1lBuzyOAzbpDIoypXabJfd9rwpeZqPdF0Pf+XKs2+3uKk0kmKnh31bKbaWq+2sGJiIrkJBDdtwGHlL5Gqwcu167XTceMWEaW8jmIuGMyGZni9Uh/ztXA5f/3zm/FM121R5l9UwXdtT8YQ8w7rbkpqfMZvWStiYZWzsEac4WTCC/2DakxLHszMy9VwwtaDan3tOq5z5WvZzQmXRGCrRYljB94eSkckXiygErBqtzMJDI8wC5IL7YBNmq/w94Q1BmXFOsFdTCn5z2p7qQy/bcXMOD3NFamoZQ41B5jIbemUpo9IxeR5Ff6aIbplP7epqLc9UwM2/Im5jgOY6tKXzLLU83ySwhA1S7oc3Ro1w21UgECo4qOb7A96URhKxYdtoRT1eBFAiBC8Us9SiVpBDW4LDY4SjFCsbUBbGEra4lgZV36idV1IgRc3gGyR3OPgwsCW4p9WIcOT3uEL0ZLzPqSJ/GQ13ZYZ5aPqaZGQonCxHaBSNs1ek2/Ds61ey3lQWKzqhbLjvq7TPoSr08rWmncqkJC+J8w4dPcaXNGTTsv7KLgUoR3QnF0sNmuasVZIAc3jEmjQAhZTPYjoDVH/Aj0fDpsXyzu1ggbGEW5Sr8aYo6Te3czl5O7+vyIQLpD/jMU7eQCMZ7rl4MErAfvPzshqKTABnoAJdeKfR7Z0XRXTb3Kk+zMhT9rXENiK5Hy8mVkRaR/tozJNn6FdHq5jUEmtVT6pbjLJJdI6w97mUr0fih5QtVDP58FNdZV9D/TldQGpkbhssylF3yjtvsL3TrLNDg28TtsHbNFTeME+0mte4E2OTtc5ehMRwB4rpmwMwsvbagZJYwiH7yZtwX/eV1aeRgEbtuQkFmhUgUidCTqkrPMSdvWrSdgYyE8x4UkxEqj12lc6PDZ+PwgPPL85bG1XXwfmW6d+6/Dg8DztkUmXNcg++eJFFvfMQS94S5/mJdTqpSjqHdMwrPMxvv/iGr3k1Hc9Pil3VULZTUxwK0vbHZiaxObSXYetkOPj8cpjI2SVuclGDgW/+B0BQA6ljEQAA"
 	};
 
 /***/ },
@@ -97,116 +97,49 @@ module.exports =
 	var url = __webpack_require__(5);
 	var crypto = __webpack_require__(6);
 
-	var ejs = __webpack_require__(7);
-	var request = __webpack_require__(8);
-	var base64url = __webpack_require__(9);
-	var Express = __webpack_require__(10);
-	var bodyParser = __webpack_require__(11);
-	var cookieParser = __webpack_require__(12);
-	var Dicer = __webpack_require__(13);
+	var _ = __webpack_require__(7);
+	var Handlebars = __webpack_require__(8);
+	var request = __webpack_require__(9);
+	var base64url = __webpack_require__(10);
+	var Express = __webpack_require__(11);
+	var bodyParser = __webpack_require__(12);
+	var cookieParser = __webpack_require__(13);
+	var Dicer = __webpack_require__(14);
+	var twilio = __webpack_require__(22);
+	var Pusher = __webpack_require__(23);
 
-	var jwt = __webpack_require__(21);
+	var jwt = __webpack_require__(24);
 
-	var mocks = __webpack_require__(22);
-	var elemental = __webpack_require__(23);
-	var hooks = __webpack_require__(25);
-	var metadata = __webpack_require__(29);
+	var mocks = __webpack_require__(25);
+	var elemental = __webpack_require__(26);
+	var hooks = __webpack_require__(28);
+	var metadata = __webpack_require__(31);
 
-	module.exports = function (files) {
-	  function decrypt(data, key) {
-	    if (!data || data.indexOf(":") === -1) {
-	      return "";
-	    }
+	Handlebars.registerHelper("template-start", function (id) {
+	  return new Handlebars.SafeString("<script type=\"text/x-template\" id=\"" + id + "\">");
+	});
 
-	    var parts = data.split(":");
+	Handlebars.registerHelper("template-end", function () {
+	  return new Handlebars.SafeString('</script>');
+	});
 
-	    var key = new Buffer(key, "base64");
-	    var iv = new Buffer(parts[0], "base64");
-
-	    var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
-
-	    return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+	function decrypt(data, key) {
+	  if (!data || data.indexOf(":") === -1) {
+	    return "";
 	  }
 
-	  var config = {};
-	  config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+	  var parts = data.split(":");
 
-	  var app = new Express();
+	  var key = new Buffer(key, "base64");
+	  var iv = new Buffer(parts[0], "base64");
 
-	  app.use(cookieParser());
-	  app.use(bodyParser.urlencoded({ extended: true }));
+	  var cipher = crypto.createDecipheriv("aes-128-cbc", key, iv);
 
-	  app.get("/debug", function (req, res) {
-	    return res.json({});
-	  });
+	  return cipher.update(parts[1], "base64", "utf8") + cipher.final("utf8");
+	}
 
-	  app.post("/decrypt", function (req, res) {
-	    var plaintext, ciphertext, key;
-
-	    key = req.body.key;
-	    ciphertext = req.body.ciphertext;
-	    plaintext = decrypt(ciphertext, key);
-
-	    res.json({ plaintext: plaintext });
-	  });
-
-	  app.get("/ping", function (req, res) {
-	    return res.send("PONG");
-	  });
-
-	  app.get("/meta", function (req, res) {
-	    res.status(200).send(metadata);
-	  });
-
-	  app.use("/", function (req, res, next) {
-	    // Ensure that database is available at the request level
-	    var schema = {
-	      config: { type: "singleton" },
-	      tokens: { type: "array" },
-	      sessions: { type: "map" }
-	    };
-
-	    var seed = { config: config, tokens: [], sessions: {} };
-
-	    if (req.webtaskContext.storage) {
-	      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
-	    } else {
-	      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
-	    }
-
-	    // Provide absolute URL and absolute base URL
-	    var xfproto = req.get('x-forwarded-proto');
-	    var xfport = req.get('x-forwarded-port');
-
-	    req.absoluteUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
-	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
-	    url.parse(req.originalUrl).pathname].join('');
-
-	    req.absoluteBaseUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
-	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
-	    url.parse(req.originalUrl).pathname.replace(url.parse(req.url).pathname, "")].join('');
-
-	    // Make the global configuration available at the request level
-	    req.db.get(function (error, data) {
-	      if (error) {
-	        return next(error);
-	      }
-
-	      req.config = data.config;
-
-	      next();
-	    });
-	  });
-
-	  // Make the extension installation hooks available without session requirements
-	  app.use("/.extensions", hooks(files));
-
-	  // Make the mocks available without session requirements
-	  app.use("/vitmocks", mocks);
-
-	  // Ensure that the current request is either starting a session
-	  // or that the request is associated with a valid session
-	  app.use("/", function (req, res, next) {
+	var checks = {
+	  session: function session(req, res, next) {
 	    req.db.get(function (error, data) {
 	      if (error) {
 	        return next(error);
@@ -242,6 +175,7 @@ module.exports =
 	        var session = {
 	          csrf: base64url.escape(crypto.randomBytes(16).toString("base64")),
 	          userId: payload.sub,
+	          phoneNumber: payload.phone_number,
 	          vit: {
 	            id: payload.vit_id,
 	            secret: decrypt(payload.vit_secret, req.webtaskContext.data.ENCRYPTION_KEY),
@@ -259,31 +193,149 @@ module.exports =
 
 	          res.redirect(url.parse(req.originalUrl).pathname);
 	        });
-
-	        return;
-	      }
-
-	      var sid = req.cookies.vf_sid;
-
-	      req.session = sid ? data.sessions[sid] : null;
-
-	      if (!req.session) {
-	        res.sendStatus(403);
 	      } else {
-	        next();
+	        var sid = req.cookies.vf_sid;
+
+	        req.session = sid ? data.sessions[sid] : null;
+
+	        if (!req.session) {
+	          res.sendStatus(403);
+	        } else {
+	          req.session.id = sid;
+
+	          next();
+	        }
 	      }
+	    });
+	  },
+	  csrf: function csrf(req, res, next) {
+	    var csrf = req.get("X-CSRF-Token") || req.body.csrf_token;
+
+	    if (csrf !== req.session.csrf) {
+	      res.sendStatus(403);
+	    } else {
+	      next();
+	    }
+	  }
+	};
+
+	var pusher = null;
+
+	module.exports = function (files) {
+	  var app = new Express();
+
+	  app.use(cookieParser());
+	  app.use(bodyParser.urlencoded({ extended: true }));
+
+	  app.get("/debug", function (req, res) {
+	    return res.json({});
+	  });
+
+	  app.get("/ping", function (req, res) {
+	    return res.send("PONG");
+	  });
+
+	  app.post("/decrypt", function (req, res) {
+	    var plaintext, ciphertext, key;
+
+	    key = req.body.key;
+	    ciphertext = req.body.ciphertext;
+	    plaintext = decrypt(ciphertext, key);
+
+	    res.json({ plaintext: plaintext });
+	  });
+
+	  app.get("/meta", function (req, res) {
+	    res.status(200).send(metadata);
+	  });
+
+	  app.use("/", function (req, res, next) {
+	    // Ensure that database is available at the request level
+	    var schema = {
+	      config: { type: "singleton" },
+	      tokens: { type: "array" },
+	      sessions: { type: "map" },
+	      calls: { type: "map" },
+	      calls_progress: { type: "map" }
+	    };
+
+	    var config = {};
+	    config.signingKey = base64url.escape(crypto.randomBytes(32).toString("base64"));
+
+	    var seed = { config: config, tokens: [], sessions: {}, calls: {} };
+
+	    if (req.webtaskContext.storage) {
+	      req.db = new elemental.WebtaskStorageElementalDB(req.webtaskContext.storage, schema, seed);
+	    } else {
+	      req.db = new elemental.JsonFileElementalDB("local-db.json", schema, seed);
+	    }
+
+	    // Provide base path, absolute URL and absolute base URL
+	    function escape(s) {
+	      return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+	    };
+
+	    req.basePath = url.parse(req.originalUrl).pathname.replace(new RegExp(escape(url.parse(req.url).pathname) + "$"), "");
+
+	    var xfproto = req.get('x-forwarded-proto');
+	    var xfport = req.get('x-forwarded-port');
+
+	    req.absoluteUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
+	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
+	    url.parse(req.originalUrl).pathname].join('');
+
+	    req.absoluteBaseUrl = [xfproto ? xfproto.split(',')[0].trim() : 'https', '://', req.get('Host'),
+	    //xfport ? ':' + xfport.split(',')[0].trim() : '',
+	    req.basePath].join('');
+
+	    // Initialize Pusher instance if applicable
+	    if (!pusher && req.webtaskContext.data.PUSHER_APPID && req.webtaskContext.data.PUSHER_CLUSTER && req.webtaskContext.data.PUSHER_KEY && req.webtaskContext.data.PUSHER_SECRET) {
+	      pusher = new Pusher({
+	        appId: req.webtaskContext.data.PUSHER_APPID,
+	        cluster: req.webtaskContext.data.PUSHER_CLUSTER,
+	        key: req.webtaskContext.data.PUSHER_KEY,
+	        secret: req.webtaskContext.data.PUSHER_SECRET,
+	        encrypted: true
+	      });
+	    }
+
+	    // Make the global configuration available at the request level
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      req.config = data.config;
+
+	      next();
 	    });
 	  });
 
+	  // Make the extension installation hooks available without
+	  // security checks as they do their own authentication
+	  app.use("/.extensions", hooks(files));
+
+	  // Make the mocks available publicly
+	  app.use("/vitmocks", mocks);
+
 	  // Process the application root
-	  app.get("/", function (req, res) {
+	  app.get("/", checks.session, function (req, res) {
 	    if (!req.originalUrl.endsWith("/")) {
 	      res.redirect(req.originalUrl + "/");
 
 	      return;
 	    }
 
-	    res.send(ejs.render(files["index.html"], req.session));
+	    var data = {
+	      csrf: req.session.csrf,
+	      pusher: {
+	        enabled: !!pusher,
+	        key: req.webtaskContext.data.PUSHER_KEY,
+	        cluster: req.webtaskContext.data.PUSHER_CLUSTER
+	      }
+	    };
+
+	    res.send(Handlebars.compile(files["index.html"])(data));
 	  });
 
 	  // Process requests to application resources
@@ -301,61 +353,54 @@ module.exports =
 	  });
 
 	  // Process the request to continue the transaction at Auth0
-	  app.post("/continue", function (req, res, next) {
-	    var csrf = req.body.csrf_token;
+	  app.post("/continue", checks.session, checks.csrf, function (req, res, next) {
+	    var domain = req.webtaskContext.data.AUTH0_DOMAIN;
 
-	    if (csrf !== req.session.csrf) {
-	      res.sendStatus(403);
-	    } else {
-	      var domain = req.webtaskContext.data.AUTH0_DOMAIN;
+	    // Get the session identifier and state from the cookies
+	    var sid = req.cookies.vf_sid;
+	    var state = req.cookies.vf_state;
 
-	      // Get the session identifier and state from the cookies
-	      var sid = req.cookies.vf_sid;
-	      var state = req.cookies.vf_state;
+	    // Create a token based on current session state
+	    var claims = {
+	      sub: req.session.userId,
+	      nonce: state,
+	      vit_authenticated: req.session.vit.authenticated
+	    };
 
-	      // Create a token based on current session state
-	      var claims = {
-	        sub: req.session.userId,
-	        nonce: state,
-	        vit_authenticated: req.session.vit.authenticated
-	      };
+	    var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
 
-	      var token = jwt.sign(claims, req.config.signingKey, { expiresIn: 60 });
+	    // Clear cookies
+	    var now = new Date();
 
-	      // Clear cookies
-	      var now = new Date();
+	    res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
+	    res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
 
-	      res.cookie("vf_sid", "", { httpOnly: true, secure: true, expires: now });
-	      res.cookie("vf_state", "", { httpOnly: true, secure: true, expires: now });
+	    // Remove session, any associated information and redirect
+	    var data = { sessions: [{ id: sid }] };
 
-	      // Remove session and redirect
-	      req.db.remove({ sessions: [{ id: sid }] }, function (error) {
-	        if (error) {
-	          return next(error);
-	        }
-
-	        // Redirect to Auth0 with JWT and state
-	        res.redirect("https://" + domain + "/continue?state=" + state + "&token=" + token);
-	      });
+	    if (req.session.cid) {
+	      data.calls = [{ id: req.session.cid }];
 	    }
-	  });
 
-	  // Require a CSRF token for all internal API requests
-	  app.use("/api/*", function (req, res, next) {
-	    var csrf = req.get("X-CSRF-Token");
-
-	    if (csrf !== req.session.csrf) {
-	      res.sendStatus(403);
-	    } else {
-	      next();
+	    if (req.session.pcid) {
+	      data.calls_progress = [{ id: req.session.pcid }];
 	    }
+
+	    req.db.remove(data, function (error) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      // Redirect to Auth0 with JWT and state
+	      res.redirect("https://" + domain + "/continue?state=" + state + "&token=" + token);
+	    });
 	  });
 
 	  // Create an helper regular expression to process multipart requests
 	  var RE_BOUNDARY = /^multipart\/.+?(?:; boundary=(?:(?:"(.+)")|(?:([^\s]+))))$/i;
 
 	  // Process an enrollment request
-	  app.post("/api/enroll", function (req, res, next) {
+	  app.post("/api/web/enroll", checks.session, checks.csrf, function (req, res, next) {
 	    function enroll(buffer) {
 	      request({
 	        headers: {
@@ -437,7 +482,7 @@ module.exports =
 	  });
 
 	  // Process an authentication request
-	  app.post("/api/authenticate", function (req, res, next) {
+	  app.post("/api/web/authenticate", checks.session, checks.csrf, function (req, res, next) {
 	    var parts = RE_BOUNDARY.exec(req.get("Content-Type"));
 
 	    var dicer = new Dicer({ boundary: parts[1] || parts[2] });
@@ -495,6 +540,263 @@ module.exports =
 	    req.pipe(dicer);
 	  });
 
+	  app.get("/api/phone/call-progress/:cpid", checks.session, checks.csrf, function (req, res, next) {
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var cpid = req.params.cpid;
+
+	      var cid = data.calls_progress[cpid];
+
+	      if (!cid) {
+	        res.sendStatus(400);
+
+	        return;
+	      }
+
+	      res.json({ step: data.calls[cid].step, seq: data.calls[cid].seq });
+	    });
+	  });
+
+	  app.post("/api/phone/start-call", checks.session, checks.csrf, function (req, res, next) {
+	    var cid = base64url.escape(crypto.randomBytes(32).toString("base64"));
+	    var cpid = req.body.cpid;
+
+	    var data = {
+	      calls: [{ id: cid, value: { sid: req.session.id, cpid: cpid, step: 0, seq: 1 } }],
+	      calls_progress: [{ id: cpid, value: cid }]
+	    };
+
+	    if (pusher) {
+	      pusher.trigger("callprogress-" + cpid, "update", { "step": 0, seq: 1 });
+	    }
+
+	    req.db.add(data, function (error) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var accountSid = req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+	      var authToken = req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+
+	      var client = twilio(accountSid, authToken);
+
+	      client.calls.create({
+	        url: req.absoluteBaseUrl + "/api/phone/receive-call/" + cid,
+	        to: req.session.phoneNumber,
+	        from: req.webtaskContext.data.TWILIO_PHONE_NUMBER
+	      }, function (error, call) {
+	        if (error) {
+	          return next(error);
+	        }
+
+	        req.db.patch({ calls: [{ id: cid, value: { step: 1, seq: 2 } }] }, function (error) {
+	          if (error) {
+	            return next(error);
+	          }
+
+	          if (pusher) {
+	            pusher.trigger("callprogress-" + cpid, "update", { "step": 1, seq: 2 });
+	          }
+
+	          res.sendStatus(200);
+	        });
+	      });
+	    });
+	  });
+
+	  app.post("/api/phone/receive-call/:cid", function (req, res, next) {
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var cid = req.params.cid;
+
+	      var call = data.calls[cid];
+
+	      if (!call) {
+	        // If the cid does not match an expected call fail the request
+	        res.sendStatus(403);
+
+	        return;
+	      }
+
+	      var twiml = new twilio.TwimlResponse();
+
+	      twiml.say("You have initiated a Voice Authentication process.");
+	      twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
+
+	      // Set Twilio session cookie
+	      res.cookie("tw_cid", cid, { httpOnly: true, secure: true });
+
+	      req.db.patch({ calls: [{ id: cid, value: { step: 2, seq: call.seq + 1 } }] }, function (error) {
+	        if (error) {
+	          return next(error);
+	        }
+
+	        res.send(twiml.toString());
+
+	        if (pusher) {
+	          pusher.trigger("callprogress-" + call.cpid, "update", { "step": 2, seq: call.seq + 1 });
+	        }
+	      });
+	    });
+	  });
+
+	  app.post("/api/phone/authentication/record", function (req, res, next) {
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var cid = req.cookies.tw_cid;
+
+	      var call = data.calls[cid];
+
+	      if (!call) {
+	        // If the session call identifier does not match an expected call fail the request
+	        res.sendStatus(403);
+
+	        return;
+	      }
+
+	      var twiml = new twilio.TwimlResponse();
+
+	      twiml.say("Please say the following phrase to authenticate.");
+	      twiml.pause(1);
+	      twiml.say("Remember to wash your hands before eating.");
+
+	      twiml.record({
+	        action: req.absoluteBaseUrl + "/api/phone/authentication/verify",
+	        maxLength: "4",
+	        trim: "do-not-trim"
+	      });
+
+	      req.db.patch({ calls: [{ id: cid, value: { step: 3, seq: call.seq + 1 } }] }, function (error) {
+	        if (error) {
+	          return next(error);
+	        }
+
+	        res.send(twiml.toString());
+
+	        if (pusher) {
+	          setTimeout(function () {
+	            return pusher.trigger("callprogress-" + call.cpid, "update", { "step": 3, seq: call.seq + 1 });
+	          }, 2500);
+	        }
+	      });
+	    });
+	  });
+
+	  app.post("/api/phone/authentication/verify", function (req, res, next) {
+	    req.db.get(function (error, data) {
+	      if (error) {
+	        return next(error);
+	      }
+
+	      var cid = req.cookies.tw_cid;
+
+	      var call = data.calls[cid];
+
+	      if (!call) {
+	        // If the session call identifier does not match an expected call fail the request
+	        res.sendStatus(403);
+
+	        return;
+	      }
+
+	      var pcid = _.findKey(data.calls_progress, _.matches(cid));
+
+	      req.session = data.sessions[call.sid];
+
+	      var recordingURL = req.body.RecordingUrl + ".wav";
+
+	      var options = {
+	        headers: {
+	          "VsitEmail": req.session.vit.id,
+	          "VsitPassword": crypto.createHash("sha256").update(req.session.vit.secret).digest("hex"),
+	          "VsitDeveloperId": req.webtaskContext.data.VIT_DEVELOPER_ID,
+	          "VsitConfidence": "85",
+	          "VsitwavURL": recordingURL,
+	          "ContentLanguage": req.session.vit.lang
+	        },
+	        uri: 'https://siv.voiceprintportal.com/sivservice/api/authentications/bywavurl',
+	        // uri: `${req.absoluteBaseUrl}/vitmocks/authenticate`,
+	        method: "POST"
+	      };
+
+	      req.db.patch({ calls: [{ id: cid, value: { step: 4, seq: call.seq + 1 } }] }, function (error) {
+	        if (error) {
+	          return next(error);
+	        }
+
+	        if (pusher) {
+	          pusher.trigger("callprogress-" + call.cpid, "update", { "step": 4, seq: call.seq + 1 });
+	        }
+
+	        request.post(options, function (error, response, body) {
+	          var twiml = new twilio.TwimlResponse();
+
+	          var progress = 0;
+
+	          if (!error && response.statusCode == 200) {
+	            var authenticationResponse = JSON.parse(body);
+	            var data = {};
+
+	            console.log(authenticationResponse);
+
+	            switch (authenticationResponse.Result) {
+	              case "Authentication failed.":
+	                progress--;
+
+	                twiml.say("Your authentication did not pass. Please try again.");
+	                twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
+	                break;
+
+	              default:
+	                progress++;
+
+	                // Tag the session with the call and call progress identifiers so that that they get cleaned up
+	                req.session.cid = cid;
+	                req.session.pcid = pcid;
+
+	                // Flag that authentication was completed for this session
+	                req.session.vit.authenticated = true;
+
+	                data.sessions = [{ id: call.sid, value: req.session }];
+
+	                twiml.say(authenticationResponse.Result);
+	                break;
+	            }
+	          } else {
+	            progress--;
+
+	            twiml.say("API Error. Your authentication did not pass. Please try again.");
+	            twiml.redirect(req.absoluteBaseUrl + "/api/phone/authentication/record");
+
+	            console.log(new Error(response.statusCode, body));
+	          }
+
+	          data.calls = [{ id: cid, value: { step: 4 + progress, seq: call.seq + 2 } }];
+
+	          req.db.patch(data, function (error) {
+	            if (error) {
+	              return next(error);
+	            }
+
+	            res.send(twiml.toString());
+	            if (pusher) {
+	              pusher.trigger("callprogress-" + call.cpid, "update", { "step": 4 + progress, seq: call.seq + 2 });
+	            }
+	          });
+	        });
+	      });
+	    });
+	  });
+
 	  app.use(function (error, req, res, next) {
 	    console.log(error);
 	    res.sendStatus(500);
@@ -519,50 +821,56 @@ module.exports =
 /* 7 */
 /***/ function(module, exports) {
 
-	module.exports = require("ejs");
+	module.exports = require("lodash");
 
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-	module.exports = require("request");
+	module.exports = require("handlebars");
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = require("base64-url");
+	module.exports = require("request");
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = require("express");
+	module.exports = require("base64-url");
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = require("body-parser");
+	module.exports = require("express");
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = require("cookie-parser");
+	module.exports = require("body-parser");
 
 /***/ },
 /* 13 */
+/***/ function(module, exports) {
+
+	module.exports = require("cookie-parser");
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WritableStream = __webpack_require__(14).Writable
-	                     || __webpack_require__(15).Writable,
-	    inherits = __webpack_require__(16).inherits;
+	var WritableStream = __webpack_require__(15).Writable
+	                     || __webpack_require__(16).Writable,
+	    inherits = __webpack_require__(17).inherits;
 
-	var StreamSearch = __webpack_require__(17);
+	var StreamSearch = __webpack_require__(18);
 
-	var PartStream = __webpack_require__(19),
-	    HeaderParser = __webpack_require__(20);
+	var PartStream = __webpack_require__(20),
+	    HeaderParser = __webpack_require__(21);
 
 	var DASH = 45,
 	    B_ONEDASH = new Buffer('-'),
@@ -798,33 +1106,33 @@ module.exports =
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = require("stream");
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = require("readable-stream");
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = require("util");
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
 	  Based heavily on the Streaming Boyer-Moore-Horspool C++ implementation
 	  by Hongli Lai at: https://github.com/FooBarWidget/boyer-moore-horspool
 	*/
-	var EventEmitter = __webpack_require__(18).EventEmitter,
-	    inherits = __webpack_require__(16).inherits;
+	var EventEmitter = __webpack_require__(19).EventEmitter,
+	    inherits = __webpack_require__(17).inherits;
 
 	function jsmemcmp(buf1, pos1, buf2, pos2, num) {
 	  for (var i = 0; i < num; ++i, ++pos1, ++pos2)
@@ -1035,17 +1343,17 @@ module.exports =
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	module.exports = require("events");
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var inherits = __webpack_require__(16).inherits,
-	    ReadableStream = __webpack_require__(14).Readable || __webpack_require__(15);
+	var inherits = __webpack_require__(17).inherits,
+	    ReadableStream = __webpack_require__(15).Readable || __webpack_require__(16);
 
 	function PartStream(opts) {
 	  ReadableStream.call(this, opts);
@@ -1058,13 +1366,13 @@ module.exports =
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(18).EventEmitter,
-	    inherits = __webpack_require__(16).inherits;
+	var EventEmitter = __webpack_require__(19).EventEmitter,
+	    inherits = __webpack_require__(17).inherits;
 
-	var StreamSearch = __webpack_require__(17);
+	var StreamSearch = __webpack_require__(18);
 
 	var B_DCRLF = new Buffer('\r\n\r\n'),
 	    RE_CRLF = /\r\n/g,
@@ -1174,18 +1482,30 @@ module.exports =
 
 
 /***/ },
-/* 21 */
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = require("twilio");
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = require("pusher");
+
+/***/ },
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = require("jsonwebtoken");
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var Express = __webpack_require__(10);
+	var Express = __webpack_require__(11);
 
 	var mocks = Express.Router();
 
@@ -1226,12 +1546,12 @@ module.exports =
 	module.exports = mocks;
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var fs = __webpack_require__(24);
+	var fs = __webpack_require__(27);
 
 	function JsonFileElementalDB(filePath, schema, seed) {
 	    schema = schema || {};
@@ -1240,12 +1560,18 @@ module.exports =
 	    var db = seed;
 
 	    try {
-	        db = JSON.parse(fs.readFileSync(filePath));
-	    } catch (error) {
-	        // Ignore if there isn't any previously available data
+	        db = readFromDisk();
+
+	        Object.keys(seed).forEach(function (key) {
+	            return db[key] = db[key] || seed[key];
+	        });
+	    } catch (error) {} finally {
+	        writeToDisk(db);
 	    }
 
 	    this.get = function (collection, callback) {
+	        var db = readFromDisk();
+
 	        if (!callback && typeof collection === "function") {
 	            callback = collection;
 	            collection = null;
@@ -1261,9 +1587,11 @@ module.exports =
 	    this.add = function (data, callback) {
 	        data = data || {};
 
+	        var db = readFromDisk();
+
 	        doAdd(db, data, schema);
 
-	        writeToDisk();
+	        writeToDisk(db);
 
 	        callback();
 	    };
@@ -1271,9 +1599,11 @@ module.exports =
 	    this.remove = function (data, callback) {
 	        data = data || {};
 
+	        var db = readFromDisk();
+
 	        doRemove(db, data, schema);
 
-	        writeToDisk();
+	        writeToDisk(db);
 
 	        callback();
 	    };
@@ -1281,9 +1611,23 @@ module.exports =
 	    this.update = function (data, callback) {
 	        data = data || {};
 
+	        var db = readFromDisk();
+
 	        doUpdate(db, data, schema);
 
-	        writeToDisk();
+	        writeToDisk(db);
+
+	        callback();
+	    };
+
+	    this.patch = function (data, callback) {
+	        data = data || {};
+
+	        var db = readFromDisk();
+
+	        doPatch(db, data, schema);
+
+	        writeToDisk(db);
 
 	        callback();
 	    };
@@ -1291,8 +1635,14 @@ module.exports =
 	    this.mutate = function (changes, callback) {
 	        changes = changes || {};
 
+	        var db = readFromDisk();
+
 	        if (changes.update) {
 	            doUpdate(db, changes.update, schema);
+	        }
+
+	        if (changes.patch) {
+	            doPatch(db, changes.patch, schema);
 	        }
 
 	        if (changes.remove) {
@@ -1303,12 +1653,16 @@ module.exports =
 	            doAdd(db, changes.add, schema);
 	        }
 
-	        writeToDisk();
+	        writeToDisk(db);
 
 	        callback();
 	    };
 
-	    function writeToDisk() {
+	    function readFromDisk() {
+	        return JSON.parse(fs.readFileSync(filePath));
+	    }
+
+	    function writeToDisk(db) {
 	        fs.writeFileSync(filePath, JSON.stringify(db, null, 2));
 	    }
 	}
@@ -1316,6 +1670,8 @@ module.exports =
 	function WebtaskStorageElementalDB(storage, schema, seed) {
 	    schema = schema || {};
 	    seed = seed || {};
+
+	    var upgraded = false;
 
 	    this.get = function (collection, callback) {
 	        storage.get(function (error, db) {
@@ -1337,6 +1693,12 @@ module.exports =
 	                        fulfill();
 	                    });
 	                });
+	            } else if (!upgraded) {
+	                Object.keys(seed).forEach(function (key) {
+	                    return db[key] = db[key] || seed[key];
+	                });
+
+	                upgraded = true;
 	            }
 
 	            promise.then(function () {
@@ -1398,6 +1760,20 @@ module.exports =
 	        });
 	    };
 
+	    this.patch = function (data, callback) {
+	        data = data || {};
+
+	        this.get(function (error, db) {
+	            if (error) {
+	                return callback(error);
+	            }
+
+	            doPatch(db, data, schema);
+
+	            storage.set(db, callback);
+	        });
+	    };
+
 	    this.mutate = function (changes, callback) {
 	        changes = changes || {};
 
@@ -1408,6 +1784,10 @@ module.exports =
 
 	            if (changes.update) {
 	                doUpdate(db, changes.update, schema);
+	            }
+
+	            if (changes.patch) {
+	                doPatch(db, changes.patch, schema);
 	            }
 
 	            if (changes.remove) {
@@ -1430,27 +1810,27 @@ module.exports =
 
 	    try {
 	        for (var _iterator = Object.keys(data)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	            var key = _step.value;
+	            var collection = _step.value;
 
-	            var type = schema[key] && schema[key].type || "array";
+	            var type = schema[collection] && schema[collection].type || "array";
 
 	            switch (type) {
 	                case "map":
-	                    db[key] = db[key] || {};
-	                    data[key].forEach(function (element) {
-	                        return db[key][element.id] = element.value;
+	                    db[collection] = db[collection] || {};
+	                    data[collection].forEach(function (element) {
+	                        return db[collection][element.id] = element.value;
 	                    });
 	                    break;
 
 	                case "array":
-	                    db[key] = db[key] || [];
-	                    data[key].forEach(function (element) {
-	                        return db[key].push(element);
+	                    db[collection] = db[collection] || [];
+	                    data[collection].forEach(function (element) {
+	                        return db[collection].push(element);
 	                    });
 	                    break;
 
 	                case "singleton":
-	                    db[key] = data[key];
+	                    db[collection] = data[collection];
 	                    break;
 
 	                default:
@@ -1480,31 +1860,31 @@ module.exports =
 
 	    try {
 	        for (var _iterator2 = Object.keys(data)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var key = _step2.value;
+	            var collection = _step2.value;
 
-	            var type = schema[key] && schema[key].type || "array";
+	            var type = schema[collection] && schema[collection].type || "array";
 
 	            switch (type) {
 	                case "map":
-	                    db[key] = db[key] || {};
-	                    data[key].forEach(function (element) {
-	                        return delete db[key][element.id];
+	                    db[collection] = db[collection] || {};
+	                    data[collection].forEach(function (element) {
+	                        return delete db[collection][element.id];
 	                    });
 	                    break;
 
 	                case "array":
-	                    db[key] = db[key] || [];
-	                    data[key].forEach(function (element) {
-	                        var index = db[key].indexOf(element);
+	                    db[collection] = db[collection] || [];
+	                    data[collection].forEach(function (element) {
+	                        var index = db[collection].indexOf(element);
 
 	                        if (index > -1) {
-	                            db[key].splice(index, 1);
+	                            db[collection].splice(index, 1);
 	                        }
 	                    });
 	                    break;
 
 	                case "singleton":
-	                    delete db[key];
+	                    delete db[collection];
 	                    break;
 
 	                default:
@@ -1534,21 +1914,24 @@ module.exports =
 
 	    try {
 	        for (var _iterator3 = Object.keys(data)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-	            var key = _step3.value;
+	            var collection = _step3.value;
 
-	            var type = schema[key] && schema[key].type || "array";
+	            var type = schema[collection] && schema[collection].type || "array";
 
 	            switch (type) {
 	                case "map":
-	                    db[key] = data[key];
+	                    db[collection] = db[collection] || {};
+	                    data[collection].forEach(function (element) {
+	                        return db[collection][element.id] = element.value;
+	                    });
 	                    break;
 
 	                case "array":
-	                    db[key] = data[key];
+	                    throw new Error("Performing an update on an array collection is not supported.");
 	                    break;
 
 	                case "singleton":
-	                    db[key] = data[key];
+	                    db[collection] = data[collection];
 	                    break;
 
 	                default:
@@ -1571,29 +1954,83 @@ module.exports =
 	    }
 	}
 
+	function doPatch(db, data, schema) {
+	    var _iteratorNormalCompletion4 = true;
+	    var _didIteratorError4 = false;
+	    var _iteratorError4 = undefined;
+
+	    try {
+	        for (var _iterator4 = Object.keys(data)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	            var collection = _step4.value;
+
+	            var type = schema[collection] && schema[collection].type || "array";
+
+	            switch (type) {
+	                case "map":
+	                    db[collection] = db[collection] || {};
+
+	                    data[collection].forEach(function (element) {
+	                        var existing = db[collection][element.id];
+
+	                        Object.keys(element.value).forEach(function (key) {
+	                            return existing[key] = element.value[key];
+	                        });
+	                    });
+	                    break;
+
+	                case "array":
+	                    throw new Error("Performing a patch on an array collection is not supported.");
+	                    break;
+
+	                case "singleton":
+	                    Object.keys(data[collection]).forEach(function (key) {
+	                        return db[collection][key] = data[collection][key];
+	                    });
+	                    break;
+
+	                default:
+	                    break;
+	            }
+	        }
+	    } catch (err) {
+	        _didIteratorError4 = true;
+	        _iteratorError4 = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion4 && _iterator4.return) {
+	                _iterator4.return();
+	            }
+	        } finally {
+	            if (_didIteratorError4) {
+	                throw _iteratorError4;
+	            }
+	        }
+	    }
+	}
+
 	module.exports = {
 	    JsonFileElementalDB: JsonFileElementalDB,
 	    WebtaskStorageElementalDB: WebtaskStorageElementalDB
 	};
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	module.exports = require("fs");
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _ = __webpack_require__(26);
-	var request = __webpack_require__(8);
-	var Express = __webpack_require__(10);
+	var _ = __webpack_require__(7);
+	var request = __webpack_require__(9);
+	var Express = __webpack_require__(11);
 
-	var jwt = __webpack_require__(21);
-	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(27) : __webpack_require__(28);
+	var jwt = __webpack_require__(24);
+	var auth0 = process.env["NON_WEBTASK_RUNTIME"] === "1" ? __webpack_require__(29) : __webpack_require__(30);
 
 	module.exports = function (files) {
 	    var hooks = Express.Router();
@@ -1627,7 +2064,11 @@ module.exports =
 
 	    hooks.use(function (req, res, next) {
 	        getToken(req, function (access_token, err) {
-	            if (err) return next(err);
+	            if (err) {
+	                console.log("Failed to obtain access token: " + error);
+
+	                return next(err);
+	            }
 
 	            var management = new auth0.ManagementClient({
 	                domain: req.webtaskContext.data.AUTH0_DOMAIN,
@@ -1659,10 +2100,16 @@ module.exports =
 	            }
 	        }
 
+	        var canUsePhoneAuthentication = true;
+	        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+	        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+	        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_PHONE_NUMBER;
+
 	        var placeholders = {
 	            "${SIGNING_KEY_PLACEHOLDER}": req.config.signingKey,
 	            "${ENCRYPTION_KEY_PLACEHOLDER}": req.webtaskContext.data.ENCRYPTION_KEY,
-	            "${APP_URL_PLACEHOLDER}": webtaskUrl
+	            "${APP_URL_PLACEHOLDER}": webtaskUrl,
+	            "${CAN_USE_PHONE_AUTH_PLACEHOLDER}": canUsePhoneAuthentication
 	        };
 
 	        _.forEach(placeholders, function (value, key) {
@@ -1699,7 +2146,7 @@ module.exports =
 	                    res.sendStatus(500);
 	                });
 	            }
-	        }).catch(function () {
+	        }).catch(function (error) {
 	            console.log(error);
 	            res.sendStatus(500);
 	        });
@@ -1716,14 +2163,15 @@ module.exports =
 	            if (rule) {
 	                req.auth0.rules.delete({ id: rule.id }).then(function () {
 	                    res.sendStatus(204);
-	                }).catch(function () {
+	                }).catch(function (error) {
+	                    console.log("Failed to delete rule: " + error);
 	                    res.sendStatus(500);
 	                });
 	            } else {
 	                res.sendStatus(204);
 	            }
-	        }).catch(function () {
-	            console.log(error);
+	        }).catch(function (error) {
+	            console.log("Failed to list rules: " + error);
 	            res.sendStatus(500);
 	        });
 	    });
@@ -1756,25 +2204,19 @@ module.exports =
 	}
 
 /***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	module.exports = require("lodash");
-
-/***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0");
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = require("auth0@2.1.0");
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1784,6 +2226,7 @@ module.exports =
 		"author": "João Angelo",
 		"description": "Provides multi-factor authentication with VoiceIt.",
 		"type": "application",
+		"codeUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/bundle.js",
 		"logoUrl": "https://wt-joao_angelo-auth0_com-0.run.webtask.io/voice-factor-serve/logo.svg",
 		"keywords": [
 			"biometrics",
@@ -1804,6 +2247,34 @@ module.exports =
 			"ENCRYPTION_KEY": {
 				"description": "Base64 encoded encryption key (AES 128) used for encryption of VoiceIt user secrets.",
 				"required": true,
+				"type": "password"
+			},
+			"TWILIO_ACCOUNT_SID": {
+				"description": "Your Twilio account identifier.",
+				"type": "password"
+			},
+			"TWILIO_AUTH_TOKEN": {
+				"description": "Your Twilio authentication token.",
+				"type": "password"
+			},
+			"TWILIO_PHONE_NUMBER": {
+				"description": "The Twilio number to use for outgoing calls.",
+				"type": "text"
+			},
+			"PUSHER_APPID": {
+				"description": "The Pusher application identifier.",
+				"type": "text"
+			},
+			"PUSHER_CLUSTER": {
+				"description": "Your Pusher account cluster.",
+				"type": "text"
+			},
+			"PUSHER_KEY": {
+				"description": "Your Pusher account key.",
+				"type": "text"
+			},
+			"PUSHER_SECRET": {
+				"description": "Your Pusher account secret.",
 				"type": "password"
 			}
 		}

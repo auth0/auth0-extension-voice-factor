@@ -39,7 +39,11 @@ module.exports = function (files) {
 
     hooks.use(function (req, res, next) {
         getToken(req, function (access_token, err) {
-            if (err) return next(err);
+            if (err) {
+                console.log("Failed to obtain access token: " + error);
+
+                return next(err);
+            }
 
             var management = new auth0.ManagementClient({
                 domain: req.webtaskContext.data.AUTH0_DOMAIN,
@@ -71,10 +75,16 @@ module.exports = function (files) {
             }
         }
 
+        var canUsePhoneAuthentication = true;
+        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_ACCOUNT_SID;
+        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_AUTH_TOKEN;
+        canUsePhoneAuthentication = canUsePhoneAuthentication && !!req.webtaskContext.data.TWILIO_PHONE_NUMBER;
+
         var placeholders = {
             "${SIGNING_KEY_PLACEHOLDER}": req.config.signingKey,
             "${ENCRYPTION_KEY_PLACEHOLDER}": req.webtaskContext.data.ENCRYPTION_KEY,
-            "${APP_URL_PLACEHOLDER}": webtaskUrl
+            "${APP_URL_PLACEHOLDER}": webtaskUrl,
+            "${CAN_USE_PHONE_AUTH_PLACEHOLDER}": canUsePhoneAuthentication
         };
 
         _.forEach(placeholders, function (value, key) {
@@ -111,7 +121,7 @@ module.exports = function (files) {
                     res.sendStatus(500);
                 });
             }
-        }).catch(function () {
+        }).catch(function (error) {
             console.log(error);
             res.sendStatus(500);
         });
@@ -122,28 +132,23 @@ module.exports = function (files) {
     });
 
     hooks.delete('/on-uninstall', function (req, res) {
-        req.auth0
-            .rules.getAll()
-            .then(function (rules) {
-                var rule = _.find(rules, { name: RULE_NAME });
+        req.auth0.rules.getAll().then(function (rules) {
+            var rule = _.find(rules, { name: RULE_NAME });
 
-                if (rule) {
-                    req.auth0
-                        .rules.delete({ id: rule.id })
-                        .then(function () {
-                            res.sendStatus(204);
-                        })
-                        .catch(function () {
-                            res.sendStatus(500);
-                        });
-                } else {
+            if (rule) {
+                req.auth0.rules.delete({ id: rule.id }).then(function () {
                     res.sendStatus(204);
-                }
-            })
-            .catch(function () {
-                console.log(error);
-                res.sendStatus(500);
-            });
+                }).catch(function (error) {
+                    console.log("Failed to delete rule: " + error);
+                    res.sendStatus(500);
+                });
+            } else {
+                res.sendStatus(204);
+            }
+        }).catch(function (error) {
+            console.log("Failed to list rules: " + error);
+            res.sendStatus(500);
+        });
     });
 
     return hooks;

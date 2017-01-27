@@ -1,8 +1,15 @@
 {
-    "Auth0Domain": "[account].auth0.com",
-    "Auth0ClientId": "[identifier of a CC grant enabled client with permissions to manage rules]",
-    "Auth0ClientSecret": "[client secret associated with the previously specified identifier]",
-    "ExtensionSecret": "[secret used to validate calls to extension installation hooks]",
-    "VoiceItDeveloperId": "[VoiceIt developer identifier]",
-    "EncryptionKey": "[base64 encoded encryption key (AES 128)]"
+    "AUTH0_DOMAIN": "[account].auth0.com",
+    "AUTH0_CLIENT_ID": "[identifier of a CC grant enabled client with permissions to manage rules]",
+    "AUTH0_CLIENT_SECRET": "[client secret associated with the previously specified identifier]",
+    "EXTENSION_SECRET": "[secret used to validate calls to extension installation hooks]",
+    "VIT_DEVELOPER_ID": "[VoiceIt developer identifier]",
+    "ENCRYPTION_KEY": "[base64 encoded encryption key (AES 128)]",
+    "TWILIO_ACCOUNT_SID": "[Twilio account SID]",
+    "TWILIO_AUTH_TOKEN": "[Twilio authentication token]",
+    "TWILIO_PHONE_NUMBER": "[Twilio number used for outgoing calls]",
+    "PUSHER_APPID": "[Pusher application identifier]",
+    "PUSHER_CLUSTER": "[Pusher cluster]",
+    "PUSHER_KEY": "[Pusher key]",
+    "PUSHER_SECRET": "[Pusher secret]"
 }

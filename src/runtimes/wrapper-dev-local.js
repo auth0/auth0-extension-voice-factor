@@ -17,13 +17,7 @@ app.use('/', (req, res, next) => {
     req.webtaskContext = req.webtaskContext || {};
     req.webtaskContext.data = req.webtaskContext.data || {};
 
-    req.webtaskContext.data.AUTH0_DOMAIN = config.Auth0Domain;
-    req.webtaskContext.data.AUTH0_CLIENT_ID = config.Auth0ClientId;
-    req.webtaskContext.data.AUTH0_CLIENT_SECRET = config.Auth0ClientSecret;
-    req.webtaskContext.data.EXTENSION_SECRET = config.ExtensionSecret;
-
-    req.webtaskContext.data.VIT_DEVELOPER_ID = config.VoiceItDeveloperId;
-    req.webtaskContext.data.ENCRYPTION_KEY = config.EncryptionKey;
+    Object.assign(req.webtaskContext.data, config);
 
     next();
 })
