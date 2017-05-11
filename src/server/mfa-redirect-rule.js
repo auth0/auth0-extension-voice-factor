@@ -23,7 +23,7 @@ function voicefactor(user, context, callback) {
 
     // Start by checking if we are handling a redirect callback
     if (context.protocol === "redirect-callback") {
-        if (!user.metadata.vit_enrollment) {
+        if (!user.app_metadata.vit_enrollment) {
             // Receiving a callback for a user that the rule did not request redirect so ignore
             return callback(null, user, context);
         }
@@ -48,10 +48,10 @@ function voicefactor(user, context, callback) {
                 return callback(new UnauthorizedError("Session and token mismatch."));
             }
 
-            if (!user.metadata.vit_enrollment.completed) {
-                user.metadata.vit_enrollment.completed = true;
+            if (!user.app_metadata.vit_enrollment.completed) {
+                user.app_metadata.vit_enrollment.completed = true;
 
-                auth0.users.updateAppMetadata(user.user_id, user.metadata).then(function () {
+                auth0.users.updateAppMetadata(user.user_id, user.app_metadata).then(function () {
                     callback(null, user, context);
                 }).catch(function (err) {
                     callback(err);
