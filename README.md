@@ -1,4 +1,16 @@
-# Auth0 Voice Authentication Extension
+# Auth0 Voice Authentication Sample Extension
+
+## Disclaimer
+
+**Do not use in production.**
+
+This is sample code and did not undergone any security review.
+
+The purpose of this extension is to illustrate how additional custom authentication steps can be integrated into the Auth0 authentication pipeline. As mentioned before, the provided code should be considered sample code and used only for testing/demo purposes. In particular, error handling is not meant to be complete and the components of the application that run within the browser depend on resources available in public CDN's.
+
+The extension was only used with the latest version of Chrome, however, the client-side logic of the extension is fairly simple so it should probably work with most browsers.
+
+## Introduction
 
 This extension illustrates how it's possible to use voice authentication as an additional authentication factor when performing user authentication through Auth0.
 
@@ -74,9 +86,3 @@ Click **CREATE EXTENSION** and install the extension from this repository. When 
 ### Uninstalling
 
 If you uninstall the extension the redirect rule and extension client that were created automically during the install process will also be removed. However, information about user enrollment is not removed from each individual user. This means you can later re-install the extension and reuse the information associated with users that already went through the enrollment procedure. However, for this to work correctly you need to use the same encryption key as before.
-
-## Disclaimer
-
-The purpose of this extension is to illustrate how to integrate additional custom authentication steps into the Auth0 authentication pipeline. The provided code should be considered sample code and used only after being thorougly reviewed. In particular, error handling is not meant to be complete and the components of the application that run within the browser depend on resources available in public CDN's.
-
-The extension was only tested against the latest version of Chrome. Having said that, the client-side logic of the extension is fairly simple so it should probably work with most browsers.
